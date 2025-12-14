@@ -1,0 +1,3373 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#667eea">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Chinese Vocabulary: Emotions & Thoughts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <style>
+    /* Reset and Base */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Force light mode and prevent dark mode */
+    html, body {
+        color-scheme: light only !important;
+    }
+
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        --card-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --text-light: #718096;
+        --accent-blue: #4299e1;
+        --accent-green: #38b2ac;
+        --accent-red: #f56565;
+        --accent-purple: #9f7aea;
+        --accent-yellow: #ecc94b;
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+        --border-radius-sm: 8px;
+        --border-radius-md: 12px;
+        --border-radius-lg: 20px;
+        --spacing-xs: 8px;
+        --spacing-sm: 12px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+        --spacing-xxl: 48px;
+    }
+
+    body {
+        background: var(--primary-gradient);
+        font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* Force light colors */
+        background: var(--primary-gradient) !important;
+        color: var(--text-dark) !important;
+    }
+
+    /* Container */
+    .slides-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Slide Container */
+    .slide-container {
+        background: var(--secondary-gradient);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: var(--spacing-xl);
+        position: relative;
+        width: 100%;
+        transition: all 0.3s ease;
+        min-height: min-content;
+        scroll-margin-top: 80px;
+        /* Force light background */
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    }
+
+    /* Navigation Dots */
+    .slide-nav-dots {
+        position: fixed;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e0 transparent;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 2px;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 2px;
+    }
+
+    .nav-dot {
+        width: 14px;
+        height: 14px;
+        min-width: 14px;
+        min-height: 14px;
+        border-radius: 50%;
+        background: #cbd5e0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        touch-action: manipulation;
+        flex-shrink: 0;
+    }
+
+    .nav-dot:hover,
+    .nav-dot:focus {
+        transform: scale(1.2);
+        background: #a0aec0;
+        outline: none;
+    }
+
+    .nav-dot.active {
+        background: #667eea;
+        transform: scale(1.3);
+        box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    }
+
+    .nav-dot::after {
+        content: attr(data-title);
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--text-dark);
+        color: white;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 1001;
+    }
+
+    .nav-dot:hover::after {
+        opacity: 1;
+    }
+
+    /* Typography - FIXED CENTERING */
+    .chinese-title {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(2rem, 5vw, 4.5rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        cursor: pointer;
+        position: relative;
+        display: block; /* Fixed: changed from inline-block to block */
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        width: 100%; /* Added for proper centering */
+    }
+
+    .chinese-title:hover {
+        background-color: rgba(102, 126, 234, 0.1);
+    }
+
+    .chinese-title::after {
+        content: "🔍 Tap for pinyin & translation";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin-top: 8px;
+    }
+
+    .chinese-title.hidden:hover::after {
+        opacity: 1;
+    }
+
+    .chinese-title.revealed::after {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+
+    .chinese-title.revealed:hover::after {
+        opacity: 0.7;
+    }
+
+    .pinyin {
+        font-size: clamp(1.25rem, 2.5vw, 2rem);
+        color: var(--text-medium);
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 500;
+        line-height: 1.3;
+        width: 100%; /* Added for proper centering */
+        display: block; /* Added for proper centering */
+    }
+
+    .english {
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 600;
+        line-height: 1.3;
+        width: 100%; /* Added for proper centering */
+        display: block; /* Added for proper centering */
+    }
+
+    /* Cards and Sections */
+    .character-breakdown {
+        background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: var(--border-radius-md);
+        margin: 20px auto;
+        width: 100%;
+        max-width: 90%;
+        border-left: 5px solid var(--accent-green);
+    }
+
+    .meaning-card {
+        background: white;
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+        margin: 15px 0;
+        border-top: 4px solid var(--accent-blue);
+    }
+
+    .example-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: clamp(15px, 2.5vw, 25px);
+        margin: 30px 0;
+    }
+
+    .example-card {
+        background: var(--card-gradient);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        position: relative;
+        transition: transform 0.2s ease;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .example-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .example-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        color: var(--text-dark);
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .example-pinyin {
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        color: var(--text-medium);
+        margin-bottom: 10px;
+        font-style: italic;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .example-english {
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        color: var(--text-dark);
+        line-height: 1.4;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .usage-notes {
+        background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-red);
+    }
+
+    /* Vocabulary Grid */
+    .vocab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: clamp(15px, 2vw, 20px);
+        margin: 30px 0;
+    }
+
+    .vocab-card {
+        background: white;
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 150px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .vocab-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .vocab-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .vocab-pinyin {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        color: var(--text-medium);
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .vocab-english {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* TAP TO REVEAL STYLES - MODIFIED FOR WHOLE CARD TAPPING */
+    .vocab-card.hidden .vocab-pinyin,
+    .vocab-card.hidden .vocab-english,
+    .example-card.hidden .example-pinyin,
+    .example-card.hidden .example-english,
+    .revealable.hidden {
+        opacity: 0;
+        transform: translateY(10px);
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .vocab-card::before,
+    .example-card::before {
+        content: "🔍 Tap to reveal pinyin & translation";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .vocab-card.hidden:hover::before,
+    .example-card.hidden:hover::before {
+        opacity: 1;
+    }
+
+    .vocab-card.revealed::before,
+    .example-card.revealed::before {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+
+    .vocab-card.revealed:hover::before,
+    .example-card.revealed:hover::before {
+        opacity: 0.7;
+    }
+
+    /* SINGLE TOGGLE BUTTON - MODIFIED FOR MOBILE */
+    .toggle-reveal-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .toggle-reveal-btn:hover {
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .toggle-reveal-btn.hide-mode {
+        background: var(--accent-red);
+        box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
+    }
+
+    .toggle-reveal-btn.hide-mode:hover {
+        box-shadow: 0 6px 20px rgba(245, 101, 101, 0.4);
+    }
+
+    /* For individual revealable elements (pinyin and english in main titles) */
+    .revealable {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .revealable.hidden {
+        background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e0 50%, #e2e8f0 75%);
+        background-size: 200% 100%;
+        animation: none; /* Removed auto-animation */
+        color: transparent !important;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    /* Only animate on hover for vocabulary review */
+    .revealable.hidden:hover {
+        animation: shimmer 1.5s infinite;
+    }
+
+    .revealable.hidden::before {
+        content: "🔍";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--text-medium);
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+
+    .revealable.revealed {
+        background: rgba(56, 178, 172, 0.1);
+        color: inherit !important;
+        animation: none;
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    /* Tables - FIXED FOR MOBILE HIDE FUNCTION */
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        margin: 30px 0;
+    }
+
+    .comparison-table th {
+        background: var(--primary-gradient);
+        color: white;
+        padding: clamp(12px, 2vw, 18px);
+        text-align: left;
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        font-weight: 600;
+    }
+
+    .comparison-table td {
+        padding: clamp(12px, 1.5vw, 16px);
+        border-bottom: 1px solid #e2e8f0;
+        font-size: clamp(0.9rem, 1.2vw, 1.125rem);
+        position: relative;
+    }
+
+    /* Make table cells revealable */
+    .comparison-table tr {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .comparison-table tr:hover {
+        background-color: #f7fafc;
+    }
+
+    /* FIXED: Mobile hide function - changed to use opacity instead of color: transparent */
+    .comparison-table tr.hidden td:nth-child(2),
+    .comparison-table tr.hidden td:nth-child(3),
+    .comparison-table tr.hidden td:nth-child(4),
+    .comparison-table tr.hidden td:nth-child(5) {
+        opacity: 0;
+        background: linear-gradient(90deg, #f7fafc 25%, #e2e8f0 50%, #f7fafc 75%);
+        background-size: 200% 100%;
+        animation: none;
+        position: relative;
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+    }
+
+    .comparison-table tr:not(.hidden) td:nth-child(2),
+    .comparison-table tr:not(.hidden) td:nth-child(3),
+    .comparison-table tr:not(.hidden) td:nth-child(4),
+    .comparison-table tr:not(.hidden) td:nth-child(5) {
+        opacity: 1;
+        height: auto;
+        padding: clamp(12px, 1.5vw, 16px);
+    }
+
+    /* Only animate on hover */
+    .comparison-table tr.hidden:hover td:nth-child(2),
+    .comparison-table tr.hidden:hover td:nth-child(3),
+    .comparison-table tr.hidden:hover td:nth-child(4),
+    .comparison-table tr.hidden:hover td:nth-child(5) {
+        animation: shimmer 1.5s infinite;
+    }
+
+    .comparison-table tr.hidden::after {
+        content: "🔍";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.5;
+        font-size: 0.8em;
+        z-index: 1;
+    }
+
+    /* Particles */
+    .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        font-family: 'Noto Sans TC', sans-serif;
+        color: rgba(102, 126, 234, 0.1);
+        font-size: clamp(16px, 2vw, 24px);
+        user-select: none;
+    }
+
+    .content-area {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        min-height: 0;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4 {
+        font-family: 'Noto Sans TC', sans-serif;
+        color: var(--text-dark);
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 4vw, 4rem);
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 3vw, 2.625rem);
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        margin-bottom: 10px;
+    }
+
+    /* Navigation */
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius-md);
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+    }
+
+    .nav-btn {
+        padding: 12px 24px;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+
+    .nav-btn:hover,
+    .nav-btn:focus {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        outline: none;
+    }
+
+    .nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .slide-number {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-medium);
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    /* UI Elements */
+    .slide-counter {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text-dark);
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .slide-title-display {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 500;
+        color: var(--text-dark);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 999;
+        max-width: 250px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0,0,0,0.1);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+    /* Lists */
+    ul, ol {
+        padding-left: 20px;
+        margin: 10px 0;
+    }
+
+    li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+
+    /* Responsive Design */
+
+    /* Large Desktop */
+    @media (min-width: 1400px) {
+        .slides-container {
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-xxl);
+        }
+    }
+
+    /* Desktop */
+    @media (max-width: 1199px) {
+        .slides-container {
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-lg);
+        }
+        
+        .slide-nav-dots {
+            right: 15px;
+        }
+    }
+
+    /* Tablet */
+    @media (max-width: 991px) {
+        .slide-nav-dots {
+            position: fixed;
+            top: 50%;
+            right: 15px;
+            bottom: auto;
+            left: auto;
+            transform: translateY(-50%);
+            flex-direction: column;
+            max-height: 70vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: auto;
+            padding: 12px 10px;
+            border-radius: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e0 transparent;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar {
+            width: 3px;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 2px;
+        }
+        
+        .nav-dot::after {
+            right: 18px;
+            font-size: 11px;
+            padding: 5px 8px;
+        }
+        
+        .example-section {
+            grid-template-columns: 1fr;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .slides-container {
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            min-height: auto !important;
+            display: block !important;
+            margin-bottom: 15px;
+            scroll-margin-top: 60px;
+        }
+        
+        /* MOBILE DOTS - HORIZONTAL SCROLLABLE */
+        .slide-nav-dots {
+            position: fixed;
+            top: auto;
+            bottom: 30px; /* Moved up to avoid overlapping with toggle button */
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            flex-direction: row;
+            flex-wrap: nowrap;
+            max-height: none;
+            max-width: 90vw;
+            height: auto;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px 15px;
+            border-radius: 25px;
+            gap: 10px;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+            min-height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: #cbd5e0;
+        }
+        
+        .nav-dot.active {
+            width: 14px;
+            height: 14px;
+            min-width: 14px;
+            min-height: 14px;
+            border-radius: 50%;
+            background: #667eea;
+            transform: scale(1);
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+        
+        .nav-dot:hover {
+            transform: scale(1.1);
+        }
+        
+        .nav-dot::after {
+            display: none;
+        }
+        
+        /* FIXED: Mobile slide counter and title display */
+        .slide-counter {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 0.7rem;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: block !important;
+        }
+        
+        .slide-title-display {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 0.7rem;
+            max-width: 150px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: block !important;
+        }
+        
+        .navigation {
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+        }
+        
+        .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .slide-number {
+            order: -1;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+        
+        .character-breakdown {
+            padding: var(--spacing-md);
+            max-width: 100%;
+        }
+        
+        .meaning-card {
+            padding: var(--spacing-md);
+        }
+        
+        .comparison-table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            white-space: nowrap;
+            min-width: 120px;
+        }
+        
+        .particle {
+            display: none;
+        }
+        
+        /* MOBILE TOGGLE BUTTON - EYE ICON ONLY ON RIGHT SIDE */
+        .toggle-reveal-btn {
+            position: fixed;
+            bottom: 50px;
+            right: 20px; /* Changed from center to right side */
+            left: auto; /* Reset left positioning */
+            transform: none; /* Remove centering transform */
+            padding: 16px; /* Make it bigger */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .toggle-reveal-btn span {
+            display: none; /* Hide text on mobile */
+        }
+        
+        .toggle-reveal-btn i {
+            font-size: 1.5rem; /* Make eye icon bigger */
+            margin: 0;
+        }
+        
+        .toggle-reveal-btn:hover {
+            transform: scale(1.1); /* Different hover effect for mobile */
+        }
+        
+        /* Enable normal scrolling */
+        body {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 575px) {
+        body {
+            background: var(--secondary-gradient);
+        }
+        
+        .slides-container {
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+        }
+        
+        .slide-container {
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            padding: 20px 15px;
+            margin-bottom: 10px;
+            min-height: auto !important;
+            display: block !important;
+        }
+        
+        .slide-nav-dots {
+            bottom: 15px; /* Adjusted for toggle button */
+            padding: 8px 12px;
+            max-width: 85vw;
+            border-radius: 20px;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            min-width: 10px;
+            min-height: 10px;
+            border-radius: 50%;
+        }
+        
+        .nav-dot.active {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+            min-height: 12px;
+            border-radius: 50%;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+        }
+        
+        .example-card,
+        .meaning-card,
+        .vocab-card {
+            padding: 15px;
+        }
+        
+        .navigation {
+            margin-top: 20px;
+            padding: 12px;
+        }
+        
+        .toggle-reveal-btn {
+            bottom: 50px;
+            right: 15px;
+            padding: 14px;
+            width: 56px;
+            height: 56px;
+        }
+        
+        .toggle-reveal-btn i {
+            font-size: 1.4rem;
+        }
+        
+        .slide-counter,
+        .slide-title-display {
+            display: block !important;
+            position: fixed !important;
+            z-index: 1000 !important;
+        }
+        
+        .slide-counter {
+            top: 8px;
+            left: 8px;
+            font-size: 0.65rem;
+            padding: 5px 8px;
+        }
+        
+        .slide-title-display {
+            top: 8px;
+            right: 8px;
+            font-size: 0.65rem;
+            max-width: 120px;
+            padding: 5px 8px;
+        }
+    }
+
+    /* Landscape Mode */
+    @media (max-height: 600px) and (orientation: landscape) {
+        .slide-container {
+            min-height: auto;
+            padding: 20px;
+        }
+        
+        .slide-nav-dots {
+            max-height: 60vh;
+        }
+        
+        .chinese-title {
+            font-size: clamp(1.5rem, 3vh, 2.5rem);
+            margin-bottom: 10px;
+        }
+        
+        .pinyin {
+            font-size: clamp(1rem, 2vh, 1.5rem);
+            margin-bottom: 15px;
+        }
+        
+        .english {
+            font-size: clamp(1.25rem, 2.5vh, 1.75rem);
+            margin-bottom: 20px;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .toggle-reveal-btn {
+            bottom: 10px;
+            right: 10px;
+            padding: 12px;
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    /* Print Styles */
+    @media print {
+        body {
+            background: white !important;
+            font-size: 12pt;
+        }
+        
+        .slides-container {
+            display: block;
+            padding: 0;
+            gap: 0;
+        }
+        
+        .slide-container {
+            page-break-after: always;
+            page-break-inside: avoid;
+            border-radius: 0;
+            box-shadow: none;
+            border: 1px solid #ddd;
+            margin: 0;
+            padding: 20pt;
+            min-height: auto;
+            break-inside: avoid;
+        }
+        
+        .navigation,
+        .slide-nav-dots,
+        .slide-counter,
+        .slide-title-display,
+        .particles,
+        .toggle-reveal-btn {
+            display: none !important;
+        }
+        
+        .chinese-title {
+            font-size: 24pt;
+            color: black !important;
+        }
+        
+        .pinyin {
+            font-size: 14pt;
+            color: #333 !important;
+        }
+        
+        .english {
+            font-size: 16pt;
+            color: black !important;
+        }
+        
+        .vocab-chinese {
+            font-size: 18pt;
+        }
+        
+        .vocab-pinyin {
+            font-size: 11pt;
+        }
+        
+        .vocab-english {
+            font-size: 10pt;
+        }
+        
+        a {
+            color: black !important;
+            text-decoration: none;
+        }
+        
+        @page {
+            margin: 0.5in;
+        }
+        
+        /* Always show all content when printing */
+        .vocab-card.hidden .vocab-pinyin,
+        .vocab-card.hidden .vocab-english,
+        .example-card.hidden .example-pinyin,
+        .example-card.hidden .example-english,
+        .revealable.hidden {
+            opacity: 1 !important;
+            transform: none !important;
+            height: auto !important;
+            margin: inherit !important;
+            color: inherit !important;
+            background: none !important;
+            animation: none !important;
+        }
+        
+        .vocab-card.hidden::before,
+        .example-card.hidden::before {
+            display: none !important;
+        }
+    }
+
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+        :root {
+            --text-dark: #000000;
+            --text-medium: #333333;
+            --accent-blue: #0066cc;
+            --accent-green: #008000;
+            --accent-red: #cc0000;
+        }
+        
+        .slide-container {
+            border: 2px solid #000;
+        }
+        
+        .nav-dot {
+            border: 1px solid #000;
+        }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+        
+        .nav-dot,
+        .vocab-card,
+        .example-card,
+        .nav-btn,
+        .toggle-reveal-btn {
+            transition: none !important;
+        }
+        
+        .nav-dot:hover,
+        .vocab-card:hover,
+        .example-card:hover,
+        .nav-btn:hover,
+        .toggle-reveal-btn:hover {
+            transform: none !important;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 0; }
+        }
+    }
+
+    /* DISABLE DARK MODE COMPLETELY */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            --card-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%) !important;
+            --text-dark: #2d3748 !important;
+            --text-medium: #4a5568 !important;
+            --text-light: #718096 !important;
+        }
+        
+        body {
+            background: var(--primary-gradient) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .slide-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .character-breakdown {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%) !important;
+        }
+        
+        .usage-notes {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+        }
+        
+        .meaning-card,
+        .vocab-card {
+            background: white !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .comparison-table th {
+            background: var(--primary-gradient) !important;
+            color: white !important;
+        }
+        
+        .comparison-table td {
+            background: white !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .slide-nav-dots {
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+        
+        .slide-title-display {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .nav-dot::after {
+            background: var(--text-dark) !important;
+            color: white !important;
+        }
+    }
+
+    /* Accessibility */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Focus styles */
+    :focus-visible {
+        outline: 2px solid #667eea;
+        outline-offset: 2px;
+    }
+
+    /* Loading state */
+    .slide-container.loading {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    /* Custom scrollbar */
+    @media (min-width: 768px) {
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    }
+    
+    /* Additional fixes for normal scrolling */
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    body {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+    
+    /* Emotion-specific styles */
+    .emotion-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin: 25px 0;
+    }
+    
+    .emotion-card {
+        background: white;
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: all 0.3s ease;
+        border-top: 4px solid;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .emotion-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .emotion-card.positive {
+        border-color: var(--accent-green);
+    }
+    
+    .emotion-card.negative {
+        border-color: var(--accent-red);
+    }
+    
+    .emotion-card.neutral {
+        border-color: var(--accent-blue);
+    }
+    
+    .emotion-card.social {
+        border-color: var(--accent-purple);
+    }
+    
+    .emotion-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    
+    .synonym-section {
+        background: linear-gradient(135deg, #e6e6ff 0%, #d6d6ff 100%);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-purple);
+    }
+    
+    .antonym-section {
+        background: linear-gradient(135deg, #ffe6e6 0%, #ffd6d6 100%);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-red);
+    }
+</style>
+</head>
+<body>
+
+<!-- Slide Navigation Dots -->
+<div class="slide-nav-dots" id="slideNavDots" aria-label="Slide navigation"></div>
+
+<!-- Single floating toggle button - MODIFIED FOR MOBILE -->
+<button class="toggle-reveal-btn" id="toggleRevealBtn" aria-label="Toggle all answers">
+    <i class="fas fa-eye"></i>
+    <span>Show All Answers</span>
+</button>
+
+<!-- Slide counter -->
+<div class="slide-counter" id="slideCounter" aria-live="polite">Slide 1 of 22</div>
+
+<!-- Current slide title display -->
+<div class="slide-title-display" id="slideTitleDisplay" aria-live="polite">時間與個人資訊詞彙</div>
+
+<!-- Main content -->
+<div class="slides-container">
+    <!-- Slide 1: Title Slide -->
+    <div class="slide-container" id="slide1" role="region" aria-label="Title slide">
+        <div class="particles" id="particles1" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center; padding-top: clamp(20px, 5vw, 40px);">
+                <h1 style="margin-bottom: 30px;">Chinese Time & Personal Information Vocabulary</h1>
+                <div class="chinese-title">時間與個人資訊詞彙</div>
+                <div class="pinyin revealable" data-original="shíjiān yǔ gèrén zīxùn cíhuì">shíjiān yǔ gèrén zīxùn cíhuì</div>
+                <div class="english revealable" data-original="Time & Personal Information Vocabulary" style="margin-bottom: 60px;">Time & Personal Information Vocabulary</div>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="meaning-card">
+                        <h3 style="color: var(--accent-blue); margin-bottom: 15px;">Learning Objectives</h3>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>Master 16+ essential time and personal information vocabulary words</li>
+                            <li>Learn how to talk about time, seasons, and daily life</li>
+                            <li>Understand personal information expressions</li>
+                            <li>Build complete time-related conversation abilities</li>
+                            <li>Each vocabulary word has multiple sentence examples</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Personal Information Introduction -->
+    <div class="slide-container" id="slide2" role="region" aria-label="Personal information introduction">
+        <div class="particles" id="particles2" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Personal Information Vocabulary</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card personal" data-word="出生">
+                    <div class="vocab-chinese">出生</div>
+                    <div class="vocab-pinyin">chūshēng</div>
+                    <div class="vocab-english">To be born</div>
+                </div>
+                <div class="vocab-card personal" data-word="不同">
+                    <div class="vocab-chinese">不同</div>
+                    <div class="vocab-pinyin">bùtóng</div>
+                    <div class="vocab-english">Different</div>
+                </div>
+                <div class="vocab-card personal" data-word="住址">
+                    <div class="vocab-chinese">住址</div>
+                    <div class="vocab-pinyin">zhùzhǐ</div>
+                    <div class="vocab-english">Address</div>
+                </div>
+                <div class="vocab-card personal" data-word="母語">
+                    <div class="vocab-chinese">母語</div>
+                    <div class="vocab-pinyin">mǔyǔ</div>
+                    <div class="vocab-english">Native language</div>
+                </div>
+                <div class="vocab-card personal" data-word="年紀">
+                    <div class="vocab-chinese">年紀</div>
+                    <div class="vocab-pinyin">niánjì</div>
+                    <div class="vocab-english">Age</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Personal Information Categories</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Birth & Age</strong>: 出生 (chūshēng), 年紀 (niánjì)</li>
+                    <li><strong>Location</strong>: 住址 (zhùzhǐ)</li>
+                    <li><strong>Language</strong>: 母語 (mǔyǔ)</li>
+                    <li><strong>Characteristics</strong>: 不同 (bùtóng)</li>
+                    <li><strong>Time Expressions</strong>: 表 (biǎo), 鐘 (zhōng), 時 (shí)</li>
+                    <li><strong>Day Periods</strong>: 白天 (báitiān), 半夜 (bànyè), 夜晚 (yèwǎn), 夜 (yè)</li>
+                    <li><strong>Seasons</strong>: 春季 (chūnjì)</li>
+                    <li><strong>Time References</strong>: 不久 (bùjiǔ), 剛才 (gāngcái), 早點 (zǎodiǎn), 正好 (zhènghǎo)</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我出生在台北。">
+                    <div class="example-chinese">我出生在台北。</div>
+                    <div class="example-pinyin">Wǒ chūshēng zài Táiběi.</div>
+                    <div class="example-english">I was born in Taipei.</div>
+                </div>
+                <div class="example-card" data-example="我們的母語不同。">
+                    <div class="example-chinese">我們的母語不同。</div>
+                    <div class="example-pinyin">Wǒmen de mǔyǔ bùtóng.</div>
+                    <div class="example-english">Our native languages are different.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: 出生 (chūshēng) -->
+    <div class="slide-container" id="slide3" role="region" aria-label="出生 slide">
+        <div class="particles" id="particles3" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">出生</div>
+                <div class="pinyin revealable" data-original="chūshēng">chūshēng</div>
+                <div class="english revealable" data-original="To be born">To be born</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">出</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">chū - exit/come out</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">生</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">shēng - birth/life</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="他出生於一九九零年。">
+                    <div class="example-chinese">他出生於一九九零年。</div>
+                    <div class="example-pinyin">Tā chūshēng yú yījiǔjiǔlíng nián.</div>
+                    <div class="example-english">He was born in 1990.</div>
+                </div>
+                <div class="example-card" data-example="這隻小狗是昨天出生的。">
+                    <div class="example-chinese">這隻小狗是昨天出生的。</div>
+                    <div class="example-pinyin">Zhè zhī xiǎogǒu shì zuótiān chūshēng de.</div>
+                    <div class="example-english">This puppy was born yesterday.</div>
+                </div>
+                <div class="example-card" data-example="你的出生日期是什麼時候？">
+                    <div class="example-chinese">你的出生日期是什麼時候？</div>
+                    <div class="example-pinyin">Nǐ de chūshēng rìqī shì shénme shíhòu?</div>
+                    <div class="example-english">What is your date of birth?</div>
+                </div>
+            </div>
+            
+            <div class="synonym-section">
+                <h3>Related Vocabulary</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>生日 (shēngrì)</strong> - birthday</li>
+                    <li><strong>出生地 (chūshēngdì)</strong> - birthplace</li>
+                    <li><strong>出生證明 (chūshēng zhèngmíng)</strong> - birth certificate</li>
+                    <li><strong>誕生 (dànshēng)</strong> - to be born (more formal/literary)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: 不同 (bùtóng) -->
+    <div class="slide-container" id="slide4" role="region" aria-label="不同 slide">
+        <div class="particles" id="particles4" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">不同</div>
+                <div class="pinyin revealable" data-original="bùtóng">bùtóng</div>
+                <div class="english revealable" data-original="Different/not the same">Different/not the same</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">不</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">bù - not</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">同</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">tóng - same</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我們的想法不同。">
+                    <div class="example-chinese">我們的想法不同。</div>
+                    <div class="example-pinyin">Wǒmen de xiǎngfǎ bùtóng.</div>
+                    <div class="example-english">Our thoughts are different.</div>
+                </div>
+                <div class="example-card" data-example="這兩本書的內容完全不同。">
+                    <div class="example-chinese">這兩本書的內容完全不同。</div>
+                    <div class="example-pinyin">Zhè liǎng běn shū de nèiróng wánquán bùtóng.</div>
+                    <div class="example-english">The contents of these two books are completely different.</div>
+                </div>
+                <div class="example-card" data-example="不同國家有不同的文化。">
+                    <div class="example-chinese">不同國家有不同的文化。</div>
+                    <div class="example-pinyin">Bùtóng guójiā yǒu bùtóng de wénhuà.</div>
+                    <div class="example-english">Different countries have different cultures.</div>
+                </div>
+            </div>
+            
+            <div class="antonym-section">
+                <h3>Antonym</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>相同 (xiāngtóng)</strong> - same/similar (opposite of different)
+                </p>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "不同" is used to indicate differences between two or more things. It can be followed by "於" (from) to show what something is different from. Often used in patterns like "與...不同" (different from...). Can modify nouns directly or be used as a predicate.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: 住址 (zhùzhǐ) -->
+    <div class="slide-container" id="slide5" role="region" aria-label="住址 slide">
+        <div class="particles" id="particles5" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">住址</div>
+                <div class="pinyin revealable" data-original="zhùzhǐ">zhùzhǐ</div>
+                <div class="english revealable" data-original="Address/residence address">Address/residence address</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "住址" combines "住" (to live/reside) and "址" (location/site). Together they mean "residence location" or literally "living place site". It specifically refers to a residential address.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="請寫下你的住址。">
+                    <div class="example-chinese">請寫下你的住址。</div>
+                    <div class="example-pinyin">Qǐng xiě xià nǐ de zhùzhǐ.</div>
+                    <div class="example-english">Please write down your address.</div>
+                </div>
+                <div class="example-card" data-example="我的住址已經變更了。">
+                    <div class="example-chinese">我的住址已經變更了。</div>
+                    <div class="example-pinyin">Wǒ de zhùzhǐ yǐjīng biàngēng le.</div>
+                    <div class="example-english">My address has already been changed.</div>
+                </div>
+                <div class="example-card" data-example="表格上需要填寫住址。">
+                    <div class="example-chinese">表格上需要填寫住址。</div>
+                    <div class="example-pinyin">Biǎogé shàng xūyào tiánxiě zhùzhǐ.</div>
+                    <div class="example-english">The form requires filling in the address.</div>
+                </div>
+            </div>
+            
+            <div class="synonym-section">
+                <h3>Related Terms</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>地址 (dìzhǐ)</strong> - address (more general, can be any type)</li>
+                    <li><strong>居住地 (jūzhùdì)</strong> - place of residence</li>
+                    <li><strong>戶籍地址 (hùjí dìzhǐ)</strong> - registered address</li>
+                    <li><strong>通訊地址 (tōngxùn dìzhǐ)</strong> - mailing address</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: 母語 (mǔyǔ) -->
+    <div class="slide-container" id="slide6" role="region" aria-label="母語 slide">
+        <div class="particles" id="particles6" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">母語</div>
+                <div class="pinyin revealable" data-original="mǔyǔ">mǔyǔ</div>
+                <div class="english revealable" data-original="Native language/mother tongue">Native language/mother tongue</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">母</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">mǔ - mother</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">語</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">yǔ - language</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我的母語是中文。">
+                    <div class="example-chinese">我的母語是中文。</div>
+                    <div class="example-pinyin">Wǒ de mǔyǔ shì Zhōngwén.</div>
+                    <div class="example-english">My native language is Chinese.</div>
+                </div>
+                <div class="example-card" data-example="他的母語是英語，但會說流利的中文。">
+                    <div class="example-chinese">他的母語是英語，但會說流利的中文。</div>
+                    <div class="example-pinyin">Tā de mǔyǔ shì Yīngyǔ, dàn huì shuō liúlì de Zhōngwén.</div>
+                    <div class="example-english">His native language is English, but he speaks fluent Chinese.</div>
+                </div>
+                <div class="example-card" data-example="學習母語以外的語言很有趣。">
+                    <div class="example-chinese">學習母語以外的語言很有趣。</div>
+                    <div class="example-pinyin">Xuéxí mǔyǔ yǐwài de yǔyán hěn yǒuqù.</div>
+                    <div class="example-english">Learning languages other than your native language is interesting.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Cultural Usage</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "母語" refers to the first language a person learns from birth, typically from their mother or family. In multilingual regions, people may have more than one "母語". The concept is important in language education and cultural identity discussions.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Time & Clocks Introduction -->
+    <div class="slide-container" id="slide7" role="region" aria-label="Time and clocks introduction">
+        <div class="particles" id="particles7" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Time & Clock Vocabulary</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card time" data-word="表">
+                    <div class="vocab-chinese">表</div>
+                    <div class="vocab-pinyin">biǎo</div>
+                    <div class="vocab-english">Watch/table (instrument)</div>
+                </div>
+                <div class="vocab-card time" data-word="鐘">
+                    <div class="vocab-chinese">鐘</div>
+                    <div class="vocab-pinyin">zhōng</div>
+                    <div class="vocab-english">Clock/bell</div>
+                </div>
+                <div class="vocab-card time" data-word="時鐘">
+                    <div class="vocab-chinese">時鐘</div>
+                    <div class="vocab-pinyin">shízhōng</div>
+                    <div class="vocab-english">Clock (timepiece)</div>
+                </div>
+                <div class="vocab-card time" data-word="時">
+                    <div class="vocab-chinese">時</div>
+                    <div class="vocab-pinyin">shí</div>
+                    <div class="vocab-english">Time/hour</div>
+                </div>
+                <div class="vocab-card communication" data-word="傳真">
+                    <div class="vocab-chinese">傳真</div>
+                    <div class="vocab-pinyin">chuánzhēn</div>
+                    <div class="vocab-english">Fax</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Time-Related Vocabulary</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Timepieces</strong>: 表 (watch), 鐘 (clock), 時鐘 (clock)</li>
+                    <li><strong>Time Units</strong>: 時 (hour/time), 日子 (day), 夜 (night)</li>
+                    <li><strong>Day Periods</strong>: 白天 (daytime), 夜晚 (nighttime), 半夜 (midnight)</li>
+                    <li><strong>Seasons</strong>: 春季 (spring)</li>
+                    <li><strong>Communication</strong>: 傳真 (fax)</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我的手錶顯示三點。">
+                    <div class="example-chinese">我的手錶顯示三點。</div>
+                    <div class="example-pinyin">Wǒ de shǒubiǎo xiǎnshì sān diǎn.</div>
+                    <div class="example-english">My watch shows three o'clock.</div>
+                </div>
+                <div class="example-card" data-example="牆上的鐘已經停了。">
+                    <div class="example-chinese">牆上的鐘已經停了。</div>
+                    <div class="example-pinyin">Qiáng shàng de zhōng yǐjīng tíng le.</div>
+                    <div class="example-english">The clock on the wall has stopped.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: 表 (biǎo) vs 鐘 (zhōng) -->
+    <div class="slide-container" id="slide8" role="region" aria-label="表 and 鐘 comparison slide">
+        <div class="particles" id="particles8" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Timepieces: 表 vs 鐘</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">表</div>
+                    <div class="pinyin revealable" data-original="biǎo">biǎo</div>
+                    <div class="english revealable" data-original="Watch/small timepiece">Watch/small timepiece</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="他戴著一支新手錶。">
+                            <div class="example-chinese">他戴著一支新手錶。</div>
+                            <div class="example-pinyin">Tā dàizhe yī zhī xīn shǒubiǎo.</div>
+                            <div class="example-english">He's wearing a new watch.</div>
+                        </div>
+                        <div class="example-card" data-example="鬧鐘也是鐘的一種。">
+                            <div class="example-chinese">鬧鐘也是鐘的一種。</div>
+                            <div class="example-pinyin">Nàozhōng yě shì zhōng de yī zhǒng.</div>
+                            <div class="example-english">An alarm clock is also a type of clock.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">鐘 / 時鐘</div>
+                    <div class="pinyin revealable" data-original="zhōng / shízhōng">zhōng / shízhōng</div>
+                    <div class="english revealable" data-original="Clock/large timepiece">Clock/large timepiece</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="教堂的鐘每小時響一次。">
+                            <div class="example-chinese">教堂的鐘每小時響一次。</div>
+                            <div class="example-pinyin">Jiàotáng de zhōng měi xiǎoshí xiǎng yīcì.</div>
+                            <div class="example-english">The church bell rings once every hour.</div>
+                        </div>
+                        <div class="example-card" data-example="牆上掛著一個時鐘。">
+                            <div class="example-chinese">牆上掛著一個時鐘。</div>
+                            <div class="example-pinyin">Qiáng shàng guàzhe yīgè shízhōng.</div>
+                            <div class="example-english">There's a clock hanging on the wall.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Key Differences</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>表 (biǎo)</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>Portable timepieces (watches)</li>
+                            <li>Usually worn on wrist (手錶)</li>
+                            <li>Can also mean "meter" or "gauge"</li>
+                            <li>Part of compound words: 手錶, 鐘表店</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>鐘 (zhōng)</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>Stationary timepieces (clocks)</li>
+                            <li>Can mean bells (教堂的鐘)</li>
+                            <li>時鐘 specifically means "time clock"</li>
+                            <li>Part of compound words: 鬧鐘, 時鐘</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: 傳真 (chuánzhēn) -->
+    <div class="slide-container" id="slide9" role="region" aria-label="傳真 slide">
+        <div class="particles" id="particles9" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">傳真</div>
+                <div class="pinyin revealable" data-original="chuánzhēn">chuánzhēn</div>
+                <div class="english revealable" data-original="Fax/facsimile">Fax/facsimile</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">傳</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">chuán - transmit</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">真</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">zhēn - true/real</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="請把文件傳真給我。">
+                    <div class="example-chinese">請把文件傳真給我。</div>
+                    <div class="example-pinyin">Qǐng bǎ wénjiàn chuánzhēn gěi wǒ.</div>
+                    <div class="example-english">Please fax the document to me.</div>
+                </div>
+                <div class="example-card" data-example="我們的傳真號碼是 02-12345678。">
+                    <div class="example-chinese">我們的傳真號碼是 02-12345678。</div>
+                    <div class="example-pinyin">Wǒmen de chuánzhēn hàomǎ shì líng èr yāo èr sān sì wǔ liù qī bā.</div>
+                    <div class="example-english">Our fax number is 02-12345678.</div>
+                </div>
+                <div class="example-card" data-example="現在用電子郵件比傳真更方便。">
+                    <div class="example-chinese">現在用電子郵件比傳真更方便。</div>
+                    <div class="example-pinyin">Xiànzài yòng diànzǐ yóujiàn bǐ chuánzhēn gèng fāngbiàn.</div>
+                    <div class="example-english">Using email is more convenient than fax now.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "傳真" can be used as both a noun (fax machine/fax document) and a verb (to fax). It was widely used for business communication before email became prevalent. Still used in some formal or legal contexts where physical signatures are required.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Day & Night Periods -->
+    <div class="slide-container" id="slide10" role="region" aria-label="Day and night periods">
+        <div class="particles" id="particles10" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Day & Night Periods</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card daytime" data-word="白天">
+                    <div class="vocab-chinese">白天</div>
+                    <div class="vocab-pinyin">báitiān</div>
+                    <div class="vocab-english">Daytime</div>
+                </div>
+                <div class="vocab-card nighttime" data-word="夜晚">
+                    <div class="vocab-chinese">夜晚</div>
+                    <div class="vocab-pinyin">yèwǎn</div>
+                    <div class="vocab-english">Nighttime</div>
+                </div>
+                <div class="vocab-card nighttime" data-word="半夜">
+                    <div class="vocab-chinese">半夜</div>
+                    <div class="vocab-pinyin">bànyè</div>
+                    <div class="vocab-english">Midnight</div>
+                </div>
+                <div class="vocab-card nighttime" data-word="夜">
+                    <div class="vocab-chinese">夜</div>
+                    <div class="vocab-pinyin">yè</div>
+                    <div class="vocab-english">Night</div>
+                </div>
+                <div class="vocab-card neutral" data-word="日子">
+                    <div class="vocab-chinese">日子</div>
+                    <div class="vocab-pinyin">rìzi</div>
+                    <div class="vocab-english">Day (as in time period)</div>
+                </div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Meanings</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--text-dark);">白天</div>
+                        <div style="font-size: clamp(0.75rem, 1vw, 0.875rem); color: var(--text-medium);">白 (white) + 天 (sky/day)</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--text-dark);">夜晚</div>
+                        <div style="font-size: clamp(0.75rem, 1vw, 0.875rem); color: var(--text-medium);">夜 (night) + 晚 (evening)</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--text-dark);">半夜</div>
+                        <div style="font-size: clamp(0.75rem, 1vw, 0.875rem); color: var(--text-medium);">半 (half) + 夜 (night)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="白天工作，晚上休息。">
+                    <div class="example-chinese">白天工作，晚上休息。</div>
+                    <div class="example-pinyin">Báitiān gōngzuò, wǎnshàng xiūxi.</div>
+                    <div class="example-english">Work during the day, rest at night.</div>
+                </div>
+                <div class="example-card" data-example="城市的夜晚很美麗。">
+                    <div class="example-chinese">城市的夜晚很美麗。</div>
+                    <div class="example-pinyin">Chéngshì de yèwǎn hěn měilì.</div>
+                    <div class="example-english">The city at night is very beautiful.</div>
+                </div>
+                <div class="example-card" data-example="他常常工作到半夜。">
+                    <div class="example-chinese">他常常工作到半夜。</div>
+                    <div class="example-pinyin">Tā chángcháng gōngzuò dào bànyè.</div>
+                    <div class="example-english">He often works until midnight.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: 白天 (báitiān) & 夜晚 (yèwǎn) -->
+    <div class="slide-container" id="slide11" role="region" aria-label="白天 and 夜晚 slide">
+        <div class="particles" id="particles11" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Daytime vs Nighttime</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">白天</div>
+                    <div class="pinyin revealable" data-original="báitiān">báitiān</div>
+                    <div class="english revealable" data-original="Daytime">Daytime</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="白天溫度比較高。">
+                            <div class="example-chinese">白天溫度比較高。</div>
+                            <div class="example-pinyin">Báitiān wēndù bǐjiào gāo.</div>
+                            <div class="example-english">The temperature is higher during daytime.</div>
+                        </div>
+                        <div class="example-card" data-example="貓頭鷹白天睡覺，晚上活動。">
+                            <div class="example-chinese">貓頭鷹白天睡覺，晚上活動。</div>
+                            <div class="example-pinyin">Māotóuyīng báitiān shuìjiào, wǎnshàng huódòng.</div>
+                            <div class="example-english">Owls sleep during the day and are active at night.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">夜晚</div>
+                    <div class="pinyin revealable" data-original="yèwǎn">yèwǎn</div>
+                    <div class="english revealable" data-original="Nighttime">Nighttime</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="夜晚的星星很明亮。">
+                            <div class="example-chinese">夜晚的星星很明亮。</div>
+                            <div class="example-pinyin">Yèwǎn de xīngxing hěn míngliàng.</div>
+                            <div class="example-english">The stars at night are very bright.</div>
+                        </div>
+                        <div class="example-card" data-example="我喜歡夜晚的寧靜。">
+                            <div class="example-chinese">我喜歡夜晚的寧靜。</div>
+                            <div class="example-pinyin">Wǒ xǐhuān yèwǎn de níngjìng.</div>
+                            <div class="example-english">I like the quiet of nighttime.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Related Vocabulary</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>Day-related Terms</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li><strong>上午 (shàngwǔ)</strong> - morning</li>
+                            <li><strong>下午 (xiàwǔ)</strong> - afternoon</li>
+                            <li><strong>中午 (zhōngwǔ)</strong> - noon</li>
+                            <li><strong>黃昏 (huánghūn)</strong> - dusk</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Night-related Terms</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li><strong>晚上 (wǎnshàng)</strong> - evening/night</li>
+                            <li><strong>深夜 (shēnyè)</strong> - late night</li>
+                            <li><strong>凌晨 (língchén)</strong> - early morning</li>
+                            <li><strong>午夜 (wǔyè)</strong> - midnight</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: 日子 (rìzi) & 夜 (yè) -->
+    <div class="slide-container" id="slide12" role="region" aria-label="日子 and 夜 slide">
+        <div class="particles" id="particles12" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">日子 vs 夜</div>
+                <div class="pinyin revealable" data-original="rìzi vs yè">rìzi vs yè</div>
+                <div class="english revealable" data-original="Day vs Night">Day vs Night</div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">日子</div>
+                    <div class="pinyin revealable" data-original="rìzi">rìzi</div>
+                    <div class="english revealable" data-original="Day/days (time period)">Day/days (time period)</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="這些日子過得真快。">
+                            <div class="example-chinese">這些日子過得真快。</div>
+                            <div class="example-pinyin">Zhèxiē rìzi guò de zhēn kuài.</div>
+                            <div class="example-english">These days pass by so quickly.</div>
+                        </div>
+                        <div class="example-card" data-example="我們一起度過了很多美好的日子。">
+                            <div class="example-chinese">我們一起度過了很多美好的日子。</div>
+                            <div class="example-pinyin">Wǒmen yīqǐ dùguò le hěnduō měihǎo de rìzi.</div>
+                            <div class="example-english">We've spent many wonderful days together.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">夜</div>
+                    <div class="pinyin revealable" data-original="yè">yè</div>
+                    <div class="english revealable" data-original="Night">Night</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="夜已深了。">
+                            <div class="example-chinese">夜已深了。</div>
+                            <div class="example-pinyin">Yè yǐ shēn le.</div>
+                            <div class="example-english">The night has grown deep.</div>
+                        </div>
+                        <div class="example-card" data-example="他工作了一整夜。">
+                            <div class="example-chinese">他工作了一整夜。</div>
+                            <div class="example-pinyin">Tā gōngzuò le yī zhěng yè.</div>
+                            <div class="example-english">He worked all night.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>日子 (rìzi)</strong>: Refers to days as periods of time, often with emotional connotation (good days, hard days). Can mean "life" or "daily life." More abstract than specific calendar days.<br><br>
+                    <strong>夜 (yè)</strong>: The basic word for "night." Often used in literary or formal contexts. In daily speech, "晚上" is more common. Appears in many compounds: 夜晚, 半夜, 深夜.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: 春季 (chūnjì) -->
+    <div class="slide-container" id="slide13" role="region" aria-label="春季 slide">
+        <div class="particles" id="particles13" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">春季</div>
+                <div class="pinyin revealable" data-original="chūnjì">chūnjì</div>
+                <div class="english revealable" data-original="Spring season">Spring season</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">春</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">chūn - spring</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">季</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">jì - season</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="春季是萬物復甦的季節。">
+                    <div class="example-chinese">春季是萬物復甦的季節。</div>
+                    <div class="example-pinyin">Chūnjì shì wànwù fùsū de jìjié.</div>
+                    <div class="example-english">Spring is the season when all things come back to life.</div>
+                </div>
+                <div class="example-card" data-example="日本的春季有美麗的櫻花。">
+                    <div class="example-chinese">日本的春季有美麗的櫻花。</div>
+                    <div class="example-pinyin">Rìběn de chūnjì yǒu měilì de yīnghuā.</div>
+                    <div class="example-english">Japan's spring season has beautiful cherry blossoms.</div>
+                </div>
+                <div class="example-card" data-example="春季的氣候最舒適。">
+                    <div class="example-chinese">春季的氣候最舒適。</div>
+                    <div class="example-pinyin">Chūnjì de qìhòu zuì shūshì.</div>
+                    <div class="example-english">The weather in spring is the most comfortable.</div>
+                </div>
+            </div>
+            
+            <div class="synonym-section">
+                <h3>All Four Seasons</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>春季 (chūnjì)</strong> - spring</li>
+                    <li><strong>夏季 (xiàjì)</strong> - summer</li>
+                    <li><strong>秋季 (qiūjì)</strong> - autumn/fall</li>
+                    <li><strong>冬季 (dōngjì)</strong> - winter</li>
+                </ul>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Cultural Context</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    In traditional Chinese culture, spring represents new beginnings, growth, and vitality. It's associated with the Wood element in Five Elements theory. Spring Festival (春節) is the most important traditional holiday in Chinese culture, marking the lunar new year.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Time Expressions -->
+    <div class="slide-container" id="slide14" role="region" aria-label="Time expressions slide">
+        <div class="particles" id="particles14" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Time Expressions</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card time-expr" data-word="時">
+                    <div class="vocab-chinese">時</div>
+                    <div class="vocab-pinyin">shí</div>
+                    <div class="vocab-english">Time/hour</div>
+                </div>
+                <div class="vocab-card time-expr" data-word="不久">
+                    <div class="vocab-chinese">不久</div>
+                    <div class="vocab-pinyin">bùjiǔ</div>
+                    <div class="vocab-english">Soon/not long</div>
+                </div>
+                <div class="vocab-card time-expr" data-word="剛才">
+                    <div class="vocab-chinese">剛才</div>
+                    <div class="vocab-pinyin">gāngcái</div>
+                    <div class="vocab-english">Just now</div>
+                </div>
+                <div class="vocab-card time-expr" data-word="早點">
+                    <div class="vocab-chinese">早點</div>
+                    <div class="vocab-pinyin">zǎodiǎn</div>
+                    <div class="vocab-english">Earlier/a bit early</div>
+                </div>
+                <div class="vocab-card time-expr" data-word="正好">
+                    <div class="vocab-chinese">正好</div>
+                    <div class="vocab-pinyin">zhènghǎo</div>
+                    <div class="vocab-english">Exactly/just right</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Temporal Expressions</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Time Unit</strong>: 時 (hour/time)</li>
+                    <li><strong>Near Future</strong>: 不久 (soon)</li>
+                    <li><strong>Recent Past</strong>: 剛才 (just now)</li>
+                    <li><strong>Timing</strong>: 早點 (earlier), 正好 (exactly)</li>
+                    <li><strong>Comparative Time</strong>: These words help express relative timing</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="現在是下午三時。">
+                    <div class="example-chinese">現在是下午三時。</div>
+                    <div class="example-pinyin">Xiànzài shì xiàwǔ sān shí.</div>
+                    <div class="example-english">It's 3 o'clock in the afternoon now.</div>
+                </div>
+                <div class="example-card" data-example="我們不久就會再見面。">
+                    <div class="example-chinese">我們不久就會再見面。</div>
+                    <div class="example-pinyin">Wǒmen bùjiǔ jiù huì zài jiànmiàn.</div>
+                    <div class="example-english">We'll meet again soon.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: 時 (shí) -->
+    <div class="slide-container" id="slide15" role="region" aria-label="時 slide">
+        <div class="particles" id="particles15" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">時</div>
+                <div class="pinyin revealable" data-original="shí">shí</div>
+                <div class="english revealable" data-original="Time/hour">Time/hour</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "時" is composed of "日" (sun/day) and "寺" (temple). Originally meant "season" or "appropriate time," as temples were places where timekeeping and seasonal observations were made. Now means "time" or "hour" in modern Chinese.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="火車準時到達。">
+                    <div class="example-chinese">火車準時到達。</div>
+                    <div class="example-pinyin">Huǒchē zhǔnshí dàodá.</div>
+                    <div class="example-english">The train arrived on time.</div>
+                </div>
+                <div class="example-card" data-example="一小時有六十分鐘。">
+                    <div class="example-chinese">一小時有六十分鐘。</div>
+                    <div class="example-pinyin">Yī xiǎoshí yǒu liùshí fēnzhōng.</div>
+                    <div class="example-english">One hour has sixty minutes.</div>
+                </div>
+                <div class="example-card" data-example="什麼時候方便見面？">
+                    <div class="example-chinese">什麼時候方便見面？</div>
+                    <div class="example-pinyin">Shénme shíhòu fāngbiàn jiànmiàn?</div>
+                    <div class="example-english">When would be convenient to meet?</div>
+                </div>
+            </div>
+            
+            <div class="synonym-section">
+                <h3>Common Compounds</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>時間 (shíjiān)</strong> - time (general)</li>
+                    <li><strong>時候 (shíhòu)</strong> - time/when</li>
+                    <li><strong>時代 (shídài)</strong> - era/age</li>
+                    <li><strong>時鐘 (shízhōng)</strong> - clock</li>
+                    <li><strong>時差 (shíchā)</strong> - time difference</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: 不久 (bùjiǔ) & 剛才 (gāngcái) -->
+    <div class="slide-container" id="slide16" role="region" aria-label="不久 and 剛才 slide">
+        <div class="particles" id="particles16" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Recent Time Expressions</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">不久</div>
+                    <div class="pinyin revealable" data-original="bùjiǔ">bùjiǔ</div>
+                    <div class="english revealable" data-original="Soon/not long">Soon/not long</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="他不久就會回來。">
+                            <div class="example-chinese">他不久就會回來。</div>
+                            <div class="example-pinyin">Tā bùjiǔ jiù huì huílái.</div>
+                            <div class="example-english">He will return soon.</div>
+                        </div>
+                        <div class="example-card" data-example="不久以前，這裡還是農田。">
+                            <div class="example-chinese">不久以前，這裡還是農田。</div>
+                            <div class="example-pinyin">Bùjiǔ yǐqián, zhèlǐ háishì nóngtián.</div>
+                            <div class="example-english">Not long ago, this was still farmland.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">剛才</div>
+                    <div class="pinyin revealable" data-original="gāngcái">gāngcái</div>
+                    <div class="english revealable" data-original="Just now">Just now</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="剛才有人打電話給你。">
+                            <div class="example-chinese">剛才有人打電話給你。</div>
+                            <div class="example-pinyin">Gāngcái yǒurén dǎ diànhuà gěi nǐ.</div>
+                            <div class="example-english">Someone called you just now.</div>
+                        </div>
+                        <div class="example-card" data-example="我剛才在廚房，沒聽到門鈴。">
+                            <div class="example-chinese">我剛才在廚房，沒聽到門鈴。</div>
+                            <div class="example-pinyin">Wǒ gāngcái zài chúfáng, méi tīngdào ménlíng.</div>
+                            <div class="example-english">I was in the kitchen just now and didn't hear the doorbell.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Key Differences</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>不久 (bùjiǔ)</h4>
+                        <p style="line-height: 1.6;">
+                            Refers to the near future (soon) or recent past (not long ago). Usually describes a short time period. Can be used with "以前" (ago) or "以後" (later). More flexible in positioning within sentences.
+                        </p>
+                    </div>
+                    <div>
+                        <h4>剛才 (gāngcái)</h4>
+                        <p style="line-height: 1.6;">
+                            Specifically refers to "just now" - a very recent past moment. Usually modifies actions that happened immediately before the present moment. Often placed at the beginning of sentences or before verbs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: 早點 (zǎodiǎn) & 正好 (zhènghǎo) -->
+    <div class="slide-container" id="slide17" role="region" aria-label="早點 and 正好 slide">
+        <div class="particles" id="particles17" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Timing Expressions</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">早點</div>
+                    <div class="pinyin revealable" data-original="zǎodiǎn">zǎodiǎn</div>
+                    <div class="english revealable" data-original="Earlier/a bit early">Earlier/a bit early</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="我們應該早點出發。">
+                            <div class="example-chinese">我們應該早點出發。</div>
+                            <div class="example-pinyin">Wǒmen yīnggāi zǎodiǎn chūfā.</div>
+                            <div class="example-english">We should leave earlier.</div>
+                        </div>
+                        <div class="example-card" data-example="明天早點起床吧。">
+                            <div class="example-chinese">明天早點起床吧。</div>
+                            <div class="example-pinyin">Míngtiān zǎodiǎn qǐchuáng ba.</div>
+                            <div class="example-english">Let's wake up earlier tomorrow.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">正好</div>
+                    <div class="pinyin revealable" data-original="zhènghǎo">zhènghǎo</div>
+                    <div class="english revealable" data-original="Exactly/just right">Exactly/just right</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="你來得正好！">
+                            <div class="example-chinese">你來得正好！</div>
+                            <div class="example-pinyin">Nǐ lái de zhènghǎo!</div>
+                            <div class="example-english">You came at just the right time!</div>
+                        </div>
+                        <div class="example-card" data-example="這件衣服的大小正好。">
+                            <div class="example-chinese">這件衣服的大小正好。</div>
+                            <div class="example-pinyin">Zhè jiàn yīfu de dàxiǎo zhènghǎo.</div>
+                            <div class="example-english">The size of this clothing is just right.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>早點 (zǎodiǎn)</h4>
+                        <p style="line-height: 1.6;">
+                            Literally "early point." Used as an adverb meaning "earlier" or "sooner." Can also be a noun meaning "breakfast" (早餐的簡稱). When used adverbially, it often expresses suggestion or advice about timing.
+                        </p>
+                    </div>
+                    <div>
+                        <h4>正好 (zhènghǎo)</h4>
+                        <p style="line-height: 1.6;">
+                            Expresses perfect timing, exactness, or appropriateness. Can refer to time, quantity, size, or opportunity. Often used in exclamations when something happens at the perfect moment. Similar to "剛好" (gānghǎo).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: 年紀 (niánjì) -->
+    <div class="slide-container" id="slide18" role="region" aria-label="年紀 slide">
+        <div class="particles" id="particles18" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">年紀</div>
+                <div class="pinyin revealable" data-original="niánjì">niánjì</div>
+                <div class="english revealable" data-original="Age">Age</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "年紀" combines "年" (year) and "紀" (record/era). Literally means "year record" - the number of years recorded since birth. It specifically refers to a person's age, often with connotations of maturity or life stage.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="他年紀還小，不懂事。">
+                    <div class="example-chinese">他年紀還小，不懂事。</div>
+                    <div class="example-pinyin">Tā niánjì hái xiǎo, bù dǒngshì.</div>
+                    <div class="example-english">He's still young in age and doesn't understand things.</div>
+                </div>
+                <div class="example-card" data-example="請問您多大年紀？">
+                    <div class="example-chinese">請問您多大年紀？</div>
+                    <div class="example-pinyin">Qǐngwèn nín duōdà niánjì?</div>
+                    <div class="example-english">May I ask how old you are? (polite)</div>
+                </div>
+                <div class="example-card" data-example="到了我這個年紀，健康最重要。">
+                    <div class="example-chinese">到了我這個年紀，健康最重要。</div>
+                    <div class="example-pinyin">Dào le wǒ zhège niánjì, jiànkāng zuì zhòngyào.</div>
+                    <div class="example-english">At my age, health is most important.</div>
+                </div>
+            </div>
+            
+            <div class="synonym-section">
+                <h3>Related Terms</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>年齡 (niánlíng)</strong> - age (more formal/neutral)</li>
+                    <li><strong>歲數 (suìshu)</strong> - age (colloquial, usually for older people)</li>
+                    <li><strong>年歲 (niánsuì)</strong> - age/years (literary)</li>
+                    <li><strong>年級 (niánjí)</strong> - grade level (in school)</li>
+                </ul>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Cultural Sensitivity</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    In Chinese culture, asking about age can be sensitive, especially for women and older people. "年紀" is often used in more formal or respectful contexts. For children or peers, "你幾歲？" (nǐ jǐ suì?) is more common. For elders, use polite forms like "請問您高壽？" (qǐngwèn nín gāoshòu?).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 19: Complete Vocabulary Review -->
+    <div class="slide-container" id="slide19" role="region" aria-label="Complete vocabulary review">
+        <div class="particles" id="particles19" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Complete Vocabulary Review</h2>
+            
+            <div class="meaning-card">
+                <h3>All 19 Vocabulary Words with Examples</h3>
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Chinese</th>
+                                <th>Pinyin</th>
+                                <th>English</th>
+                                <th>Example Sentence 1</th>
+                                <th>Example Sentence 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-word="出生">
+                                <td style="font-family: 'Noto Sans TC';">出生</td>
+                                <td>chūshēng</td>
+                                <td>To be born</td>
+                                <td>我出生在台北。</td>
+                                <td>他出生於一九九零年。</td>
+                            </tr>
+                            <tr data-word="不同">
+                                <td style="font-family: 'Noto Sans TC';">不同</td>
+                                <td>bùtóng</td>
+                                <td>Different</td>
+                                <td>我們的想法不同。</td>
+                                <td>不同國家有不同的文化。</td>
+                            </tr>
+                            <tr data-word="住址">
+                                <td style="font-family: 'Noto Sans TC';">住址</td>
+                                <td>zhùzhǐ</td>
+                                <td>Address</td>
+                                <td>請寫下你的住址。</td>
+                                <td>我的住址已經變更了。</td>
+                            </tr>
+                            <tr data-word="母語">
+                                <td style="font-family: 'Noto Sans TC';">母語</td>
+                                <td>mǔyǔ</td>
+                                <td>Native language</td>
+                                <td>我的母語是中文。</td>
+                                <td>他的母語是英語，但會說流利的中文。</td>
+                            </tr>
+                            <tr data-word="表">
+                                <td style="font-family: 'Noto Sans TC';">表</td>
+                                <td>biǎo</td>
+                                <td>Watch</td>
+                                <td>他戴著一支新手錶。</td>
+                                <td>鬧鐘也是鐘的一種。</td>
+                            </tr>
+                            <tr data-word="鐘">
+                                <td style="font-family: 'Noto Sans TC';">鐘</td>
+                                <td>zhōng</td>
+                                <td>Clock/bell</td>
+                                <td>教堂的鐘每小時響一次。</td>
+                                <td>牆上的鐘已經停了。</td>
+                            </tr>
+                            <tr data-word="傳真">
+                                <td style="font-family: 'Noto Sans TC';">傳真</td>
+                                <td>chuánzhēn</td>
+                                <td>Fax</td>
+                                <td>請把文件傳真給我。</td>
+                                <td>現在用電子郵件比傳真更方便。</td>
+                            </tr>
+                            <tr data-word="白天">
+                                <td style="font-family: 'Noto Sans TC';">白天</td>
+                                <td>báitiān</td>
+                                <td>Daytime</td>
+                                <td>白天溫度比較高。</td>
+                                <td>貓頭鷹白天睡覺，晚上活動。</td>
+                            </tr>
+                            <tr data-word="夜晚">
+                                <td style="font-family: 'Noto Sans TC';">夜晚</td>
+                                <td>yèwǎn</td>
+                                <td>Nighttime</td>
+                                <td>夜晚的星星很明亮。</td>
+                                <td>城市的夜晚很美麗。</td>
+                            </tr>
+                            <tr data-word="半夜">
+                                <td style="font-family: 'Noto Sans TC';">半夜</td>
+                                <td>bànyè</td>
+                                <td>Midnight</td>
+                                <td>他常常工作到半夜。</td>
+                                <td>不要半夜打電話給我。</td>
+                            </tr>
+                            <tr data-word="日子">
+                                <td style="font-family: 'Noto Sans TC';">日子</td>
+                                <td>rìzi</td>
+                                <td>Day/days</td>
+                                <td>這些日子過得真快。</td>
+                                <td>我們一起度過了很多美好的日子。</td>
+                            </tr>
+                            <tr data-word="夜">
+                                <td style="font-family: 'Noto Sans TC';">夜</td>
+                                <td>yè</td>
+                                <td>Night</td>
+                                <td>夜已深了。</td>
+                                <td>他工作了一整夜。</td>
+                            </tr>
+                            <tr data-word="春季">
+                                <td style="font-family: 'Noto Sans TC';">春季</td>
+                                <td>chūnjì</td>
+                                <td>Spring</td>
+                                <td>春季是萬物復甦的季節。</td>
+                                <td>日本的春季有美麗的櫻花。</td>
+                            </tr>
+                            <tr data-word="時">
+                                <td style="font-family: 'Noto Sans TC';">時</td>
+                                <td>shí</td>
+                                <td>Time/hour</td>
+                                <td>火車準時到達。</td>
+                                <td>一小時有六十分鐘。</td>
+                            </tr>
+                            <tr data-word="不久">
+                                <td style="font-family: 'Noto Sans TC';">不久</td>
+                                <td>bùjiǔ</td>
+                                <td>Soon</td>
+                                <td>他不久就會回來。</td>
+                                <td>不久以前，這裡還是農田。</td>
+                            </tr>
+                            <tr data-word="剛才">
+                                <td style="font-family: 'Noto Sans TC';">剛才</td>
+                                <td>gāngcái</td>
+                                <td>Just now</td>
+                                <td>剛才有人打電話給你。</td>
+                                <td>我剛才在廚房，沒聽到門鈴。</td>
+                            </tr>
+                            <tr data-word="早點">
+                                <td style="font-family: 'Noto Sans TC';">早點</td>
+                                <td>zǎodiǎn</td>
+                                <td>Earlier</td>
+                                <td>我們應該早點出發。</td>
+                                <td>明天早點起床吧。</td>
+                            </tr>
+                            <tr data-word="正好">
+                                <td style="font-family: 'Noto Sans TC';">正好</td>
+                                <td>zhènghǎo</td>
+                                <td>Exactly</td>
+                                <td>你來得正好！</td>
+                                <td>這件衣服的大小正好。</td>
+                            </tr>
+                            <tr data-word="年紀">
+                                <td style="font-family: 'Noto Sans TC';">年紀</td>
+                                <td>niánjì</td>
+                                <td>Age</td>
+                                <td>他年紀還小，不懂事。</td>
+                                <td>請問您多大年紀？</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <div class="chinese-title">學習完成！</div>
+                <div class="pinyin revealable" data-original="xuéxí wánchéng!">xuéxí wánchéng!</div>
+                <div class="english revealable" data-original="Learning Complete!">Learning Complete!</div>
+                
+                <div style="max-width: 600px; margin: 30px auto;">
+                    <p style="font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--text-medium); line-height: 1.6;">
+                        恭喜！你已經學會了19個重要的中文時間與個人資訊詞彙，每個詞都有多個例句。<br>
+                        <em>Gōngxǐ! Nǐ yǐjīng xuéhuì le 19 gè zhòngyào de Zhōngwén shíjiān yǔ gèrén zīxùn cíhuì, měigè cí dōu yǒu duōgè lìjù.</em><br>
+                        Congratulations! You have learned 19 important Chinese time and personal information vocabulary words, each with multiple example sentences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Simple detection for revealed elements
+    function isRevealedElement(element) {
+        return element.classList.contains('revealed');
+    }
+    
+    // Check if device is mobile/touch
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+    
+    // Initialize tooltip for a single element
+    function initializeTooltipForElement(element) {
+        if (element.dataset.tooltipInitialized) return;
+        
+        let tooltipTimer = null;
+        let isTouching = false;
+        
+        // Set timeout based on element class
+        const timeoutDuration = isRevealedElement(element) ? 500 : 1000;
+        
+        // Mouse events - for desktop
+        element.addEventListener('mouseenter', () => {
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '1');
+            
+            tooltipTimer = setTimeout(() => {
+                element.style.setProperty('--tooltip-opacity', '0');
+                tooltipTimer = null;
+            }, timeoutDuration);
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        // Touch events for mobile
+        element.addEventListener('touchstart', (e) => {
+            isTouching = true;
+            
+            // Don't show tooltip for revealed elements on mobile
+            if (isRevealedElement(element) && isTouchDevice()) {
+                return; // Skip showing tooltip for revealed elements on mobile
+            }
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '1');
+            
+            tooltipTimer = setTimeout(() => {
+                element.style.setProperty('--tooltip-opacity', '0');
+                tooltipTimer = null;
+            }, timeoutDuration);
+        });
+        
+        element.addEventListener('touchend', () => {
+            isTouching = false;
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        element.addEventListener('touchcancel', () => {
+            isTouching = false;
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        // Add click handler to hide tooltip on click
+        element.addEventListener('click', () => {
+            if (isTouching) {
+                if (tooltipTimer) {
+                    clearTimeout(tooltipTimer);
+                    tooltipTimer = null;
+                }
+                element.style.setProperty('--tooltip-opacity', '0');
+            }
+        });
+        
+        element.dataset.tooltipInitialized = 'true';
+    }
+    
+    // Get all elements that could have ::after content
+    const elementsWithTooltips = document.querySelectorAll(`
+        .chinese-title,
+        .chinese-title.hidden,
+        .chinese-title.revealed,
+        .vocab-card,
+        .vocab-card.hidden,
+        .vocab-card.revealed,
+        .example-card,
+        .example-card.hidden,
+        .example-card.revealed,
+        .nav-dot
+    `);
+    
+    // Initialize existing elements
+    elementsWithTooltips.forEach(initializeTooltipForElement);
+    
+    // Set up observer for dynamically added elements
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) { // Element node
+                        // Check if this element or its children need tooltips
+                        const newElements = node.querySelectorAll(`
+                            .chinese-title,
+                            .vocab-card,
+                            .example-card,
+                            .nav-dot
+                        `);
+                        
+                        if (node.matches && node.matches(`
+                            .chinese-title,
+                            .vocab-card,
+                            .example-card,
+                            .nav-dot
+                        `)) {
+                            initializeTooltipForElement(node);
+                        }
+                        
+                        newElements.forEach(initializeTooltipForElement);
+                    }
+                });
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    // Add CSS custom property support for all tooltip elements
+    const style = document.createElement('style');
+    style.textContent = `
+        .chinese-title::after,
+        .vocab-card::before,
+        .example-card::before,
+        .nav-dot::after {
+            opacity: var(--tooltip-opacity, 0) !important;
+            transition: opacity 0.2s ease !important;
+        }
+        
+        /* Specific styles for revealed state */
+        .chinese-title.revealed::after,
+        .vocab-card.revealed::before,
+        .example-card.revealed::before {
+            background: rgba(56, 178, 172, 0.9) !important;
+            content: "✓ Revealed" !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+    // Create floating particles for visual effect
+    function createParticles(containerId, characters) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        // Reduce particle count on mobile for performance
+        const isMobile = window.innerWidth <= 768;
+        const particleCount = isMobile ? 5 : 15;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = characters[Math.floor(Math.random() * characters.length)];
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.fontSize = `${Math.random() * 20 + 16}px`;
+            particle.style.opacity = `${Math.random() * 0.1 + 0.05}`;
+            particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+            container.appendChild(particle);
+        }
+    }
+    
+    // Characters to use for particles - UPDATED FOR TIME VOCABULARY
+    const timeChars = ['出', '生', '不', '同', '住', '址', '母', '語', '表', '鐘', '時', '傳', '真', '白', '天', '半', '夜', '晚', '日', '子', '春', '季', '早', '點', '正', '好', '年', '紀'];
+    
+    // Create particles for each slide - ONLY 19 SLIDES NOW
+    for (let i = 1; i <= 19; i++) {
+        createParticles(`particles${i}`, timeChars);
+    }
+    
+    // TAP TO REVEAL FUNCTIONALITY - NO TEMPORARY MESSAGES
+    function initializeTapToReveal() {
+        const toggleBtn = document.getElementById('toggleRevealBtn');
+        let allRevealed = false;
+        
+        // Get all revealable cards and elements
+        const vocabCards = document.querySelectorAll('.vocab-card, .emotion-card');
+        const exampleCards = document.querySelectorAll('.example-card');
+        const revealableElements = document.querySelectorAll('.revealable');
+        const tableRows = document.querySelectorAll('.comparison-table tbody tr');
+        const chineseTitles = document.querySelectorAll('.chinese-title');
+        
+        // Function to hide content
+        function hideContent(element) {
+            if (element.classList.contains('vocab-card') || 
+                element.classList.contains('emotion-card') || 
+                element.classList.contains('example-card')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+            } else if (element.classList.contains('chinese-title')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+            } else if (element.classList.contains('revealable')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+                element.textContent = '';
+            } else if (element.tagName === 'TR') {
+                element.classList.add('hidden');
+            }
+        }
+        
+        // Function to reveal content
+        function revealContent(element) {
+            if (element.classList.contains('vocab-card') || 
+                element.classList.contains('emotion-card') || 
+                element.classList.contains('example-card')) {
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+            } else if (element.classList.contains('chinese-title')) {
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+            } else if (element.classList.contains('revealable')) {
+                const originalText = element.getAttribute('data-original');
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+                element.textContent = originalText;
+            } else if (element.tagName === 'TR') {
+                element.classList.remove('hidden');
+            }
+        }
+        
+        // Set up click handlers for Chinese titles
+        chineseTitles.forEach(title => {
+            title.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Find the container
+                const titleContainer = this.closest('div[style*="text-align: center"]') || this.parentElement;
+                
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                    
+                    // Also reveal the pinyin and english elements within the same container
+                    const allElements = Array.from(titleContainer.querySelectorAll('.pinyin.revealable, .english.revealable'));
+                    
+                    allElements.forEach(element => {
+                        const originalText = element.getAttribute('data-original');
+                        if (originalText) {
+                            element.classList.remove('hidden');
+                            element.classList.add('revealed');
+                            element.textContent = originalText;
+                        }
+                    });
+                } else {
+                    hideContent(this);
+                    
+                    // Also hide the pinyin and english elements
+                    const allElements = Array.from(titleContainer.querySelectorAll('.pinyin.revealable, .english.revealable'));
+                    allElements.forEach(element => {
+                        element.classList.add('hidden');
+                        element.classList.remove('revealed');
+                        element.textContent = '';
+                    });
+                }
+            });
+            
+            // Initialize as hidden
+            title.classList.add('hidden');
+        });
+        
+        // Set up click handlers for vocabulary cards
+        vocabCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            card.classList.add('hidden');
+        });
+        
+        // Set up click handlers for example cards
+        exampleCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            card.classList.add('hidden');
+        });
+        
+        // Set up click handlers for individual revealable elements (pinyin/english in titles)
+        revealableElements.forEach(element => {
+            const originalText = element.getAttribute('data-original') || element.textContent;
+            element.setAttribute('data-original', originalText);
+            
+            element.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            element.classList.add('hidden');
+        });
+        
+        // Set up click handlers for table rows
+        tableRows.forEach(row => {
+            row.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            row.classList.add('hidden');
+        });
+        
+        // Toggle button functionality
+        toggleBtn.addEventListener('click', function() {
+            allRevealed = !allRevealed;
+            
+            if (allRevealed) {
+                // Reveal all
+                vocabCards.forEach(card => revealContent(card));
+                exampleCards.forEach(card => revealContent(card));
+                revealableElements.forEach(element => revealContent(element));
+                tableRows.forEach(row => revealContent(row));
+                chineseTitles.forEach(title => revealContent(title));
+                
+                // Update button
+                toggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i><span>Hide All Answers</span>';
+                toggleBtn.classList.add('hide-mode');
+            } else {
+                // Hide all
+                vocabCards.forEach(card => hideContent(card));
+                exampleCards.forEach(card => hideContent(card));
+                revealableElements.forEach(element => hideContent(element));
+                tableRows.forEach(row => hideContent(row));
+                chineseTitles.forEach(title => hideContent(title));
+                
+                // Update button
+                toggleBtn.innerHTML = '<i class="fas fa-eye"></i><span>Show All Answers</span>';
+                toggleBtn.classList.remove('hide-mode');
+            }
+        });
+    }
+    
+    // Slide navigation functionality
+    const slideCounter = document.getElementById('slideCounter');
+    const slideTitleDisplay = document.getElementById('slideTitleDisplay');
+    const slideNavDots = document.getElementById('slideNavDots');
+    
+    let currentSlide = 1;
+    const totalSlides = 19; // UPDATED: 19 slides now
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Slide titles for display - UPDATED FOR TIME VOCABULARY
+    const slideTitles = [
+        "時間與個人資訊詞彙",
+        "個人資訊詞彙",
+        "出生 (chūshēng)",
+        "不同 (bùtóng)",
+        "住址 (zhùzhǐ)",
+        "母語 (mǔyǔ)",
+        "時間與鐘錶詞彙",
+        "表 vs 鐘",
+        "傳真 (chuánzhēn)",
+        "日與夜時段",
+        "白天 vs 夜晚",
+        "日子 vs 夜",
+        "春季 (chūnjì)",
+        "時間表達",
+        "時 (shí)",
+        "不久 & 剛才",
+        "早點 & 正好",
+        "年紀 (niánjì)",
+        "完整詞彙複習"
+    ];
+    
+    // Create navigation dots
+    function createNavDots() {
+        slideNavDots.innerHTML = '';
+        
+        for (let i = 1; i <= totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot';
+            dot.dataset.slide = i;
+            dot.dataset.title = slideTitles[i-1];
+            dot.setAttribute('aria-label', `Go to slide ${i}: ${slideTitles[i-1]}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            
+            const dotSpan = document.createElement('span');
+            dotSpan.className = 'sr-only';
+            dotSpan.textContent = `Slide ${i}`;
+            dot.appendChild(dotSpan);
+            
+            slideNavDots.appendChild(dot);
+        }
+    }
+    
+    // Go to specific slide
+    function goToSlide(slideNumber) {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        const targetSlide = Math.max(1, Math.min(totalSlides, slideNumber));
+        
+        // Add loading state
+        document.querySelectorAll('.slide-container')[targetSlide - 1]?.classList.add('loading');
+        
+        const targetElement = document.getElementById(`slide${targetSlide}`);
+        
+        if (targetElement) {
+            // Smooth scroll to target
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Update after scroll completes
+            setTimeout(() => {
+                currentSlide = targetSlide;
+                updateUI();
+                isScrolling = false;
+                document.querySelectorAll('.slide-container')[targetSlide - 1]?.classList.remove('loading');
+                
+                // Update URL hash without scrolling
+                history.replaceState(null, null, `#slide${targetSlide}`);
+            }, 300);
+        }
+    }
+    
+    // Update UI elements
+    function updateUI() {
+        // Update counter
+        slideCounter.textContent = `Slide ${currentSlide} of ${totalSlides}`;
+        
+        // Update title display
+        slideTitleDisplay.textContent = slideTitles[currentSlide - 1];
+        
+        // Update navigation dots
+        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+            if (index + 1 === currentSlide) {
+                dot.classList.add('active');
+                dot.setAttribute('aria-current', 'true');
+            } else {
+                dot.classList.remove('active');
+                dot.removeAttribute('aria-current');
+            }
+        });
+    }
+    
+    // Detect slide changes via scroll - BUT DON'T AUTO-JUMP
+    const observer = new IntersectionObserver((entries) => {
+        // Just update current slide indicator, don't auto-scroll
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                const slideId = entry.target.id;
+                const slideNumber = parseInt(slideId.replace('slide', ''));
+                if (!isNaN(slideNumber) && slideNumber !== currentSlide) {
+                    currentSlide = slideNumber;
+                    updateUI();
+                }
+            }
+        });
+    }, {
+        threshold: [0.3, 0.5, 0.7],
+        rootMargin: '0px 0px 0px 0px' // No margin
+    });
+    
+    // Check initial hash
+    function checkInitialHash() {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#slide')) {
+            const slideNumber = parseInt(hash.replace('#slide', ''));
+            if (!isNaN(slideNumber) && slideNumber >= 1 && slideNumber <= totalSlides) {
+                goToSlide(slideNumber);
+            }
+        }
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create navigation dots
+        createNavDots();
+        
+        // Initialize tap to reveal functionality
+        initializeTapToReveal();
+        
+        // Observe all slides
+        document.querySelectorAll('.slide-container').forEach(slide => {
+            observer.observe(slide);
+        });
+        
+        // Add keyboard navigation (optional - users can still use if they want)
+        document.addEventListener('keydown', (e) => {
+            // Don't interfere with form inputs
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            switch(e.key) {
+                case 'ArrowUp':
+                case 'ArrowLeft':
+                case 'PageUp':
+                    goToSlide(currentSlide - 1);
+                    e.preventDefault();
+                    break;
+                case 'ArrowDown':
+                case 'ArrowRight':
+                case 'PageDown':
+                case ' ':
+                    goToSlide(currentSlide + 1);
+                    e.preventDefault();
+                    break;
+                case 'Home':
+                    goToSlide(1);
+                    e.preventDefault();
+                    break;
+                case 'End':
+                    goToSlide(totalSlides);
+                    e.preventDefault();
+                    break;
+            }
+        });
+        
+        // Add navigation buttons to each slide
+        const slides = document.querySelectorAll('.slide-container');
+        slides.forEach((slide, index) => {
+            const navDiv = document.createElement('div');
+            navDiv.className = 'navigation';
+            navDiv.innerHTML = `
+                <button class="nav-btn" onclick="goToSlide(${index})" ${index === 0 ? 'disabled' : ''}>
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+                </button>
+                <div class="slide-number">Slide ${index + 1} of ${totalSlides}</div>
+                <button class="nav-btn" onclick="goToSlide(${index + 2})" ${index === totalSlides - 1 ? 'disabled' : ''}>
+                    Next <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
+            `;
+            slide.appendChild(navDiv);
+        });
+        
+        // Check for hash on load
+        checkInitialHash();
+        
+        // Initialize UI
+        updateUI();
+        
+        // Handle resize for responsive adjustments
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Recreate particles on resize for better mobile performance
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('.particles').forEach(particle => {
+                        particle.innerHTML = '';
+                    });
+                    for (let i = 1; i <= 19; i++) { // UPDATED: 19 slides
+                        createParticles(`particles${i}`, timeChars);
+                    }
+                }
+            }, 250);
+        });
+        
+        // REMOVED: Touch swipe navigation - let users scroll normally
+        // Instead, we'll just ensure normal scrolling works
+        document.body.style.overflowY = 'auto';
+        document.documentElement.style.overflowY = 'auto';
+        
+        // Prevent any default touch behaviors that might interfere
+        document.addEventListener('touchmove', function(e) {
+            // Allow normal touch scrolling
+        }, { passive: true });
+    });
+    
+    // Expose functions to global scope for inline onclick handlers
+    window.goToSlide = goToSlide;
+    
+    // Force light mode on any system
+    function forceLightMode() {
+        // Set meta tag for color scheme
+        const meta = document.createElement('meta');
+        meta.name = 'color-scheme';
+        meta.content = 'light';
+        document.head.appendChild(meta);
+        
+        // Set CSS variables to light mode
+        document.documentElement.style.setProperty('color-scheme', 'light');
+        document.documentElement.style.setProperty('--color-scheme', 'light');
+        
+        // Force background and text colors
+        document.body.style.backgroundColor = '#f8fafc';
+        document.body.style.color = '#2d3748';
+    }
+    
+    // Call on load
+    window.addEventListener('load', forceLightMode);
+    // Also call immediately
+    forceLightMode();
+</script>
+
+</body>
+</html>

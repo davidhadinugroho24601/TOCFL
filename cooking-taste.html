@@ -1,0 +1,3495 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f56565">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Chinese Vocabulary: Food, Cooking & Taste</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+    /* Reset and Base */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Force light mode and prevent dark mode */
+    html, body {
+        color-scheme: light only !important;
+    }
+
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        --card-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --text-light: #718096;
+        --accent-blue: #4299e1;
+        --accent-green: #38b2ac;
+        --accent-red: #f56565;
+        --accent-purple: #9f7aea;
+        --accent-yellow: #ecc94b;
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+        --border-radius-sm: 8px;
+        --border-radius-md: 12px;
+        --border-radius-lg: 20px;
+        --spacing-xs: 8px;
+        --spacing-sm: 12px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+        --spacing-xxl: 48px;
+    }
+
+    body {
+        background: var(--primary-gradient);
+        font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* Force light colors */
+        background: var(--primary-gradient) !important;
+        color: var(--text-dark) !important;
+    }
+
+    /* Container */
+    .slides-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Slide Container */
+    .slide-container {
+        background: var(--secondary-gradient);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: var(--spacing-xl);
+        position: relative;
+        width: 100%;
+        transition: all 0.3s ease;
+        min-height: min-content;
+        scroll-margin-top: 80px;
+        /* Force light background */
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    }
+
+    /* Navigation Dots */
+    .slide-nav-dots {
+        position: fixed;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e0 transparent;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 2px;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 2px;
+    }
+
+    .nav-dot {
+        width: 14px;
+        height: 14px;
+        min-width: 14px;
+        min-height: 14px;
+        border-radius: 50%;
+        background: #cbd5e0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        touch-action: manipulation;
+        flex-shrink: 0;
+    }
+
+    .nav-dot:hover,
+    .nav-dot:focus {
+        transform: scale(1.2);
+        background: #a0aec0;
+        outline: none;
+    }
+
+    .nav-dot.active {
+        background: #667eea;
+        transform: scale(1.3);
+        box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    }
+
+    .nav-dot::after {
+        content: attr(data-title);
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--text-dark);
+        color: white;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 1001;
+    }
+
+    .nav-dot:hover::after {
+        opacity: 1;
+    }
+
+    /* Typography - FIXED CENTERING */
+    .chinese-title {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(2rem, 5vw, 4.5rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        cursor: pointer;
+        position: relative;
+        display: block; /* Fixed: changed from inline-block to block */
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        width: 100%; /* Added for proper centering */
+    }
+
+    .chinese-title:hover {
+        background-color: rgba(102, 126, 234, 0.1);
+    }
+
+    .chinese-title::after {
+        content: "🔍 Tap for pinyin & translation";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin-top: 8px;
+    }
+
+    .chinese-title.hidden:hover::after {
+        opacity: 1;
+    }
+
+    .chinese-title.revealed::after {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+
+    .chinese-title.revealed:hover::after {
+        opacity: 0.7;
+    }
+
+    .pinyin {
+        font-size: clamp(1.25rem, 2.5vw, 2rem);
+        color: var(--text-medium);
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 500;
+        line-height: 1.3;
+        width: 100%; /* Added for proper centering */
+        display: block; /* Added for proper centering */
+    }
+
+    .english {
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 600;
+        line-height: 1.3;
+        width: 100%; /* Added for proper centering */
+        display: block; /* Added for proper centering */
+    }
+
+    /* Cards and Sections */
+    .character-breakdown {
+        background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: var(--border-radius-md);
+        margin: 20px auto;
+        width: 100%;
+        max-width: 90%;
+        border-left: 5px solid var(--accent-green);
+    }
+
+    .meaning-card {
+        background: white;
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+        margin: 15px 0;
+        border-top: 4px solid var(--accent-blue);
+    }
+
+    .example-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: clamp(15px, 2.5vw, 25px);
+        margin: 30px 0;
+    }
+
+    .example-card {
+        background: var(--card-gradient);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        position: relative;
+        transition: transform 0.2s ease;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .example-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .example-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        color: var(--text-dark);
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .example-pinyin {
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        color: var(--text-medium);
+        margin-bottom: 10px;
+        font-style: italic;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .example-english {
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        color: var(--text-dark);
+        line-height: 1.4;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .usage-notes {
+        background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-red);
+    }
+
+    /* Vocabulary Grid */
+    .vocab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: clamp(15px, 2vw, 20px);
+        margin: 30px 0;
+    }
+
+    .vocab-card {
+        background: white;
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 150px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .vocab-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .vocab-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .vocab-pinyin {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        color: var(--text-medium);
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .vocab-english {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* TAP TO REVEAL STYLES - MODIFIED FOR WHOLE CARD TAPPING */
+    .vocab-card.hidden .vocab-pinyin,
+    .vocab-card.hidden .vocab-english,
+    .example-card.hidden .example-pinyin,
+    .example-card.hidden .example-english,
+    .revealable.hidden {
+        opacity: 0;
+        transform: translateY(10px);
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .vocab-card::before,
+    .example-card::before {
+        content: "🔍 Tap to reveal pinyin & translation";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .vocab-card.hidden:hover::before,
+    .example-card.hidden:hover::before {
+        opacity: 1;
+    }
+
+    .vocab-card.revealed::before,
+    .example-card.revealed::before {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+
+    .vocab-card.revealed:hover::before,
+    .example-card.revealed:hover::before {
+        opacity: 0.7;
+    }
+
+    /* SINGLE TOGGLE BUTTON - MODIFIED FOR MOBILE */
+    .toggle-reveal-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .toggle-reveal-btn:hover {
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .toggle-reveal-btn.hide-mode {
+        background: var(--accent-red);
+        box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
+    }
+
+    .toggle-reveal-btn.hide-mode:hover {
+        box-shadow: 0 6px 20px rgba(245, 101, 101, 0.4);
+    }
+
+    /* For individual revealable elements (pinyin and english in main titles) */
+    .revealable {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .revealable.hidden {
+        background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e0 50%, #e2e8f0 75%);
+        background-size: 200% 100%;
+        animation: none; /* Removed auto-animation */
+        color: transparent !important;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    /* Only animate on hover for vocabulary review */
+    .revealable.hidden:hover {
+        animation: shimmer 1.5s infinite;
+    }
+
+    .revealable.hidden::before {
+        content: "🔍";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--text-medium);
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+
+    .revealable.revealed {
+        background: rgba(56, 178, 172, 0.1);
+        color: inherit !important;
+        animation: none;
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    /* Tables - FIXED FOR MOBILE HIDE FUNCTION */
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        margin: 30px 0;
+    }
+
+    .comparison-table th {
+        background: var(--primary-gradient);
+        color: white;
+        padding: clamp(12px, 2vw, 18px);
+        text-align: left;
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        font-weight: 600;
+    }
+
+    .comparison-table td {
+        padding: clamp(12px, 1.5vw, 16px);
+        border-bottom: 1px solid #e2e8f0;
+        font-size: clamp(0.9rem, 1.2vw, 1.125rem);
+        position: relative;
+    }
+
+    /* Make table cells revealable */
+    .comparison-table tr {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .comparison-table tr:hover {
+        background-color: #f7fafc;
+    }
+
+    /* FIXED: Mobile hide function - changed to use opacity instead of color: transparent */
+    .comparison-table tr.hidden td:nth-child(2),
+    .comparison-table tr.hidden td:nth-child(3),
+    .comparison-table tr.hidden td:nth-child(4),
+    .comparison-table tr.hidden td:nth-child(5) {
+        opacity: 0;
+        background: linear-gradient(90deg, #f7fafc 25%, #e2e8f0 50%, #f7fafc 75%);
+        background-size: 200% 100%;
+        animation: none;
+        position: relative;
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+    }
+
+    .comparison-table tr:not(.hidden) td:nth-child(2),
+    .comparison-table tr:not(.hidden) td:nth-child(3),
+    .comparison-table tr:not(.hidden) td:nth-child(4),
+    .comparison-table tr:not(.hidden) td:nth-child(5) {
+        opacity: 1;
+        height: auto;
+        padding: clamp(12px, 1.5vw, 16px);
+    }
+
+    /* Only animate on hover */
+    .comparison-table tr.hidden:hover td:nth-child(2),
+    .comparison-table tr.hidden:hover td:nth-child(3),
+    .comparison-table tr.hidden:hover td:nth-child(4),
+    .comparison-table tr.hidden:hover td:nth-child(5) {
+        animation: shimmer 1.5s infinite;
+    }
+
+    .comparison-table tr.hidden::after {
+        content: "🔍";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.5;
+        font-size: 0.8em;
+        z-index: 1;
+    }
+
+    /* Particles */
+    .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        font-family: 'Noto Sans TC', sans-serif;
+        color: rgba(102, 126, 234, 0.1);
+        font-size: clamp(16px, 2vw, 24px);
+        user-select: none;
+    }
+
+    .content-area {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        min-height: 0;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4 {
+        font-family: 'Noto Sans TC', sans-serif;
+        color: var(--text-dark);
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 4vw, 4rem);
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 3vw, 2.625rem);
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        margin-bottom: 10px;
+    }
+
+    /* Navigation */
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius-md);
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+    }
+
+    .nav-btn {
+        padding: 12px 24px;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+
+    .nav-btn:hover,
+    .nav-btn:focus {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        outline: none;
+    }
+
+    .nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .slide-number {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-medium);
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    /* UI Elements */
+    .slide-counter {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text-dark);
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .slide-title-display {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 500;
+        color: var(--text-dark);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 999;
+        max-width: 250px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0,0,0,0.1);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+    /* Lists */
+    ul, ol {
+        padding-left: 20px;
+        margin: 10px 0;
+    }
+
+    li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+
+    /* Responsive Design */
+
+    /* Large Desktop */
+    @media (min-width: 1400px) {
+        .slides-container {
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-xxl);
+        }
+    }
+
+    /* Desktop */
+    @media (max-width: 1199px) {
+        .slides-container {
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-lg);
+        }
+        
+        .slide-nav-dots {
+            right: 15px;
+        }
+    }
+
+    /* Tablet */
+    @media (max-width: 991px) {
+        .slide-nav-dots {
+            position: fixed;
+            top: 50%;
+            right: 15px;
+            bottom: auto;
+            left: auto;
+            transform: translateY(-50%);
+            flex-direction: column;
+            max-height: 70vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: auto;
+            padding: 12px 10px;
+            border-radius: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e0 transparent;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar {
+            width: 3px;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 2px;
+        }
+        
+        .nav-dot::after {
+            right: 18px;
+            font-size: 11px;
+            padding: 5px 8px;
+        }
+        
+        .example-section {
+            grid-template-columns: 1fr;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .slides-container {
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            min-height: auto !important;
+            display: block !important;
+            margin-bottom: 15px;
+            scroll-margin-top: 60px;
+        }
+        
+        /* MOBILE DOTS - HORIZONTAL SCROLLABLE */
+        .slide-nav-dots {
+            position: fixed;
+            top: auto;
+            bottom: 30px; /* Moved up to avoid overlapping with toggle button */
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            flex-direction: row;
+            flex-wrap: nowrap;
+            max-height: none;
+            max-width: 90vw;
+            height: auto;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px 15px;
+            border-radius: 25px;
+            gap: 10px;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+            min-height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: #cbd5e0;
+        }
+        
+        .nav-dot.active {
+            width: 14px;
+            height: 14px;
+            min-width: 14px;
+            min-height: 14px;
+            border-radius: 50%;
+            background: #667eea;
+            transform: scale(1);
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+        
+        .nav-dot:hover {
+            transform: scale(1.1);
+        }
+        
+        .nav-dot::after {
+            display: none;
+        }
+        
+        /* FIXED: Mobile slide counter and title display */
+        .slide-counter {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 0.7rem;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: block !important;
+        }
+        
+        .slide-title-display {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 0.7rem;
+            max-width: 150px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: block !important;
+        }
+        
+        .navigation {
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+        }
+        
+        .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .slide-number {
+            order: -1;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+        
+        .character-breakdown {
+            padding: var(--spacing-md);
+            max-width: 100%;
+        }
+        
+        .meaning-card {
+            padding: var(--spacing-md);
+        }
+        
+        .comparison-table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            white-space: nowrap;
+            min-width: 120px;
+        }
+        
+        .particle {
+            display: none;
+        }
+        
+        /* MOBILE TOGGLE BUTTON - EYE ICON ONLY ON RIGHT SIDE */
+        .toggle-reveal-btn {
+            position: fixed;
+            bottom: 50px;
+            right: 20px; /* Changed from center to right side */
+            left: auto; /* Reset left positioning */
+            transform: none; /* Remove centering transform */
+            padding: 16px; /* Make it bigger */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .toggle-reveal-btn span {
+            display: none; /* Hide text on mobile */
+        }
+        
+        .toggle-reveal-btn i {
+            font-size: 1.5rem; /* Make eye icon bigger */
+            margin: 0;
+        }
+        
+        .toggle-reveal-btn:hover {
+            transform: scale(1.1); /* Different hover effect for mobile */
+        }
+        
+        /* Enable normal scrolling */
+        body {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 575px) {
+        body {
+            background: var(--secondary-gradient);
+        }
+        
+        .slides-container {
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+        }
+        
+        .slide-container {
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            padding: 20px 15px;
+            margin-bottom: 10px;
+            min-height: auto !important;
+            display: block !important;
+        }
+        
+        .slide-nav-dots {
+            bottom: 15px; /* Adjusted for toggle button */
+            padding: 8px 12px;
+            max-width: 85vw;
+            border-radius: 20px;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            min-width: 10px;
+            min-height: 10px;
+            border-radius: 50%;
+        }
+        
+        .nav-dot.active {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+            min-height: 12px;
+            border-radius: 50%;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+        }
+        
+        .example-card,
+        .meaning-card,
+        .vocab-card {
+            padding: 15px;
+        }
+        
+        .navigation {
+            margin-top: 20px;
+            padding: 12px;
+        }
+        
+        .toggle-reveal-btn {
+            bottom: 50px;
+            right: 15px;
+            padding: 14px;
+            width: 56px;
+            height: 56px;
+        }
+        
+        .toggle-reveal-btn i {
+            font-size: 1.4rem;
+        }
+        
+        .slide-counter,
+        .slide-title-display {
+            display: block !important;
+            position: fixed !important;
+            z-index: 1000 !important;
+        }
+        
+        .slide-counter {
+            top: 8px;
+            left: 8px;
+            font-size: 0.65rem;
+            padding: 5px 8px;
+        }
+        
+        .slide-title-display {
+            top: 8px;
+            right: 8px;
+            font-size: 0.65rem;
+            max-width: 120px;
+            padding: 5px 8px;
+        }
+    }
+
+    /* Landscape Mode */
+    @media (max-height: 600px) and (orientation: landscape) {
+        .slide-container {
+            min-height: auto;
+            padding: 20px;
+        }
+        
+        .slide-nav-dots {
+            max-height: 60vh;
+        }
+        
+        .chinese-title {
+            font-size: clamp(1.5rem, 3vh, 2.5rem);
+            margin-bottom: 10px;
+        }
+        
+        .pinyin {
+            font-size: clamp(1rem, 2vh, 1.5rem);
+            margin-bottom: 15px;
+        }
+        
+        .english {
+            font-size: clamp(1.25rem, 2.5vh, 1.75rem);
+            margin-bottom: 20px;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .toggle-reveal-btn {
+            bottom: 10px;
+            right: 10px;
+            padding: 12px;
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    /* Print Styles */
+    @media print {
+        body {
+            background: white !important;
+            font-size: 12pt;
+        }
+        
+        .slides-container {
+            display: block;
+            padding: 0;
+            gap: 0;
+        }
+        
+        .slide-container {
+            page-break-after: always;
+            page-break-inside: avoid;
+            border-radius: 0;
+            box-shadow: none;
+            border: 1px solid #ddd;
+            margin: 0;
+            padding: 20pt;
+            min-height: auto;
+            break-inside: avoid;
+        }
+        
+        .navigation,
+        .slide-nav-dots,
+        .slide-counter,
+        .slide-title-display,
+        .particles,
+        .toggle-reveal-btn {
+            display: none !important;
+        }
+        
+        .chinese-title {
+            font-size: 24pt;
+            color: black !important;
+        }
+        
+        .pinyin {
+            font-size: 14pt;
+            color: #333 !important;
+        }
+        
+        .english {
+            font-size: 16pt;
+            color: black !important;
+        }
+        
+        .vocab-chinese {
+            font-size: 18pt;
+        }
+        
+        .vocab-pinyin {
+            font-size: 11pt;
+        }
+        
+        .vocab-english {
+            font-size: 10pt;
+        }
+        
+        a {
+            color: black !important;
+            text-decoration: none;
+        }
+        
+        @page {
+            margin: 0.5in;
+        }
+        
+        /* Always show all content when printing */
+        .vocab-card.hidden .vocab-pinyin,
+        .vocab-card.hidden .vocab-english,
+        .example-card.hidden .example-pinyin,
+        .example-card.hidden .example-english,
+        .revealable.hidden {
+            opacity: 1 !important;
+            transform: none !important;
+            height: auto !important;
+            margin: inherit !important;
+            color: inherit !important;
+            background: none !important;
+            animation: none !important;
+        }
+        
+        .vocab-card.hidden::before,
+        .example-card.hidden::before {
+            display: none !important;
+        }
+    }
+
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+        :root {
+            --text-dark: #000000;
+            --text-medium: #333333;
+            --accent-blue: #0066cc;
+            --accent-green: #008000;
+            --accent-red: #cc0000;
+        }
+        
+        .slide-container {
+            border: 2px solid #000;
+        }
+        
+        .nav-dot {
+            border: 1px solid #000;
+        }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+        
+        .nav-dot,
+        .vocab-card,
+        .example-card,
+        .nav-btn,
+        .toggle-reveal-btn {
+            transition: none !important;
+        }
+        
+        .nav-dot:hover,
+        .vocab-card:hover,
+        .example-card:hover,
+        .nav-btn:hover,
+        .toggle-reveal-btn:hover {
+            transform: none !important;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 0; }
+        }
+    }
+
+    /* DISABLE DARK MODE COMPLETELY */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            --card-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%) !important;
+            --text-dark: #2d3748 !important;
+            --text-medium: #4a5568 !important;
+            --text-light: #718096 !important;
+        }
+        
+        body {
+            background: var(--primary-gradient) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .slide-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .character-breakdown {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%) !important;
+        }
+        
+        .usage-notes {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+        }
+        
+        .meaning-card,
+        .vocab-card {
+            background: white !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .comparison-table th {
+            background: var(--primary-gradient) !important;
+            color: white !important;
+        }
+        
+        .comparison-table td {
+            background: white !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .slide-nav-dots {
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+        
+        .slide-title-display {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .nav-dot::after {
+            background: var(--text-dark) !important;
+            color: white !important;
+        }
+    }
+
+    /* Accessibility */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Focus styles */
+    :focus-visible {
+        outline: 2px solid #667eea;
+        outline-offset: 2px;
+    }
+
+    /* Loading state */
+    .slide-container.loading {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    /* Custom scrollbar */
+    @media (min-width: 768px) {
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    }
+    
+    /* Additional fixes for normal scrolling */
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    body {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+    
+    /* Clothing & Money specific styles */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin: 25px 0;
+    }
+    
+    .category-card {
+        background: white;
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: all 0.3s ease;
+        border-top: 4px solid;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .category-card.clothing {
+        border-color: var(--accent-blue);
+    }
+    
+    .category-card.money {
+        border-color: var(--accent-green);
+    }
+    
+    .category-card.adjective {
+        border-color: var(--accent-purple);
+    }
+    
+    .category-card.verb {
+        border-color: var(--accent-yellow);
+    }
+    
+    .category-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    
+    .synonym-section {
+        background: linear-gradient(135deg, #e6e6ff 0%, #d6d6ff 100%);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-purple);
+    }
+    
+    .antonym-section {
+        background: linear-gradient(135deg, #ffe6e6 0%, #ffd6d6 100%);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-red);
+    }
+</style>
+</head>
+<body>
+
+<!-- Slide Navigation Dots -->
+<div class="slide-nav-dots" id="slideNavDots" aria-label="Slide navigation"></div>
+
+<!-- Single floating toggle button - MODIFIED FOR MOBILE -->
+<button class="toggle-reveal-btn" id="toggleRevealBtn" aria-label="Toggle all answers">
+    <i class="fas fa-eye"></i>
+    <span>Show All Answers</span>
+</button>
+
+<!-- Slide counter -->
+<div class="slide-counter" id="slideCounter" aria-live="polite">Slide 1 of 21</div>
+
+<!-- Current slide title display -->
+<div class="slide-title-display" id="slideTitleDisplay" aria-live="polite">食物、烹飪與味道詞彙</div>
+
+<!-- Main content -->
+<div class="slides-container">
+    <!-- Slide 1: Title Slide -->
+    <div class="slide-container" id="slide1" role="region" aria-label="Title slide">
+        <div class="particles" id="particles1" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center; padding-top: clamp(20px, 5vw, 40px);">
+                <h1 style="margin-bottom: 30px;">Chinese Vocabulary: Food, Cooking & Taste</h1>
+                <div class="chinese-title">食物、烹飪與味道詞彙</div>
+                <div class="pinyin revealable" data-original="shíwù, pēngrèn yǔ wèidào cíhuì">shíwù, pēngrèn yǔ wèidào cíhuì</div>
+                <div class="english revealable" data-original="Food, Cooking and Taste Vocabulary" style="margin-bottom: 60px;">Food, Cooking and Taste Vocabulary</div>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="meaning-card">
+                        <h3 style="color: var(--accent-orange); margin-bottom: 15px;">Learning Objectives</h3>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>Master 20+ essential food, cooking and taste vocabulary words</li>
+                            <li>Learn cooking methods and food preparation terms</li>
+                            <li>Understand taste and sensory descriptions</li>
+                            <li>Build complete food conversation abilities</li>
+                            <li>Each vocabulary word has at least two sentence examples</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cooking-tips" style="margin-top: 30px;">
+                        <h3>Categories Covered</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 15px;">
+                            <span class="cooking-method fry">Drinks & Snacks</span>
+                            <span class="cooking-method stir-fry">Ingredients</span>
+                            <span class="cooking-method boil">Tastes & Smells</span>
+                            <span class="cooking-method fry">Cooking Methods</span>
+                            <span class="cooking-method stir-fry">Measurements</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Introduction to Food Categories -->
+    <div class="slide-container" id="slide2" role="region" aria-label="Food categories introduction">
+        <div class="particles" id="particles2" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Food Categories Introduction</h2>
+            
+            <div class="category-grid">
+                <div class="category-card drink" data-word="汽水">
+                    <div class="food-icon">🥤</div>
+                    <div class="category-chinese">汽水</div>
+                    <div class="vocab-pinyin">qìshuǐ</div>
+                    <div class="vocab-english">Soda/Pop</div>
+                </div>
+                <div class="category-card food" data-word="餅乾">
+                    <div class="food-icon">🍪</div>
+                    <div class="category-chinese">餅乾</div>
+                    <div class="vocab-pinyin">bǐnggān</div>
+                    <div class="vocab-english">Cookie/Biscuit</div>
+                </div>
+                <div class="category-card food" data-word="甜點">
+                    <div class="food-icon">🍰</div>
+                    <div class="category-chinese">甜點</div>
+                    <div class="vocab-pinyin">tiándiǎn</div>
+                    <div class="vocab-english">Dessert</div>
+                </div>
+                <div class="category-card ingredient" data-word="鹽">
+                    <div class="food-icon">🧂</div>
+                    <div class="category-chinese">鹽</div>
+                    <div class="vocab-pinyin">yán</div>
+                    <div class="vocab-english">Salt</div>
+                </div>
+                <div class="category-card sense" data-word="味/味兒">
+                    <div class="food-icon">👃</div>
+                    <div class="category-chinese">味/味兒</div>
+                    <div class="vocab-pinyin">wèi/wèir</div>
+                    <div class="vocab-english">Taste/Flavor</div>
+                </div>
+                <div class="category-card cooking" data-word="炒">
+                    <div class="food-icon">🍳</div>
+                    <div class="category-chinese">炒</div>
+                    <div class="vocab-pinyin">chǎo</div>
+                    <div class="vocab-english">Stir-fry</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Vocabulary Categories</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Drinks & Cold Items</strong>: 汽水 (soda), 冰塊/冰塊兒 (ice cubes)</li>
+                    <li><strong>Snacks & Desserts</strong>: 餅乾 (cookies), 甜點 (dessert)</li>
+                    <li><strong>Ingredients</strong>: 鹽 (salt), 新鮮 (fresh), 熟 (cooked/ripe)</li>
+                    <li><strong>Tastes & Smells</strong>: 味/味兒 (taste), 聞 (smell), 臭 (stinky)</li>
+                    <li><strong>Cooking Methods</strong>: 炒 (stir-fry), 炸 (deep-fry), 嚐/嘗 (taste)</li>
+                    <li><strong>Measurements</strong>: 口 (mouthful), 罐 (can), 顆 (piece/grain)</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我喜歡喝汽水。">
+                    <div class="example-chinese">我喜歡喝汽水。</div>
+                    <div class="example-pinyin">Wǒ xǐhuān hē qìshuǐ.</div>
+                    <div class="example-english">I like to drink soda.</div>
+                </div>
+                <div class="example-card" data-example="這道菜需要加鹽。">
+                    <div class="example-chinese">這道菜需要加鹽。</div>
+                    <div class="example-pinyin">Zhè dào cài xūyào jiā yán.</div>
+                    <div class="example-english">This dish needs to add salt.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: 汽水 (qìshuǐ) -->
+    <div class="slide-container" id="slide3" role="region" aria-label="汽水 slide">
+        <div class="particles" id="particles3" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">汽水</div>
+                <div class="pinyin revealable" data-original="qìshuǐ">qìshuǐ</div>
+                <div class="english revealable" data-original="Soda/Pop">Soda/Pop</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "汽水" is composed of "汽" (steam/vapor) and "水" (water). It literally means "vapor water" or "carbonated water," referring to fizzy drinks. This term is used for all carbonated soft drinks.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="夏天喝冰汽水很舒服。">
+                    <div class="example-chinese">夏天喝冰汽水很舒服。</div>
+                    <div class="example-pinyin">Xiàtiān hē bīng qìshuǐ hěn shūfu.</div>
+                    <div class="example-english">Drinking cold soda in summer is very comfortable.</div>
+                </div>
+                <div class="example-card" data-example="小孩子不應該喝太多汽水。">
+                    <div class="example-chinese">小孩子不應該喝太多汽水。</div>
+                    <div class="example-pinyin">Xiǎo háizi bù yīnggāi hē tài duō qìshuǐ.</div>
+                    <div class="example-english">Children shouldn't drink too much soda.</div>
+                </div>
+                <div class="example-card" data-example="你要喝可樂還是其他汽水？">
+                    <div class="example-chinese">你要喝可樂還是其他汽水？</div>
+                    <div class="example-pinyin">Nǐ yào hē kělè háishì qítā qìshuǐ?</div>
+                    <div class="example-english">Do you want to drink cola or other soda?</div>
+                </div>
+            </div>
+            
+            <div class="related-section">
+                <h3>Related Vocabulary</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>可樂 (kělè)</strong> - cola</li>
+                    <li><strong>雪碧 (xuěbì)</strong> - Sprite</li>
+                    <li><strong>果汁 (guǒzhī)</strong> - fruit juice</li>
+                    <li><strong>茶 (chá)</strong> - tea</li>
+                    <li><strong>咖啡 (kāfēi)</strong> - coffee</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: 冰塊/冰塊兒 (bīngkuài/bīngkuàir) -->
+    <div class="slide-container" id="slide4" role="region" aria-label="冰塊 slide">
+        <div class="particles" id="particles4" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">冰塊/冰塊兒</div>
+                <div class="pinyin revealable" data-original="bīngkuài/bīngkuàir">bīngkuài/bīngkuàir</div>
+                <div class="english revealable" data-original="Ice cubes">Ice cubes</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "冰塊" combines "冰" (ice) and "塊" (piece/lump). "冰塊兒" is the same with the 兒化 (érhuà) ending, common in Northern dialects. The character "冰" depicts water (冫) frozen into ice.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="請給我一些冰塊。">
+                    <div class="example-chinese">請給我一些冰塊。</div>
+                    <div class="example-pinyin">Qǐng gěi wǒ yīxiē bīngkuài.</div>
+                    <div class="example-english">Please give me some ice cubes.</div>
+                </div>
+                <div class="example-card" data-example="夏天飲料要加冰塊兒。">
+                    <div class="example-chinese">夏天飲料要加冰塊兒。</div>
+                    <div class="example-pinyin">Xiàtiān yǐnliào yào jiā bīngkuàir.</div>
+                    <div class="example-english">Drinks need ice cubes in summer.</div>
+                </div>
+                <div class="example-card" data-example="冰塊讓飲料更涼爽。">
+                    <div class="example-chinese">冰塊讓飲料更涼爽。</div>
+                    <div class="example-pinyin">Bīngkuài ràng yǐnliào gèng liángshuǎng.</div>
+                    <div class="example-english">Ice cubes make drinks cooler.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "冰塊" is standard Mandarin, while "冰塊兒" is more colloquial and common in Northern China (especially Beijing). Both are understood throughout the Chinese-speaking world. For crushed ice, you can say "碎冰" (suìbīng).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: 餅乾 (bǐnggān) -->
+    <div class="slide-container" id="slide5" role="region" aria-label="餅乾 slide">
+        <div class="particles" id="particles5" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">餅乾</div>
+                <div class="pinyin revealable" data-original="bǐnggān">bǐnggān</div>
+                <div class="english revealable" data-original="Cookie/Biscuit">Cookie/Biscuit</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">餅</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">bǐng - cake/cookie</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">乾</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">gān - dry</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我喜歡巧克力餅乾。">
+                    <div class="example-chinese">我喜歡巧克力餅乾。</div>
+                    <div class="example-pinyin">Wǒ xǐhuān qiǎokèlì bǐnggān.</div>
+                    <div class="example-english">I like chocolate cookies.</div>
+                </div>
+                <div class="example-card" data-example="餅乾配牛奶很好吃。">
+                    <div class="example-chinese">餅乾配牛奶很好吃。</div>
+                    <div class="example-pinyin">Bǐnggān pèi niúnǎi hěn hǎochī.</div>
+                    <div class="example-english">Cookies with milk are delicious.</div>
+                </div>
+                <div class="example-card" data-example="這些餅乾是我自己做的。">
+                    <div class="example-chinese">這些餅乾是我自己做的。</div>
+                    <div class="example-pinyin">Zhèxiē bǐnggān shì wǒ zìjǐ zuò de.</div>
+                    <div class="example-english">These cookies were made by myself.</div>
+                </div>
+            </div>
+            
+            <div class="related-section">
+                <h3>Types of Cookies/Biscuits</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>巧克力餅乾 (qiǎokèlì bǐnggān)</strong> - chocolate cookies</li>
+                    <li><strong>奶油餅乾 (nǎiyóu bǐnggān)</strong> - butter cookies</li>
+                    <li><strong>燕麥餅乾 (yànmài bǐnggān)</strong> - oatmeal cookies</li>
+                    <li><strong>夾心餅乾 (jiāxīn bǐnggān)</strong> - sandwich cookies</li>
+                    <li><strong>蘇打餅乾 (sūdǎ bǐnggān)</strong> - soda crackers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: 甜點 (tiándiǎn) -->
+    <div class="slide-container" id="slide6" role="region" aria-label="甜點 slide">
+        <div class="particles" id="particles6" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">甜點</div>
+                <div class="pinyin revealable" data-original="tiándiǎn">tiándiǎn</div>
+                <div class="english revealable" data-original="Dessert">Dessert</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">甜</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">tián - sweet</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">點</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">diǎn - point/snack</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="飯後我們吃甜點。">
+                    <div class="example-chinese">飯後我們吃甜點。</div>
+                    <div class="example-pinyin">Fàn hòu wǒmen chī tiándiǎn.</div>
+                    <div class="example-english">We eat dessert after the meal.</div>
+                </div>
+                <div class="example-card" data-example="這家餐廳的甜點很有名。">
+                    <div class="example-chinese">這家餐廳的甜點很有名。</div>
+                    <div class="example-pinyin">Zhè jiā cāntīng de tiándiǎn hěn yǒumíng.</div>
+                    <div class="example-english">This restaurant's desserts are famous.</div>
+                </div>
+                <div class="example-card" data-example="我喜歡自己做甜點。">
+                    <div class="example-chinese">我喜歡自己做甜點。</div>
+                    <div class="example-pinyin">Wǒ xǐhuān zìjǐ zuò tiándiǎn.</div>
+                    <div class="example-english">I like to make desserts myself.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Cultural Context</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    In Chinese cuisine, dessert is usually served at the end of a meal, but it's often less elaborate than Western desserts. Traditional Chinese desserts include sweet soups, pastries, and fruit. "甜點" literally means "sweet snacks" and encompasses all types of sweet treats.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Ingredients & Basic Tastes -->
+    <div class="slide-container" id="slide7" role="region" aria-label="Ingredients slide">
+        <div class="particles" id="particles7" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Basic Ingredients & Tastes</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card" data-word="鹽">
+                    <div class="vocab-chinese">鹽</div>
+                    <div class="vocab-pinyin">yán</div>
+                    <div class="vocab-english">Salt</div>
+                </div>
+                <div class="vocab-card" data-word="味/味兒">
+                    <div class="vocab-chinese">味/味兒</div>
+                    <div class="vocab-pinyin">wèi/wèir</div>
+                    <div class="vocab-english">Taste/Flavor</div>
+                </div>
+                <div class="vocab-card" data-word="新鮮">
+                    <div class="vocab-chinese">新鮮</div>
+                    <div class="vocab-pinyin">xīnxiān</div>
+                    <div class="vocab-english">Fresh</div>
+                </div>
+                <div class="vocab-card" data-word="熟">
+                    <div class="vocab-chinese">熟</div>
+                    <div class="vocab-pinyin">shú</div>
+                    <div class="vocab-english">Cooked/Ripe</div>
+                </div>
+                <div class="vocab-card" data-word="任何">
+                    <div class="vocab-chinese">任何</div>
+                    <div class="vocab-pinyin">rènhé</div>
+                    <div class="vocab-english">Any</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Cooking Essentials</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Seasonings</strong>: 鹽 (salt), 糖 (sugar - not in list)</li>
+                    <li><strong>Taste Descriptors</strong>: 味/味兒 (taste), 新鮮 (fresh), 熟 (cooked/ripe)</li>
+                    <li><strong>Quantifiers</strong>: 任何 (any), 許多 (many), 一顆 (one piece)</li>
+                    <li><strong>Quality Indicators</strong>: 新鮮 (freshness), 熟 (ripeness/doneness)</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="這湯需要更多鹽。">
+                    <div class="example-chinese">這湯需要更多鹽。</div>
+                    <div class="example-pinyin">Zhè tāng xūyào gèng duō yán.</div>
+                    <div class="example-english">This soup needs more salt.</div>
+                </div>
+                <div class="example-card" data-example="水果熟了嗎？">
+                    <div class="example-chinese">水果熟了嗎？</div>
+                    <div class="example-pinyin">Shuǐguǒ shú le ma?</div>
+                    <div class="example-english">Is the fruit ripe?</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: 鹽 (yán) & 味/味兒 (wèi/wèir) -->
+    <div class="slide-container" id="slide8" role="region" aria-label="鹽 and 味 slide">
+        <div class="particles" id="particles8" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Salt & Taste</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">鹽</div>
+                    <div class="pinyin revealable" data-original="yán">yán</div>
+                    <div class="english revealable" data-original="Salt">Salt</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="做菜時要小心加鹽。">
+                            <div class="example-chinese">做菜時要小心加鹽。</div>
+                            <div class="example-pinyin">Zuò cài shí yào xiǎoxīn jiā yán.</div>
+                            <div class="example-english">Be careful when adding salt while cooking.</div>
+                        </div>
+                        <div class="example-card" data-example="海鹽比普通鹽健康。">
+                            <div class="example-chinese">海鹽比普通鹽健康。</div>
+                            <div class="example-pinyin">Hǎiyán bǐ pǔtōng yán jiànkāng.</div>
+                            <div class="example-english">Sea salt is healthier than regular salt.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">味/味兒</div>
+                    <div class="pinyin revealable" data-original="wèi/wèir">wèi/wèir</div>
+                    <div class="english revealable" data-original="Taste/Flavor">Taste/Flavor</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="這道菜的味道很好。">
+                            <div class="example-chinese">這道菜的味道很好。</div>
+                            <div class="example-pinyin">Zhè dào cài de wèidào hěn hǎo.</div>
+                            <div class="example-english">This dish has a very good flavor.</div>
+                        </div>
+                        <div class="example-card" data-example="嘗嘗這個味兒怎麼樣。">
+                            <div class="example-chinese">嘗嘗這個味兒怎麼樣。</div>
+                            <div class="example-pinyin">Chángchang zhège wèir zěnmeyàng.</div>
+                            <div class="example-english">Taste this flavor and see how it is.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>鹽 (yán)</h4>
+                        <p style="line-height: 1.6;">
+                            The character shows "鹵" (brine/salt) with "監" (supervise) below. Historically, salt production was supervised by officials. Salt has been important in Chinese cuisine and economy for millennia.
+                        </p>
+                    </div>
+                    <div>
+                        <h4>味/味兒 (wèi/wèir)</h4>
+                        <p style="line-height: 1.6;">
+                            "味" combines "口" (mouth) and "未" (not yet), suggesting something entering the mouth. "味兒" adds the 兒化 suffix common in Northern dialects. It refers to taste, flavor, or smell.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Sensory Words: 聞 (wén) & 臭 (chòu) -->
+    <div class="slide-container" id="slide9" role="region" aria-label="聞 and 臭 slide">
+        <div class="particles" id="particles9" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Smell & Sensory Words</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">聞</div>
+                    <div class="pinyin revealable" data-original="wén">wén</div>
+                    <div class="english revealable" data-original="Smell/Sniff">Smell/Sniff</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="你聞到什麼味道？">
+                            <div class="example-chinese">你聞到什麼味道？</div>
+                            <div class="example-pinyin">Nǐ wén dào shénme wèidào?</div>
+                            <div class="example-english">What smell do you smell?</div>
+                        </div>
+                        <div class="example-card" data-example="讓我聞一下這個湯。">
+                            <div class="example-chinese">讓我聞一下這個湯。</div>
+                            <div class="example-pinyin">Ràng wǒ wén yīxià zhège tāng.</div>
+                            <div class="example-english">Let me smell this soup.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">臭</div>
+                    <div class="pinyin revealable" data-original="chòu">chòu</div>
+                    <div class="english revealable" data-original="Stinky/Smelly">Stinky/Smelly</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="這牛奶臭了。">
+                            <div class="example-chinese">這牛奶臭了。</div>
+                            <div class="example-pinyin">Zhè niúnǎi chòu le.</div>
+                            <div class="example-english">This milk has gone bad/smelly.</div>
+                        </div>
+                        <div class="example-card" data-example="臭豆腐聞起來臭但吃起來香。">
+                            <div class="example-chinese">臭豆腐聞起來臭但吃起來香。</div>
+                            <div class="example-pinyin">Chòu dòufu wén qǐlái chòu dàn chī qǐlái xiāng.</div>
+                            <div class="example-english">Stinky tofu smells stinky but tastes delicious.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "聞" can mean both "to smell" (verb) and "to hear" or "news" in other contexts (聞名 famous, 新聞 news). "臭" specifically means bad smell. For pleasant smells, use "香" (xiāng). Note that "臭豆腐" (stinky tofu) is a popular Chinese street food that has a strong odor but is considered delicious.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Cooking Methods: 炒 (chǎo) & 炸 (zhà) -->
+    <div class="slide-container" id="slide10" role="region" aria-label="炒 and 炸 slide">
+        <div class="particles" id="particles10" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Cooking Methods</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">炒</div>
+                    <div class="pinyin revealable" data-original="chǎo">chǎo</div>
+                    <div class="english revealable" data-original="Stir-fry">Stir-fry</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="我喜歡炒青菜。">
+                            <div class="example-chinese">我喜歡炒青菜。</div>
+                            <div class="example-pinyin">Wǒ xǐhuān chǎo qīngcài.</div>
+                            <div class="example-english">I like to stir-fry vegetables.</div>
+                        </div>
+                        <div class="example-card" data-example="炒飯要用隔夜飯。">
+                            <div class="example-chinese">炒飯要用隔夜飯。</div>
+                            <div class="example-pinyin">Chǎofàn yào yòng géyè fàn.</div>
+                            <div class="example-english">Fried rice should use overnight rice.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">炸</div>
+                    <div class="pinyin revealable" data-original="zhà">zhà</div>
+                    <div class="english revealable" data-original="Deep-fry">Deep-fry</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="炸雞很受歡迎。">
+                            <div class="example-chinese">炸雞很受歡迎。</div>
+                            <div class="example-pinyin">Zhájī hěn shòu huānyíng.</div>
+                            <div class="example-english">Fried chicken is very popular.</div>
+                        </div>
+                        <div class="example-card" data-example="我不常吃炸的食物。">
+                            <div class="example-chinese">我不常吃炸的食物。</div>
+                            <div class="example-pinyin">Wǒ bù cháng chī zhá de shíwù.</div>
+                            <div class="example-english">I don't often eat deep-fried food.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cooking-tips">
+                <h3>Cooking Techniques Comparison</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>炒 (chǎo) - Stir-fry</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>High heat, quick cooking</li>
+                            <li>Small amount of oil</li>
+                            <li>Constant stirring</li>
+                            <li>Common in Chinese cuisine</li>
+                            <li>Examples: 炒麵, 炒青菜</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>炸 (zhà) - Deep-fry</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>Food submerged in hot oil</li>
+                            <li>Crispy texture</li>
+                            <li>Higher fat content</li>
+                            <li>Examples: 炸雞, 炸薯條</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: 口 (kǒu) & Measurement Words -->
+    <div class="slide-container" id="slide11" role="region" aria-label="口 and measurement words slide">
+        <div class="particles" id="particles11" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">口</div>
+                <div class="pinyin revealable" data-original="kǒu">kǒu</div>
+                <div class="english revealable" data-original="Mouth/Mouthful">Mouth/Mouthful</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "口" is a pictograph of a mouth. As a measure word, it's used for bites or mouthfuls of food/drink, or for people in a family/household. It's one of the most basic and commonly used measure words in Chinese.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我喝了一口水。">
+                    <div class="example-chinese">我喝了一口水。</div>
+                    <div class="example-pinyin">Wǒ hē le yī kǒu shuǐ.</div>
+                    <div class="example-english">I took a sip of water.</div>
+                </div>
+                <div class="example-card" data-example="嘗一小口這個蛋糕。">
+                    <div class="example-chinese">嘗一小口這個蛋糕。</div>
+                    <div class="example-pinyin">Cháng yī xiǎo kǒu zhège dàngāo.</div>
+                    <div class="example-english">Try a small bite of this cake.</div>
+                </div>
+                <div class="example-card" data-example="我家有五口人。">
+                    <div class="example-chinese">我家有五口人。</div>
+                    <div class="example-pinyin">Wǒ jiā yǒu wǔ kǒu rén.</div>
+                    <div class="example-english">There are five people in my family.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Measure Words for Food</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>口 (kǒu)</strong> - for bites/sips: 一口水, 一口飯</li>
+                    <li><strong>罐 (guàn)</strong> - for cans/bottles: 一罐汽水, 一罐啤酒</li>
+                    <li><strong>顆 (kē)</strong> - for small round items: 一顆糖, 一顆葡萄</li>
+                    <li><strong>塊 (kuài)</strong> - for pieces/chunks: 一塊蛋糕, 一塊肉</li>
+                    <li><strong>碗 (wǎn)</strong> - for bowls: 一碗飯, 一碗湯</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: 罐 (guàn) & 顆 (kē) -->
+    <div class="slide-container" id="slide12" role="region" aria-label="罐 and 顆 slide">
+        <div class="particles" id="particles12" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Container & Quantity Words</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">罐</div>
+                    <div class="pinyin revealable" data-original="guàn">guàn</div>
+                    <div class="english revealable" data-original="Can/Jar">Can/Jar</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="請給我一罐可樂。">
+                            <div class="example-chinese">請給我一罐可樂。</div>
+                            <div class="example-pinyin">Qǐng gěi wǒ yī guàn kělè.</div>
+                            <div class="example-english">Please give me a can of cola.</div>
+                        </div>
+                        <div class="example-card" data-example="這罐餅乾快吃完了。">
+                            <div class="example-chinese">這罐餅乾快吃完了。</div>
+                            <div class="example-pinyin">Zhè guàn bǐnggān kuài chī wán le.</div>
+                            <div class="example-english">This jar of cookies is almost finished.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">顆</div>
+                    <div class="pinyin revealable" data-original="kē">kē</div>
+                    <div class="english revealable" data-original="Piece/Grain">Piece/Grain</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="加兩顆糖在咖啡裡。">
+                            <div class="example-chinese">加兩顆糖在咖啡裡。</div>
+                            <div class="example-pinyin">Jiā liǎng kē táng zài kāfēi lǐ.</div>
+                            <div class="example-english">Add two pieces of sugar in the coffee.</div>
+                        </div>
+                        <div class="example-card" data-example="我吃了一顆蘋果。">
+                            <div class="example-chinese">我吃了一顆蘋果。</div>
+                            <div class="example-pinyin">Wǒ chī le yī kē píngguǒ.</div>
+                            <div class="example-english">I ate an apple.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>罐 (guàn)</h4>
+                        <p style="line-height: 1.6;">
+                            Contains "缶" (earthenware jar) radical, indicating its connection to containers. It refers to cans, jars, or tins used for packaging food and drinks.
+                        </p>
+                    </div>
+                    <div>
+                        <h4>顆 (kē)</h4>
+                        <p style="line-height: 1.6;">
+                            Contains "頁" (head/page) radical, suggesting something small and round like a head. Used as a measure word for small, roundish objects like grains, fruits, or candies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Quantity & Quality Words -->
+    <div class="slide-container" id="slide13" role="region" aria-label="Quantity and quality words slide">
+        <div class="particles" id="particles13" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Quantity & Quality Descriptors</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card" data-word="任何">
+                    <div class="vocab-chinese">任何</div>
+                    <div class="vocab-pinyin">rènhé</div>
+                    <div class="vocab-english">Any</div>
+                </div>
+                <div class="vocab-card" data-word="許多">
+                    <div class="vocab-chinese">許多</div>
+                    <div class="vocab-pinyin">xǔduō</div>
+                    <div class="vocab-english">Many/Much</div>
+                </div>
+                <div class="vocab-card" data-word="新鮮">
+                    <div class="vocab-chinese">新鮮</div>
+                    <div class="vocab-pinyin">xīnxiān</div>
+                    <div class="vocab-english">Fresh</div>
+                </div>
+                <div class="vocab-card" data-word="熟">
+                    <div class="vocab-chinese">熟</div>
+                    <div class="vocab-pinyin">shú</div>
+                    <div class="vocab-english">Cooked/Ripe</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage in Food Context</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>任何 (rènhé)</strong>: "Any" - 任何食物 (any food), 任何飲料 (any drink)</li>
+                    <li><strong>許多 (xǔduō)</strong>: "Many/Much" - 許多水果 (many fruits), 許多糖 (much sugar)</li>
+                    <li><strong>新鮮 (xīnxiān)</strong>: "Fresh" - 新鮮蔬菜 (fresh vegetables), 新鮮魚 (fresh fish)</li>
+                    <li><strong>熟 (shú)</strong>: "Cooked/Ripe" - 熟肉 (cooked meat), 熟香蕉 (ripe banana)</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="你可以點任何你想吃的。">
+                    <div class="example-chinese">你可以點任何你想吃的。</div>
+                    <div class="example-pinyin">Nǐ kěyǐ diǎn rènhé nǐ xiǎng chī de.</div>
+                    <div class="example-english">You can order anything you want to eat.</div>
+                </div>
+                <div class="example-card" data-example="市場有許多新鮮蔬菜。">
+                    <div class="example-chinese">市場有許多新鮮蔬菜。</div>
+                    <div class="example-pinyin">Shìchǎng yǒu xǔduō xīnxiān shūcài.</div>
+                    <div class="example-english">The market has many fresh vegetables.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: 新鮮 (xīnxiān) -->
+    <div class="slide-container" id="slide14" role="region" aria-label="新鮮 slide">
+        <div class="particles" id="particles14" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">新鮮</div>
+                <div class="pinyin revealable" data-original="xīnxiān">xīnxiān</div>
+                <div class="english revealable" data-original="Fresh">Fresh</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">新</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">xīn - new</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">鮮</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">xiān - fresh/delicious</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="這些水果很新鮮。">
+                    <div class="example-chinese">這些水果很新鮮。</div>
+                    <div class="example-pinyin">Zhèxiē shuǐguǒ hěn xīnxiān.</div>
+                    <div class="example-english">These fruits are very fresh.</div>
+                </div>
+                <div class="example-card" data-example="我喜歡吃新鮮的魚。">
+                    <div class="example-chinese">我喜歡吃新鮮的魚。</div>
+                    <div class="example-pinyin">Wǒ xǐhuān chī xīnxiān de yú.</div>
+                    <div class="example-english">I like to eat fresh fish.</div>
+                </div>
+                <div class="example-card" data-example="麵包是新鮮出爐的。">
+                    <div class="example-chinese">麵包是新鮮出爐的。</div>
+                    <div class="example-pinyin">Miànbāo shì xīnxiān chūlú de.</div>
+                    <div class="example-english">The bread is freshly baked.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Extended Meanings</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    While "新鮮" primarily means "fresh" (especially for food), it can also mean:
+                    <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                        <li>Novel/new (新鮮事 - something new/novel)</li>
+                        <li>Fresh air (新鮮空氣)</li>
+                        <li>Fresh experience (新鮮的體驗)</li>
+                    </ul>
+                    In food contexts, it emphasizes quality, recently harvested/produced, and not preserved or stale.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: 熟 (shú) -->
+    <div class="slide-container" id="slide15" role="region" aria-label="熟 slide">
+        <div class="particles" id="particles15" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">熟</div>
+                <div class="pinyin revealable" data-original="shú">shú</div>
+                <div class="english revealable" data-original="Cooked/Ripe">Cooked/Ripe</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "熟" originally meant food cooked to perfection. It can mean: 1) Cooked (opposite of raw) 2) Ripe (for fruits) 3) Familiar/acquainted 4) Skilled/proficient. The character shows food (灬 - fire radical at bottom) being transformed.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="肉要煮熟才能吃。">
+                    <div class="example-chinese">肉要煮熟才能吃。</div>
+                    <div class="example-pinyin">Ròu yào zhǔ shú cái néng chī.</div>
+                    <div class="example-english">Meat must be cooked thoroughly before eating.</div>
+                </div>
+                <div class="example-card" data-example="這個香蕉還沒熟。">
+                    <div class="example-chinese">這個香蕉還沒熟。</div>
+                    <div class="example-pinyin">Zhège xiāngjiāo hái méi shú.</div>
+                    <div class="example-english">This banana is not ripe yet.</div>
+                </div>
+                <div class="example-card" data-example="我們是老熟人了。">
+                    <div class="example-chinese">我們是老熟人了。</div>
+                    <div class="example-pinyin">Wǒmen shì lǎo shúrén le.</div>
+                    <div class="example-english">We are old acquaintances.</div>
+                </div>
+            </div>
+            
+            <div class="cooking-tips">
+                <h3>Cooking Doneness Levels</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>生 (shēng)</strong> - raw</li>
+                    <li><strong>半生熟 (bàn shēng shú)</strong> - medium rare</li>
+                    <li><strong>全熟 (quán shú)</strong> - well done</li>
+                    <li><strong>過熟 (guò shú)</strong> - overcooked/overripe</li>
+                    <li><strong>剛剛熟 (gānggāng shú)</strong> - just cooked/al dente</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: Cooking Verbs: 嚐/嘗 (cháng) & 裝 (zhuāng) -->
+    <div class="slide-container" id="slide16" role="region" aria-label="嘗 and 裝 slide">
+        <div class="particles" id="particles16" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Cooking Actions</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">嚐/嘗</div>
+                    <div class="pinyin revealable" data-original="cháng">cháng</div>
+                    <div class="english revealable" data-original="Taste/Try">Taste/Try</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="你可以嘗嘗這道菜。">
+                            <div class="example-chinese">你可以嘗嘗這道菜。</div>
+                            <div class="example-pinyin">Nǐ kěyǐ chángchang zhè dào cài.</div>
+                            <div class="example-english">You can taste this dish.</div>
+                        </div>
+                        <div class="example-card" data-example="我嚐了一小口。">
+                            <div class="example-chinese">我嚐了一小口。</div>
+                            <div class="example-pinyin">Wǒ cháng le yī xiǎo kǒu.</div>
+                            <div class="example-english">I tasted a small bite.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">裝</div>
+                    <div class="pinyin revealable" data-original="zhuāng">zhuāng</div>
+                    <div class="english revealable" data-original="Pack/Load/Install">Pack/Load/Install</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="把食物裝進盒子裡。">
+                            <div class="example-chinese">把食物裝進盒子裡。</div>
+                            <div class="example-pinyin">Bǎ shíwù zhuāng jìn hézi lǐ.</div>
+                            <div class="example-english">Pack the food into the box.</div>
+                        </div>
+                        <div class="example-card" data-example="這個罐子裝了許多糖果。">
+                            <div class="example-chinese">這個罐子裝了許多糖果。</div>
+                            <div class="example-pinyin">Zhège guànzi zhuāng le xǔduō tángguǒ.</div>
+                            <div class="example-english">This jar contains many candies.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>嚐/嘗 (cháng)</h4>
+                        <p style="line-height: 1.6;">
+                            Both variants are correct. "嘗" is the traditional form, "嚐" emphasizes tasting with the mouth (口 radical). It means to taste, try, or experience something.
+                        </p>
+                    </div>
+                    <div>
+                        <h4>裝 (zhuāng)</h4>
+                        <p style="line-height: 1.6;">
+                            Contains "衣" (clothing) radical, suggesting putting something into a container like dressing. Means to pack, load, install, or pretend. In cooking context, it means to pack/contain.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: 不用 (bùyòng) -->
+    <div class="slide-container" id="slide17" role="region" aria-label="不用 slide">
+        <div class="particles" id="particles17" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">不用</div>
+                <div class="pinyin revealable" data-original="bùyòng">bùyòng</div>
+                <div class="english revealable" data-original="No need/Don't have to">No need/Don't have to</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "不用" combines "不" (not) and "用" (use/need). It's a common phrase meaning "no need," "unnecessary," or "don't have to." It's more polite than just saying "不要" (don't want) in many contexts.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="不用加糖，謝謝。">
+                    <div class="example-chinese">不用加糖，謝謝。</div>
+                    <div class="example-pinyin">Bùyòng jiā táng, xièxie.</div>
+                    <div class="example-english">No need to add sugar, thank you.</div>
+                </div>
+                <div class="example-card" data-example="你不用洗碗，我來洗。">
+                    <div class="example-chinese">你不用洗碗，我來洗。</div>
+                    <div class="example-pinyin">Nǐ bùyòng xǐ wǎn, wǒ lái xǐ.</div>
+                    <div class="example-english">You don't have to wash the dishes, I'll do it.</div>
+                </div>
+                <div class="example-card" data-example="不用客氣。">
+                    <div class="example-chinese">不用客氣。</div>
+                    <div class="example-pinyin">Bùyòng kèqì.</div>
+                    <div class="example-english">You're welcome. (No need to be polite)</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Politeness in Food Context</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    In Chinese dining culture, "不用" is often used politely:
+                    <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                        <li>Declining more food: "不用了，我飽了。" (No need, I'm full.)</li>
+                        <li>Refusing assistance: "不用幫忙，我可以。" (No need to help, I can do it.)</li>
+                        <li>Responding to thanks: "不用謝。" (No need to thank me.)</li>
+                    </ul>
+                    It's softer than "不要" and shows consideration for others.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: Cooking Instructions Dialogue -->
+    <div class="slide-container" id="slide18" role="region" aria-label="Cooking dialogue slide">
+        <div class="particles" id="particles18" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Cooking Dialogue Practice</h2>
+            
+            <div class="meaning-card">
+                <h3>Sample Cooking Conversation</h3>
+                <div style="margin-top: 20px; padding: 20px; background: #f7fafc; border-radius: var(--border-radius-sm);">
+                    <p style="line-height: 1.8; margin-bottom: 15px;"><strong>A:</strong> 我們來做炒飯吧。需要哪些材料？<br>
+                    <em>Wǒmen lái zuò chǎofàn ba. Xūyào nǎxiē cáiliào?</em><br>
+                    Let's make fried rice. What ingredients do we need?</p>
+                    
+                    <p style="line-height: 1.8; margin-bottom: 15px;"><strong>B:</strong> 需要隔夜飯、蛋、一些蔬菜，還有鹽。<br>
+                    <em>Xūyào géyè fàn, dàn, yīxiē shūcài, háiyǒu yán.</em><br>
+                    We need overnight rice, eggs, some vegetables, and salt.</p>
+                    
+                    <p style="line-height: 1.8; margin-bottom: 15px;"><strong>A:</strong> 蔬菜要新鮮的嗎？<br>
+                    <em>Shūcài yào xīnxiān de ma?</em><br>
+                    Do the vegetables need to be fresh?</p>
+                    
+                    <p style="line-height: 1.8; margin-bottom: 15px;"><strong>B:</strong> 是的，越新鮮越好。先炒蛋，然後加入其他材料。<br>
+                    <em>Shì de, yuè xīnxiān yuè hǎo. Xiān chǎo dàn, ránhòu jiārù qítā cáiliào.</em><br>
+                    Yes, the fresher the better. First stir-fry the eggs, then add other ingredients.</p>
+                    
+                    <p style="line-height: 1.8; margin-bottom: 15px;"><strong>A:</strong> 要加多少鹽？<br>
+                    <em>Yào jiā duōshǎo yán?</em><br>
+                    How much salt should we add?</p>
+                    
+                    <p style="line-height: 1.8; margin-bottom: 15px;"><strong>B:</strong> 一小顆就可以了。炒好後你可以嘗嘗味道。<br>
+                    <em>Yī xiǎo kē jiù kěyǐ le. Chǎo hǎo hòu nǐ kěyǐ chángchang wèidào.</em><br>
+                    Just a small grain is enough. After stir-frying, you can taste the flavor.</p>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="炒飯時要用大火。">
+                    <div class="example-chinese">炒飯時要用大火。</div>
+                    <div class="example-pinyin">Chǎofàn shí yào yòng dàhuǒ.</div>
+                    <div class="example-english">Use high heat when stir-frying rice.</div>
+                </div>
+                <div class="example-card" data-example="聞起來好香！">
+                    <div class="example-chinese">聞起來好香！</div>
+                    <div class="example-pinyin">Wén qǐlái hǎo xiāng!</div>
+                    <div class="example-english">It smells so good!</div>
+                </div>
+            </div>
+            
+            <div class="cooking-tips">
+                <h3>Cooking Tips</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li>Always taste your food while cooking (嘗味道)</li>
+                    <li>Use fresh ingredients for better flavor (用新鮮材料)</li>
+                    <li>Control salt carefully - you can always add more (小心控制鹽量)</li>
+                    <li>Different cooking methods create different textures (不同烹飪方法)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 19: Taste Description Practice -->
+    <div class="slide-container" id="slide19" role="region" aria-label="Taste description slide">
+        <div class="particles" id="particles19" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Describing Food & Taste</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card" data-word="甜">
+                    <div class="vocab-chinese">甜</div>
+                    <div class="vocab-pinyin">tián</div>
+                    <div class="vocab-english">Sweet</div>
+                </div>
+                <div class="vocab-card" data-word="鹹">
+                    <div class="vocab-chinese">鹹</div>
+                    <div class="vocab-pinyin">xián</div>
+                    <div class="vocab-english">Salty</div>
+                </div>
+                <div class="vocab-card" data-word="酸">
+                    <div class="vocab-chinese">酸</div>
+                    <div class="vocab-pinyin">suān</div>
+                    <div class="vocab-english">Sour</div>
+                </div>
+                <div class="vocab-card" data-word="辣">
+                    <div class="vocab-chinese">辣</div>
+                    <div class="vocab-pinyin">là</div>
+                    <div class="vocab-english">Spicy</div>
+                </div>
+                <div class="vocab-card" data-word="苦">
+                    <div class="vocab-chinese">苦</div>
+                    <div class="vocab-pinyin">kǔ</div>
+                    <div class="vocab-english">Bitter</div>
+                </div>
+                <div class="vocab-card" data-word="香">
+                    <div class="vocab-chinese">香</div>
+                    <div class="vocab-pinyin">xiāng</div>
+                    <div class="vocab-english">Fragrant</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Basic Taste Vocabulary (Beyond the 20 words)</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    While not in our core 20 words, these are essential for describing food:
+                </p>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>甜 (tián)</strong> - sweet: 甜點 (dessert), 甜味 (sweet taste)</li>
+                    <li><strong>鹹 (xián)</strong> - salty: 鹹的 (salty), 太鹹 (too salty)</li>
+                    <li><strong>酸 (suān)</strong> - sour: 酸的 (sour), 酸味 (sour taste)</li>
+                    <li><strong>辣 (là)</strong> - spicy: 辣的 (spicy), 辣椒 (chili pepper)</li>
+                    <li><strong>苦 (kǔ)</strong> - bitter: 苦的 (bitter), 苦味 (bitter taste)</li>
+                    <li><strong>香 (xiāng)</strong> - fragrant: 香的 (fragrant), 香味 (fragrance)</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="這湯太鹹了。">
+                    <div class="example-chinese">這湯太鹹了。</div>
+                    <div class="example-pinyin">Zhè tāng tài xián le.</div>
+                    <div class="example-english">This soup is too salty.</div>
+                </div>
+                <div class="example-card" data-example="檸檬很酸。">
+                    <div class="example-chinese">檸檬很酸。</div>
+                    <div class="example-pinyin">Níngméng hěn suān.</div>
+                    <div class="example-english">Lemons are very sour.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 20: Complete Vocabulary Review -->
+    <div class="slide-container" id="slide20" role="region" aria-label="Complete vocabulary review">
+        <div class="particles" id="particles20" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Complete Vocabulary Review</h2>
+            
+            <div class="meaning-card">
+                <h3>All 20 Vocabulary Words with Examples</h3>
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Chinese</th>
+                                <th>Pinyin</th>
+                                <th>English</th>
+                                <th>Example Sentence 1</th>
+                                <th>Example Sentence 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-word="汽水">
+                                <td style="font-family: 'Noto Sans TC';">汽水</td>
+                                <td>qìshuǐ</td>
+                                <td>Soda/Pop</td>
+                                <td>夏天喝冰汽水很舒服。</td>
+                                <td>小孩子不應該喝太多汽水。</td>
+                            </tr>
+                            <tr data-word="冰塊/冰塊兒">
+                                <td style="font-family: 'Noto Sans TC';">冰塊/冰塊兒</td>
+                                <td>bīngkuài/bīngkuàir</td>
+                                <td>Ice cubes</td>
+                                <td>請給我一些冰塊。</td>
+                                <td>夏天飲料要加冰塊兒。</td>
+                            </tr>
+                            <tr data-word="餅乾">
+                                <td style="font-family: 'Noto Sans TC';">餅乾</td>
+                                <td>bǐnggān</td>
+                                <td>Cookie/Biscuit</td>
+                                <td>我喜歡巧克力餅乾。</td>
+                                <td>餅乾配牛奶很好吃。</td>
+                            </tr>
+                            <tr data-word="甜點">
+                                <td style="font-family: 'Noto Sans TC';">甜點</td>
+                                <td>tiándiǎn</td>
+                                <td>Dessert</td>
+                                <td>飯後我們吃甜點。</td>
+                                <td>這家餐廳的甜點很有名。</td>
+                            </tr>
+                            <tr data-word="鹽">
+                                <td style="font-family: 'Noto Sans TC';">鹽</td>
+                                <td>yán</td>
+                                <td>Salt</td>
+                                <td>這湯需要更多鹽。</td>
+                                <td>做菜時要小心加鹽。</td>
+                            </tr>
+                            <tr data-word="味/味兒">
+                                <td style="font-family: 'Noto Sans TC';">味/味兒</td>
+                                <td>wèi/wèir</td>
+                                <td>Taste/Flavor</td>
+                                <td>這道菜的味道很好。</td>
+                                <td>嘗嘗這個味兒怎麼樣。</td>
+                            </tr>
+                            <tr data-word="聞">
+                                <td style="font-family: 'Noto Sans TC';">聞</td>
+                                <td>wén</td>
+                                <td>Smell/Sniff</td>
+                                <td>你聞到什麼味道？</td>
+                                <td>讓我聞一下這個湯。</td>
+                            </tr>
+                            <tr data-word="臭">
+                                <td style="font-family: 'Noto Sans TC';">臭</td>
+                                <td>chòu</td>
+                                <td>Stinky/Smelly</td>
+                                <td>這牛奶臭了。</td>
+                                <td>臭豆腐聞起來臭但吃起來香。</td>
+                            </tr>
+                            <tr data-word="口">
+                                <td style="font-family: 'Noto Sans TC';">口</td>
+                                <td>kǒu</td>
+                                <td>Mouth/Mouthful</td>
+                                <td>我喝了一口水。</td>
+                                <td>嘗一小口這個蛋糕。</td>
+                            </tr>
+                            <tr data-word="罐">
+                                <td style="font-family: 'Noto Sans TC';">罐</td>
+                                <td>guàn</td>
+                                <td>Can/Jar</td>
+                                <td>請給我一罐可樂。</td>
+                                <td>這罐餅乾快吃完了。</td>
+                            </tr>
+                            <tr data-word="顆">
+                                <td style="font-family: 'Noto Sans TC';">顆</td>
+                                <td>kē</td>
+                                <td>Piece/Grain</td>
+                                <td>加兩顆糖在咖啡裡。</td>
+                                <td>我吃了一顆蘋果。</td>
+                            </tr>
+                            <tr data-word="任何">
+                                <td style="font-family: 'Noto Sans TC';">任何</td>
+                                <td>rènhé</td>
+                                <td>Any</td>
+                                <td>你可以點任何你想吃的。</td>
+                                <td>我沒有任何的意見。</td>
+                            </tr>
+                            <tr data-word="許多">
+                                <td style="font-family: 'Noto Sans TC';">許多</td>
+                                <td>xǔduō</td>
+                                <td>Many/Much</td>
+                                <td>市場有許多新鮮蔬菜。</td>
+                                <td>他讀了許多書。</td>
+                            </tr>
+                            <tr data-word="新鮮">
+                                <td style="font-family: 'Noto Sans TC';">新鮮</td>
+                                <td>xīnxiān</td>
+                                <td>Fresh</td>
+                                <td>這些水果很新鮮。</td>
+                                <td>我喜歡吃新鮮的魚。</td>
+                            </tr>
+                            <tr data-word="熟">
+                                <td style="font-family: 'Noto Sans TC';">熟</td>
+                                <td>shú</td>
+                                <td>Cooked/Ripe</td>
+                                <td>肉要煮熟才能吃。</td>
+                                <td>這個香蕉還沒熟。</td>
+                            </tr>
+                            <tr data-word="炒">
+                                <td style="font-family: 'Noto Sans TC';">炒</td>
+                                <td>chǎo</td>
+                                <td>Stir-fry</td>
+                                <td>我喜歡炒青菜。</td>
+                                <td>炒飯要用隔夜飯。</td>
+                            </tr>
+                            <tr data-word="炸">
+                                <td style="font-family: 'Noto Sans TC';">炸</td>
+                                <td>zhà</td>
+                                <td>Deep-fry</td>
+                                <td>炸雞很受歡迎。</td>
+                                <td>我不常吃炸的食物。</td>
+                            </tr>
+                            <tr data-word="嚐/嘗">
+                                <td style="font-family: 'Noto Sans TC';">嚐/嘗</td>
+                                <td>cháng</td>
+                                <td>Taste/Try</td>
+                                <td>你可以嘗嘗這道菜。</td>
+                                <td>我嚐了一小口。</td>
+                            </tr>
+                            <tr data-word="裝">
+                                <td style="font-family: 'Noto Sans TC';">裝</td>
+                                <td>zhuāng</td>
+                                <td>Pack/Load</td>
+                                <td>把食物裝進盒子裡。</td>
+                                <td>這個罐子裝了許多糖果。</td>
+                            </tr>
+                            <tr data-word="不用">
+                                <td style="font-family: 'Noto Sans TC';">不用</td>
+                                <td>bùyòng</td>
+                                <td>No need</td>
+                                <td>不用加糖，謝謝。</td>
+                                <td>你不用洗碗，我來洗。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <div class="chinese-title">學習完成！</div>
+                <div class="pinyin revealable" data-original="xuéxí wánchéng!">xuéxí wánchéng!</div>
+                <div class="english revealable" data-original="Learning Complete!">Learning Complete!</div>
+                
+                <div style="max-width: 600px; margin: 30px auto;">
+                    <p style="font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--text-medium); line-height: 1.6;">
+                        恭喜！你已經學會了20個重要的中文食物、烹飪與味道詞彙，每個詞都有至少兩個例句。<br>
+                        <em>Gōngxǐ! Nǐ yǐjīng xuéhuì le 20 gè zhòngyào de Zhōngwén shíwù, pēngrèn yǔ wèidào cíhuì, měigè cí dōu yǒu zhìshǎo liǎng gè lìjù.</em><br>
+                        Congratulations! You have learned 20 important Chinese food, cooking and taste vocabulary words, each with at least two example sentences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 21: Food Culture & Additional Resources -->
+    <div class="slide-container" id="slide21" role="region" aria-label="Food culture and resources">
+        <div class="particles" id="particles21" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Chinese Food Culture & Practice</h2>
+            
+            <div class="meaning-card">
+                <h3>Chinese Dining Etiquette</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Sharing dishes</strong>: Chinese meals are typically served family-style with shared dishes</li>
+                    <li><strong>Using chopsticks</strong>: Don't stick chopsticks upright in rice (resembles funeral rites)</li>
+                    <li><strong>Tasting before seasoning</strong>: It's polite to taste food before adding more salt or sauce</li>
+                    <li><strong>Offering food</strong:> Use serving chopsticks or spoon to offer food to others</li>
+                    <li><strong>Politeness phrases</strong>: 不用客氣 (no need to be polite), 請慢用 (please enjoy your meal)</li>
+                </ul>
+            </div>
+            
+            <div class="cooking-tips">
+                <h3>Practice Dialogues for Ordering Food</h3>
+                <div style="margin-top: 15px;">
+                    <p style="line-height: 1.6; margin-bottom: 10px;"><strong>At a restaurant:</strong></p>
+                    <p style="line-height: 1.6; background: #fff; padding: 15px; border-radius: var(--border-radius-sm); margin-bottom: 15px;">
+                        <strong>Customer:</strong> 我想點炒青菜和一碗飯。<br>
+                        <em>Wǒ xiǎng diǎn chǎo qīngcài hé yī wǎn fàn.</em><br>
+                        I'd like to order stir-fried vegetables and a bowl of rice.
+                    </p>
+                    
+                    <p style="line-height: 1.6; background: #fff; padding: 15px; border-radius: var(--border-radius-sm);">
+                        <strong>Server:</strong> 好的。要喝什麼嗎？我們有汽水、茶和咖啡。<br>
+                        <em>Hǎo de. Yào hē shénme ma? Wǒmen yǒu qìshuǐ, chá hé kāfēi.</em><br>
+                        Okay. What would you like to drink? We have soda, tea, and coffee.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="related-section">
+                <h3>Additional Vocabulary for Advanced Learning</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div>
+                        <h4>Cooking Methods</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>煮 (zhǔ) - boil</li>
+                            <li>蒸 (zhēng) - steam</li>
+                            <li>烤 (kǎo) - bake/roast</li>
+                            <li>燉 (dùn) - stew</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Kitchen Utensils</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>鍋 (guō) - pot/pan</li>
+                            <li>刀 (dāo) - knife</li>
+                            <li>碗 (wǎn) - bowl</li>
+                            <li>筷子 (kuàizi) - chopsticks</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Common Dishes</h4>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>炒飯 (chǎofàn) - fried rice</li>
+                            <li>炒麵 (chǎomiàn) - fried noodles</li>
+                            <li>湯 (tāng) - soup</li>
+                            <li>餃子 (jiǎozi) - dumplings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--text-medium); line-height: 1.6;">
+                    繼續練習，享受學習中文的樂趣！<br>
+                    <em>Jìxù liànxí, xiǎngshòu xuéxí Zhōngwén de lèqù!</em><br>
+                    Keep practicing and enjoy learning Chinese!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Simple detection for revealed elements
+    function isRevealedElement(element) {
+        return element.classList.contains('revealed');
+    }
+    
+    // Check if device is mobile/touch
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+    
+    // Initialize tooltip for a single element
+    function initializeTooltipForElement(element) {
+        if (element.dataset.tooltipInitialized) return;
+        
+        let tooltipTimer = null;
+        let isTouching = false;
+        
+        // Set timeout based on element class
+        const timeoutDuration = isRevealedElement(element) ? 500 : 1000;
+        
+        // Mouse events - for desktop
+        element.addEventListener('mouseenter', () => {
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '1');
+            
+            tooltipTimer = setTimeout(() => {
+                element.style.setProperty('--tooltip-opacity', '0');
+                tooltipTimer = null;
+            }, timeoutDuration);
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        // Touch events for mobile
+        element.addEventListener('touchstart', (e) => {
+            isTouching = true;
+            
+            // Don't show tooltip for revealed elements on mobile
+            if (isRevealedElement(element) && isTouchDevice()) {
+                return; // Skip showing tooltip for revealed elements on mobile
+            }
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '1');
+            
+            tooltipTimer = setTimeout(() => {
+                element.style.setProperty('--tooltip-opacity', '0');
+                tooltipTimer = null;
+            }, timeoutDuration);
+        });
+        
+        element.addEventListener('touchend', () => {
+            isTouching = false;
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        element.addEventListener('touchcancel', () => {
+            isTouching = false;
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        // Add click handler to hide tooltip on click
+        element.addEventListener('click', () => {
+            if (isTouching) {
+                if (tooltipTimer) {
+                    clearTimeout(tooltipTimer);
+                    tooltipTimer = null;
+                }
+                element.style.setProperty('--tooltip-opacity', '0');
+            }
+        });
+        
+        element.dataset.tooltipInitialized = 'true';
+    }
+    
+    // Get all elements that could have ::after content
+    const elementsWithTooltips = document.querySelectorAll(`
+        .chinese-title,
+        .chinese-title.hidden,
+        .chinese-title.revealed,
+        .vocab-card,
+        .vocab-card.hidden,
+        .vocab-card.revealed,
+        .example-card,
+        .example-card.hidden,
+        .example-card.revealed,
+        .nav-dot
+    `);
+    
+    // Initialize existing elements
+    elementsWithTooltips.forEach(initializeTooltipForElement);
+    
+    // Set up observer for dynamically added elements
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) { // Element node
+                        // Check if this element or its children need tooltips
+                        const newElements = node.querySelectorAll(`
+                            .chinese-title,
+                            .vocab-card,
+                            .example-card,
+                            .nav-dot
+                        `);
+                        
+                        if (node.matches && node.matches(`
+                            .chinese-title,
+                            .vocab-card,
+                            .example-card,
+                            .nav-dot
+                        `)) {
+                            initializeTooltipForElement(node);
+                        }
+                        
+                        newElements.forEach(initializeTooltipForElement);
+                    }
+                });
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    // Add CSS custom property support for all tooltip elements
+    const style = document.createElement('style');
+    style.textContent = `
+        .chinese-title::after,
+        .vocab-card::before,
+        .example-card::before,
+        .nav-dot::after {
+            opacity: var(--tooltip-opacity, 0) !important;
+            transition: opacity 0.2s ease !important;
+        }
+        
+        /* Specific styles for revealed state */
+        .chinese-title.revealed::after,
+        .vocab-card.revealed::before,
+        .example-card.revealed::before {
+            background: rgba(56, 178, 172, 0.9) !important;
+            content: "✓ Revealed" !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+    // Create floating particles for visual effect
+    function createParticles(containerId, characters) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        // Reduce particle count on mobile for performance
+        const isMobile = window.innerWidth <= 768;
+        const particleCount = isMobile ? 5 : 15;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = characters[Math.floor(Math.random() * characters.length)];
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.fontSize = `${Math.random() * 20 + 16}px`;
+            particle.style.opacity = `${Math.random() * 0.1 + 0.05}`;
+            particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+            container.appendChild(particle);
+        }
+    }
+     // Food-related characters for particles
+    const foodChars = ['食', '飲', '甜', '鹹', '酸', '辣', '炒', '炸', '煮', '蒸', '烤', '味', '香', '臭', '新', '鮮', '熟', '罐', '顆', '口'];
+   
+    
+    // Create particles for each slide
+    for (let i = 1; i <= 21; i++) {
+        createParticles(`particles${i}`, foodChars);
+    }
+    
+    // TAP TO REVEAL FUNCTIONALITY
+    function initializeTapToReveal() {
+        const toggleBtn = document.getElementById('toggleRevealBtn');
+        let allRevealed = false;
+        
+        // Get all revealable cards and elements
+        const vocabCards = document.querySelectorAll('.vocab-card, .emotion-card');
+        const exampleCards = document.querySelectorAll('.example-card');
+        const revealableElements = document.querySelectorAll('.revealable');
+        const tableRows = document.querySelectorAll('.comparison-table tbody tr');
+        const chineseTitles = document.querySelectorAll('.chinese-title');
+        
+        // Function to hide content
+        function hideContent(element) {
+            if (element.classList.contains('vocab-card') || 
+                element.classList.contains('emotion-card') || 
+                element.classList.contains('example-card')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+            } else if (element.classList.contains('chinese-title')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+            } else if (element.classList.contains('revealable')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+                element.textContent = '';
+            } else if (element.tagName === 'TR') {
+                element.classList.add('hidden');
+            }
+        }
+        
+        // Function to reveal content
+        function revealContent(element) {
+            if (element.classList.contains('vocab-card') || 
+                element.classList.contains('emotion-card') || 
+                element.classList.contains('example-card')) {
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+            } else if (element.classList.contains('chinese-title')) {
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+            } else if (element.classList.contains('revealable')) {
+                const originalText = element.getAttribute('data-original');
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+                element.textContent = originalText;
+            } else if (element.tagName === 'TR') {
+                element.classList.remove('hidden');
+            }
+        }
+        
+        // Set up click handlers for Chinese titles
+        chineseTitles.forEach(title => {
+            title.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Find the container
+                const titleContainer = this.closest('div[style*="text-align: center"]') || this.parentElement;
+                
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                    
+                    // Also reveal the pinyin and english elements within the same container
+                    const allElements = Array.from(titleContainer.querySelectorAll('.pinyin.revealable, .english.revealable'));
+                    
+                    allElements.forEach(element => {
+                        const originalText = element.getAttribute('data-original');
+                        if (originalText) {
+                            element.classList.remove('hidden');
+                            element.classList.add('revealed');
+                            element.textContent = originalText;
+                        }
+                    });
+                } else {
+                    hideContent(this);
+                    
+                    // Also hide the pinyin and english elements
+                    const allElements = Array.from(titleContainer.querySelectorAll('.pinyin.revealable, .english.revealable'));
+                    allElements.forEach(element => {
+                        element.classList.add('hidden');
+                        element.classList.remove('revealed');
+                        element.textContent = '';
+                    });
+                }
+            });
+            
+            // Initialize as hidden
+            title.classList.add('hidden');
+        });
+        
+        // Set up click handlers for vocabulary cards
+        vocabCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            card.classList.add('hidden');
+        });
+        
+        // Set up click handlers for example cards
+        exampleCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            card.classList.add('hidden');
+        });
+        
+        // Set up click handlers for individual revealable elements (pinyin/english in titles)
+        revealableElements.forEach(element => {
+            const originalText = element.getAttribute('data-original') || element.textContent;
+            element.setAttribute('data-original', originalText);
+            
+            element.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            element.classList.add('hidden');
+        });
+        
+        // Set up click handlers for table rows
+        tableRows.forEach(row => {
+            row.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            row.classList.add('hidden');
+        });
+        
+        // Toggle button functionality
+        toggleBtn.addEventListener('click', function() {
+            allRevealed = !allRevealed;
+            
+            if (allRevealed) {
+                // Reveal all
+                vocabCards.forEach(card => revealContent(card));
+                exampleCards.forEach(card => revealContent(card));
+                revealableElements.forEach(element => revealContent(element));
+                tableRows.forEach(row => revealContent(row));
+                chineseTitles.forEach(title => revealContent(title));
+                
+                // Update button
+                toggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i><span>Hide All Answers</span>';
+                toggleBtn.classList.add('hide-mode');
+            } else {
+                // Hide all
+                vocabCards.forEach(card => hideContent(card));
+                exampleCards.forEach(card => hideContent(card));
+                revealableElements.forEach(element => hideContent(element));
+                tableRows.forEach(row => hideContent(row));
+                chineseTitles.forEach(title => hideContent(title));
+                
+                // Update button
+                toggleBtn.innerHTML = '<i class="fas fa-eye"></i><span>Show All Answers</span>';
+                toggleBtn.classList.remove('hide-mode');
+            }
+        });
+    }
+    
+    // Slide navigation functionality
+    const slideCounter = document.getElementById('slideCounter');
+    const slideTitleDisplay = document.getElementById('slideTitleDisplay');
+    const slideNavDots = document.getElementById('slideNavDots');
+    
+    let currentSlide = 1;
+    const totalSlides = 20;
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Slide titles for display - updated for food vocabulary
+    const slideTitles = [
+        "食物、烹飪與味道詞彙",
+        "食物分類介紹",
+        "汽水 (qìshuǐ)",
+        "冰塊/冰塊兒 (bīngkuài/bīngkuàir)",
+        "餅乾 (bǐnggān)",
+        "甜點 (tiándiǎn)",
+        "基本食材與味道",
+        "鹽 & 味/味兒",
+        "聞 & 臭",
+        "炒 & 炸",
+        "口 (kǒu)",
+        "罐 & 顆",
+        "數量與質量描述詞",
+        "新鮮 (xīnxiān)",
+        "熟 (shú)",
+        "嘗 & 裝",
+        "不用 (bùyòng)",
+        "烹飪對話練習",
+        "味道描述練習",
+        "完整詞彙複習",
+        "飲食文化與延伸學習"
+    ];
+    
+    // Create navigation dots
+    function createNavDots() {
+        slideNavDots.innerHTML = '';
+        
+        for (let i = 1; i <= totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot';
+            dot.dataset.slide = i;
+            dot.dataset.title = slideTitles[i-1];
+            dot.setAttribute('aria-label', `Go to slide ${i}: ${slideTitles[i-1]}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            
+            const dotSpan = document.createElement('span');
+            dotSpan.className = 'sr-only';
+            dotSpan.textContent = `Slide ${i}`;
+            dot.appendChild(dotSpan);
+            
+            slideNavDots.appendChild(dot);
+        }
+    }
+    
+    // Go to specific slide
+    function goToSlide(slideNumber) {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        const targetSlide = Math.max(1, Math.min(totalSlides, slideNumber));
+        
+        // Add loading state
+        document.querySelectorAll('.slide-container')[targetSlide - 1]?.classList.add('loading');
+        
+        const targetElement = document.getElementById(`slide${targetSlide}`);
+        
+        if (targetElement) {
+            // Smooth scroll to target
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Update after scroll completes
+            setTimeout(() => {
+                currentSlide = targetSlide;
+                updateUI();
+                isScrolling = false;
+                document.querySelectorAll('.slide-container')[targetSlide - 1]?.classList.remove('loading');
+                
+                // Update URL hash without scrolling
+                history.replaceState(null, null, `#slide${targetSlide}`);
+            }, 300);
+        }
+    }
+    
+    // Update UI elements
+    function updateUI() {
+        // Update counter
+        slideCounter.textContent = `Slide ${currentSlide} of ${totalSlides}`;
+        
+        // Update title display
+        slideTitleDisplay.textContent = slideTitles[currentSlide - 1];
+        
+        // Update navigation dots
+        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+            if (index + 1 === currentSlide) {
+                dot.classList.add('active');
+                dot.setAttribute('aria-current', 'true');
+            } else {
+                dot.classList.remove('active');
+                dot.removeAttribute('aria-current');
+            }
+        });
+    }
+    
+    // Detect slide changes via scroll - BUT DON'T AUTO-JUMP
+    const observer = new IntersectionObserver((entries) => {
+        // Just update current slide indicator, don't auto-scroll
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                const slideId = entry.target.id;
+                const slideNumber = parseInt(slideId.replace('slide', ''));
+                if (!isNaN(slideNumber) && slideNumber !== currentSlide) {
+                    currentSlide = slideNumber;
+                    updateUI();
+                }
+            }
+        });
+    }, {
+        threshold: [0.3, 0.5, 0.7],
+        rootMargin: '0px 0px 0px 0px' // No margin
+    });
+    
+    // Check initial hash
+    function checkInitialHash() {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#slide')) {
+            const slideNumber = parseInt(hash.replace('#slide', ''));
+            if (!isNaN(slideNumber) && slideNumber >= 1 && slideNumber <= totalSlides) {
+                goToSlide(slideNumber);
+            }
+        }
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create navigation dots
+        createNavDots();
+        
+        // Initialize tap to reveal functionality
+        initializeTapToReveal();
+        
+        // Observe all slides
+        document.querySelectorAll('.slide-container').forEach(slide => {
+            observer.observe(slide);
+        });
+        
+        // Add keyboard navigation (optional - users can still use if they want)
+        document.addEventListener('keydown', (e) => {
+            // Don't interfere with form inputs
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            switch(e.key) {
+                case 'ArrowUp':
+                case 'ArrowLeft':
+                case 'PageUp':
+                    goToSlide(currentSlide - 1);
+                    e.preventDefault();
+                    break;
+                case 'ArrowDown':
+                case 'ArrowRight':
+                case 'PageDown':
+                case ' ':
+                    goToSlide(currentSlide + 1);
+                    e.preventDefault();
+                    break;
+                case 'Home':
+                    goToSlide(1);
+                    e.preventDefault();
+                    break;
+                case 'End':
+                    goToSlide(totalSlides);
+                    e.preventDefault();
+                    break;
+            }
+        });
+        
+        // Add navigation buttons to each slide
+        const slides = document.querySelectorAll('.slide-container');
+        slides.forEach((slide, index) => {
+            const navDiv = document.createElement('div');
+            navDiv.className = 'navigation';
+            navDiv.innerHTML = `
+                <button class="nav-btn" onclick="goToSlide(${index})" ${index === 0 ? 'disabled' : ''}>
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+                </button>
+                <div class="slide-number">Slide ${index + 1} of ${totalSlides}</div>
+                <button class="nav-btn" onclick="goToSlide(${index + 2})" ${index === totalSlides - 1 ? 'disabled' : ''}>
+                    Next <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
+            `;
+            slide.appendChild(navDiv);
+        });
+        
+        // Check for hash on load
+        checkInitialHash();
+        
+        // Initialize UI
+        updateUI();
+        
+        // Handle resize for responsive adjustments
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Recreate particles on resize for better mobile performance
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('.particles').forEach(particle => {
+                        particle.innerHTML = '';
+                    });
+                    for (let i = 1; i <= 20; i++) {
+                        createParticles(`particles${i}`, foodChars);
+                    }
+                }
+            }, 250);
+        });
+        
+        // REMOVED: Touch swipe navigation - let users scroll normally
+        // Instead, we'll just ensure normal scrolling works
+        document.body.style.overflowY = 'auto';
+        document.documentElement.style.overflowY = 'auto';
+        
+        // Prevent any default touch behaviors that might interfere
+        document.addEventListener('touchmove', function(e) {
+            // Allow normal touch scrolling
+        }, { passive: true });
+    });
+    
+    // Expose functions to global scope for inline onclick handlers
+    window.goToSlide = goToSlide;
+    
+    // Force light mode on any system
+    function forceLightMode() {
+        // Set meta tag for color scheme
+        const meta = document.createElement('meta');
+        meta.name = 'color-scheme';
+        meta.content = 'light';
+        document.head.appendChild(meta);
+        
+        // Set CSS variables to light mode
+        document.documentElement.style.setProperty('color-scheme', 'light');
+        document.documentElement.style.setProperty('--color-scheme', 'light');
+        
+        // Force background and text colors
+        document.body.style.backgroundColor = '#f8fafc';
+        document.body.style.color = '#2d3748';
+    }
+    
+    // Call on load
+    window.addEventListener('load', forceLightMode);
+    // Also call immediately
+    forceLightMode();
+</script>
+</body>
+</html>

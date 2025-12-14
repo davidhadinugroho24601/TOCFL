@@ -1,0 +1,3609 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#667eea">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Chinese Grammar: Adverbs & Transitions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <style>
+    /* Reset and Base */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Force light mode and prevent dark mode */
+    html, body {
+        color-scheme: light only !important;
+    }
+
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        --card-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --text-light: #718096;
+        --accent-blue: #4299e1;
+        --accent-green: #38b2ac;
+        --accent-red: #f56565;
+        --accent-purple: #9f7aea;
+        --accent-yellow: #ecc94b;
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+        --border-radius-sm: 8px;
+        --border-radius-md: 12px;
+        --border-radius-lg: 20px;
+        --spacing-xs: 8px;
+        --spacing-sm: 12px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+        --spacing-xxl: 48px;
+    }
+
+    body {
+        background: var(--primary-gradient);
+        font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* Force light colors */
+        background: var(--primary-gradient) !important;
+        color: var(--text-dark) !important;
+    }
+
+    /* Container */
+    .slides-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Slide Container */
+    .slide-container {
+        background: var(--secondary-gradient);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: var(--spacing-xl);
+        position: relative;
+        width: 100%;
+        transition: all 0.3s ease;
+        min-height: min-content;
+        scroll-margin-top: 80px;
+        /* Force light background */
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    }
+
+    /* Navigation Dots */
+    .slide-nav-dots {
+        position: fixed;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e0 transparent;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 2px;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 2px;
+    }
+
+    .nav-dot {
+        width: 14px;
+        height: 14px;
+        min-width: 14px;
+        min-height: 14px;
+        border-radius: 50%;
+        background: #cbd5e0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        touch-action: manipulation;
+        flex-shrink: 0;
+    }
+
+    .nav-dot:hover,
+    .nav-dot:focus {
+        transform: scale(1.2);
+        background: #a0aec0;
+        outline: none;
+    }
+
+    .nav-dot.active {
+        background: #667eea;
+        transform: scale(1.3);
+        box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    }
+
+    .nav-dot::after {
+        content: attr(data-title);
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--text-dark);
+        color: white;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 1001;
+    }
+
+    .nav-dot:hover::after {
+        opacity: 1;
+    }
+
+    /* Typography - FIXED CENTERING */
+    .chinese-title {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(2rem, 5vw, 4.5rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        cursor: pointer;
+        position: relative;
+        display: block; /* Fixed: changed from inline-block to block */
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        width: 100%; /* Added for proper centering */
+    }
+
+    .chinese-title:hover {
+        background-color: rgba(102, 126, 234, 0.1);
+    }
+
+    .chinese-title::after {
+        content: "🔍 Tap for pinyin & translation";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin-top: 8px;
+    }
+
+    .chinese-title.hidden:hover::after {
+        opacity: 1;
+    }
+
+    .chinese-title.revealed::after {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+
+    .chinese-title.revealed:hover::after {
+        opacity: 0.7;
+    }
+
+    .pinyin {
+        font-size: clamp(1.25rem, 2.5vw, 2rem);
+        color: var(--text-medium);
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 500;
+        line-height: 1.3;
+        width: 100%; /* Added for proper centering */
+        display: block; /* Added for proper centering */
+    }
+
+    .english {
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 600;
+        line-height: 1.3;
+        width: 100%; /* Added for proper centering */
+        display: block; /* Added for proper centering */
+    }
+
+    /* Cards and Sections */
+    .character-breakdown {
+        background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: var(--border-radius-md);
+        margin: 20px auto;
+        width: 100%;
+        max-width: 90%;
+        border-left: 5px solid var(--accent-green);
+    }
+
+    .meaning-card {
+        background: white;
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+        margin: 15px 0;
+        border-top: 4px solid var(--accent-blue);
+    }
+
+    .example-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: clamp(15px, 2.5vw, 25px);
+        margin: 30px 0;
+    }
+
+    .example-card {
+        background: var(--card-gradient);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        position: relative;
+        transition: transform 0.2s ease;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .example-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .example-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        color: var(--text-dark);
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .example-pinyin {
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        color: var(--text-medium);
+        margin-bottom: 10px;
+        font-style: italic;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .example-english {
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        color: var(--text-dark);
+        line-height: 1.4;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .usage-notes {
+        background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-red);
+    }
+
+    /* Vocabulary Grid */
+    .vocab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: clamp(15px, 2vw, 20px);
+        margin: 30px 0;
+    }
+
+    .vocab-card {
+        background: white;
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 150px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .vocab-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .vocab-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .vocab-pinyin {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        color: var(--text-medium);
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .vocab-english {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* TAP TO REVEAL STYLES - MODIFIED FOR WHOLE CARD TAPPING */
+    .vocab-card.hidden .vocab-pinyin,
+    .vocab-card.hidden .vocab-english,
+    .example-card.hidden .example-pinyin,
+    .example-card.hidden .example-english,
+    .revealable.hidden {
+        opacity: 0;
+        transform: translateY(10px);
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .vocab-card::before,
+    .example-card::before {
+        content: "🔍 Tap to reveal pinyin & translation";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .vocab-card.hidden:hover::before,
+    .example-card.hidden:hover::before {
+        opacity: 1;
+    }
+
+    .vocab-card.revealed::before,
+    .example-card.revealed::before {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+
+    .vocab-card.revealed:hover::before,
+    .example-card.revealed:hover::before {
+        opacity: 0.7;
+    }
+
+    /* SINGLE TOGGLE BUTTON - MODIFIED FOR MOBILE */
+    .toggle-reveal-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .toggle-reveal-btn:hover {
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .toggle-reveal-btn.hide-mode {
+        background: var(--accent-red);
+        box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
+    }
+
+    .toggle-reveal-btn.hide-mode:hover {
+        box-shadow: 0 6px 20px rgba(245, 101, 101, 0.4);
+    }
+
+    /* For individual revealable elements (pinyin and english in main titles) */
+    .revealable {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .revealable.hidden {
+        background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e0 50%, #e2e8f0 75%);
+        background-size: 200% 100%;
+        animation: none; /* Removed auto-animation */
+        color: transparent !important;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    /* Only animate on hover for vocabulary review */
+    .revealable.hidden:hover {
+        animation: shimmer 1.5s infinite;
+    }
+
+    .revealable.hidden::before {
+        content: "🔍";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--text-medium);
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+
+    .revealable.revealed {
+        background: rgba(56, 178, 172, 0.1);
+        color: inherit !important;
+        animation: none;
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    /* Tables - FIXED FOR MOBILE HIDE FUNCTION */
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        margin: 30px 0;
+    }
+
+    .comparison-table th {
+        background: var(--primary-gradient);
+        color: white;
+        padding: clamp(12px, 2vw, 18px);
+        text-align: left;
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        font-weight: 600;
+    }
+
+    .comparison-table td {
+        padding: clamp(12px, 1.5vw, 16px);
+        border-bottom: 1px solid #e2e8f0;
+        font-size: clamp(0.9rem, 1.2vw, 1.125rem);
+        position: relative;
+    }
+
+    /* Make table cells revealable */
+    .comparison-table tr {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .comparison-table tr:hover {
+        background-color: #f7fafc;
+    }
+
+    /* FIXED: Mobile hide function - changed to use opacity instead of color: transparent */
+    .comparison-table tr.hidden td:nth-child(2),
+    .comparison-table tr.hidden td:nth-child(3),
+    .comparison-table tr.hidden td:nth-child(4),
+    .comparison-table tr.hidden td:nth-child(5) {
+        opacity: 0;
+        background: linear-gradient(90deg, #f7fafc 25%, #e2e8f0 50%, #f7fafc 75%);
+        background-size: 200% 100%;
+        animation: none;
+        position: relative;
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+    }
+
+    .comparison-table tr:not(.hidden) td:nth-child(2),
+    .comparison-table tr:not(.hidden) td:nth-child(3),
+    .comparison-table tr:not(.hidden) td:nth-child(4),
+    .comparison-table tr:not(.hidden) td:nth-child(5) {
+        opacity: 1;
+        height: auto;
+        padding: clamp(12px, 1.5vw, 16px);
+    }
+
+    /* Only animate on hover */
+    .comparison-table tr.hidden:hover td:nth-child(2),
+    .comparison-table tr.hidden:hover td:nth-child(3),
+    .comparison-table tr.hidden:hover td:nth-child(4),
+    .comparison-table tr.hidden:hover td:nth-child(5) {
+        animation: shimmer 1.5s infinite;
+    }
+
+    .comparison-table tr.hidden::after {
+        content: "🔍";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.5;
+        font-size: 0.8em;
+        z-index: 1;
+    }
+
+    /* Particles */
+    .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        font-family: 'Noto Sans TC', sans-serif;
+        color: rgba(102, 126, 234, 0.1);
+        font-size: clamp(16px, 2vw, 24px);
+        user-select: none;
+    }
+
+    .content-area {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        min-height: 0;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4 {
+        font-family: 'Noto Sans TC', sans-serif;
+        color: var(--text-dark);
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 4vw, 4rem);
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 3vw, 2.625rem);
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        margin-bottom: 10px;
+    }
+
+    /* Navigation */
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius-md);
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+    }
+
+    .nav-btn {
+        padding: 12px 24px;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+
+    .nav-btn:hover,
+    .nav-btn:focus {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        outline: none;
+    }
+
+    .nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .slide-number {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-medium);
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    /* UI Elements */
+    .slide-counter {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text-dark);
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .slide-title-display {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 500;
+        color: var(--text-dark);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 999;
+        max-width: 250px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0,0,0,0.1);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+    /* Lists */
+    ul, ol {
+        padding-left: 20px;
+        margin: 10px 0;
+    }
+
+    li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+
+    /* Responsive Design */
+
+    /* Large Desktop */
+    @media (min-width: 1400px) {
+        .slides-container {
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-xxl);
+        }
+    }
+
+    /* Desktop */
+    @media (max-width: 1199px) {
+        .slides-container {
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-lg);
+        }
+        
+        .slide-nav-dots {
+            right: 15px;
+        }
+    }
+
+    /* Tablet */
+    @media (max-width: 991px) {
+        .slide-nav-dots {
+            position: fixed;
+            top: 50%;
+            right: 15px;
+            bottom: auto;
+            left: auto;
+            transform: translateY(-50%);
+            flex-direction: column;
+            max-height: 70vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: auto;
+            padding: 12px 10px;
+            border-radius: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e0 transparent;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar {
+            width: 3px;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 2px;
+        }
+        
+        .nav-dot::after {
+            right: 18px;
+            font-size: 11px;
+            padding: 5px 8px;
+        }
+        
+        .example-section {
+            grid-template-columns: 1fr;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .slides-container {
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            min-height: auto !important;
+            display: block !important;
+            margin-bottom: 15px;
+            scroll-margin-top: 60px;
+        }
+        
+        /* MOBILE DOTS - HORIZONTAL SCROLLABLE */
+        .slide-nav-dots {
+            position: fixed;
+            top: auto;
+            bottom: 30px; /* Moved up to avoid overlapping with toggle button */
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            flex-direction: row;
+            flex-wrap: nowrap;
+            max-height: none;
+            max-width: 90vw;
+            height: auto;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px 15px;
+            border-radius: 25px;
+            gap: 10px;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+            min-height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: #cbd5e0;
+        }
+        
+        .nav-dot.active {
+            width: 14px;
+            height: 14px;
+            min-width: 14px;
+            min-height: 14px;
+            border-radius: 50%;
+            background: #667eea;
+            transform: scale(1);
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+        
+        .nav-dot:hover {
+            transform: scale(1.1);
+        }
+        
+        .nav-dot::after {
+            display: none;
+        }
+        
+        /* FIXED: Mobile slide counter and title display */
+        .slide-counter {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 0.7rem;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: block !important;
+        }
+        
+        .slide-title-display {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 0.7rem;
+            max-width: 150px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: block !important;
+        }
+        
+        .navigation {
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+        }
+        
+        .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .slide-number {
+            order: -1;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+        
+        .character-breakdown {
+            padding: var(--spacing-md);
+            max-width: 100%;
+        }
+        
+        .meaning-card {
+            padding: var(--spacing-md);
+        }
+        
+        .comparison-table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            white-space: nowrap;
+            min-width: 120px;
+        }
+        
+        .particle {
+            display: none;
+        }
+        
+        /* MOBILE TOGGLE BUTTON - EYE ICON ONLY ON RIGHT SIDE */
+        .toggle-reveal-btn {
+            position: fixed;
+            bottom: 50px;
+            right: 20px; /* Changed from center to right side */
+            left: auto; /* Reset left positioning */
+            transform: none; /* Remove centering transform */
+            padding: 16px; /* Make it bigger */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .toggle-reveal-btn span {
+            display: none; /* Hide text on mobile */
+        }
+        
+        .toggle-reveal-btn i {
+            font-size: 1.5rem; /* Make eye icon bigger */
+            margin: 0;
+        }
+        
+        .toggle-reveal-btn:hover {
+            transform: scale(1.1); /* Different hover effect for mobile */
+        }
+        
+        /* Enable normal scrolling */
+        body {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 575px) {
+        body {
+            background: var(--secondary-gradient);
+        }
+        
+        .slides-container {
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+        }
+        
+        .slide-container {
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            padding: 20px 15px;
+            margin-bottom: 10px;
+            min-height: auto !important;
+            display: block !important;
+        }
+        
+        .slide-nav-dots {
+            bottom: 15px; /* Adjusted for toggle button */
+            padding: 8px 12px;
+            max-width: 85vw;
+            border-radius: 20px;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            min-width: 10px;
+            min-height: 10px;
+            border-radius: 50%;
+        }
+        
+        .nav-dot.active {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+            min-height: 12px;
+            border-radius: 50%;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+        }
+        
+        .example-card,
+        .meaning-card,
+        .vocab-card {
+            padding: 15px;
+        }
+        
+        .navigation {
+            margin-top: 20px;
+            padding: 12px;
+        }
+        
+        .toggle-reveal-btn {
+            bottom: 50px;
+            right: 15px;
+            padding: 14px;
+            width: 56px;
+            height: 56px;
+        }
+        
+        .toggle-reveal-btn i {
+            font-size: 1.4rem;
+        }
+        
+        .slide-counter,
+        .slide-title-display {
+            display: block !important;
+            position: fixed !important;
+            z-index: 1000 !important;
+        }
+        
+        .slide-counter {
+            top: 8px;
+            left: 8px;
+            font-size: 0.65rem;
+            padding: 5px 8px;
+        }
+        
+        .slide-title-display {
+            top: 8px;
+            right: 8px;
+            font-size: 0.65rem;
+            max-width: 120px;
+            padding: 5px 8px;
+        }
+    }
+
+    /* Landscape Mode */
+    @media (max-height: 600px) and (orientation: landscape) {
+        .slide-container {
+            min-height: auto;
+            padding: 20px;
+        }
+        
+        .slide-nav-dots {
+            max-height: 60vh;
+        }
+        
+        .chinese-title {
+            font-size: clamp(1.5rem, 3vh, 2.5rem);
+            margin-bottom: 10px;
+        }
+        
+        .pinyin {
+            font-size: clamp(1rem, 2vh, 1.5rem);
+            margin-bottom: 15px;
+        }
+        
+        .english {
+            font-size: clamp(1.25rem, 2.5vh, 1.75rem);
+            margin-bottom: 20px;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .toggle-reveal-btn {
+            bottom: 10px;
+            right: 10px;
+            padding: 12px;
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    /* Print Styles */
+    @media print {
+        body {
+            background: white !important;
+            font-size: 12pt;
+        }
+        
+        .slides-container {
+            display: block;
+            padding: 0;
+            gap: 0;
+        }
+        
+        .slide-container {
+            page-break-after: always;
+            page-break-inside: avoid;
+            border-radius: 0;
+            box-shadow: none;
+            border: 1px solid #ddd;
+            margin: 0;
+            padding: 20pt;
+            min-height: auto;
+            break-inside: avoid;
+        }
+        
+        .navigation,
+        .slide-nav-dots,
+        .slide-counter,
+        .slide-title-display,
+        .particles,
+        .toggle-reveal-btn {
+            display: none !important;
+        }
+        
+        .chinese-title {
+            font-size: 24pt;
+            color: black !important;
+        }
+        
+        .pinyin {
+            font-size: 14pt;
+            color: #333 !important;
+        }
+        
+        .english {
+            font-size: 16pt;
+            color: black !important;
+        }
+        
+        .vocab-chinese {
+            font-size: 18pt;
+        }
+        
+        .vocab-pinyin {
+            font-size: 11pt;
+        }
+        
+        .vocab-english {
+            font-size: 10pt;
+        }
+        
+        a {
+            color: black !important;
+            text-decoration: none;
+        }
+        
+        @page {
+            margin: 0.5in;
+        }
+        
+        /* Always show all content when printing */
+        .vocab-card.hidden .vocab-pinyin,
+        .vocab-card.hidden .vocab-english,
+        .example-card.hidden .example-pinyin,
+        .example-card.hidden .example-english,
+        .revealable.hidden {
+            opacity: 1 !important;
+            transform: none !important;
+            height: auto !important;
+            margin: inherit !important;
+            color: inherit !important;
+            background: none !important;
+            animation: none !important;
+        }
+        
+        .vocab-card.hidden::before,
+        .example-card.hidden::before {
+            display: none !important;
+        }
+    }
+
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+        :root {
+            --text-dark: #000000;
+            --text-medium: #333333;
+            --accent-blue: #0066cc;
+            --accent-green: #008000;
+            --accent-red: #cc0000;
+        }
+        
+        .slide-container {
+            border: 2px solid #000;
+        }
+        
+        .nav-dot {
+            border: 1px solid #000;
+        }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+        
+        .nav-dot,
+        .vocab-card,
+        .example-card,
+        .nav-btn,
+        .toggle-reveal-btn {
+            transition: none !important;
+        }
+        
+        .nav-dot:hover,
+        .vocab-card:hover,
+        .example-card:hover,
+        .nav-btn:hover,
+        .toggle-reveal-btn:hover {
+            transform: none !important;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 0; }
+        }
+    }
+
+    /* DISABLE DARK MODE COMPLETELY */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            --card-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%) !important;
+            --text-dark: #2d3748 !important;
+            --text-medium: #4a5568 !important;
+            --text-light: #718096 !important;
+        }
+        
+        body {
+            background: var(--primary-gradient) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .slide-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .character-breakdown {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%) !important;
+        }
+        
+        .usage-notes {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+        }
+        
+        .meaning-card,
+        .vocab-card {
+            background: white !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .comparison-table th {
+            background: var(--primary-gradient) !important;
+            color: white !important;
+        }
+        
+        .comparison-table td {
+            background: white !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .slide-nav-dots {
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+        
+        .slide-title-display {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .nav-dot::after {
+            background: var(--text-dark) !important;
+            color: white !important;
+        }
+    }
+
+    /* Accessibility */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Focus styles */
+    :focus-visible {
+        outline: 2px solid #667eea;
+        outline-offset: 2px;
+    }
+
+    /* Loading state */
+    .slide-container.loading {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    /* Custom scrollbar */
+    @media (min-width: 768px) {
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    }
+    
+    /* Additional fixes for normal scrolling */
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    body {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+    
+    /* Grammar-specific styles */
+    .grammar-type {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .adverb {
+        background: rgba(56, 178, 172, 0.1);
+        color: #38b2ac;
+    }
+    
+    .transition {
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+    }
+    
+    .adjective {
+        background: rgba(245, 101, 101, 0.1);
+        color: #f56565;
+    }
+    
+    .verb {
+        background: rgba(159, 122, 234, 0.1);
+        color: #9f7aea;
+    }
+    
+    .conjunction {
+        background: rgba(236, 201, 75, 0.1);
+        color: #b7791f;
+    }
+    
+    .structure-card {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-blue);
+    }
+    
+    .contrast-section {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-yellow);
+    }
+    
+    .syntax-pattern {
+        font-family: 'Courier New', monospace;
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 15px;
+        border-radius: var(--border-radius-sm);
+        margin: 15px 0;
+        font-size: 1.1rem;
+        overflow-x: auto;
+    }
+    
+    .grammar-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(15px, 2vw, 20px);
+        margin: 30px 0;
+    }
+    
+    .grammar-card {
+        background: white;
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        border-top: 4px solid transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 180px;
+    }
+    
+    .grammar-card.adverb-type {
+        border-color: var(--accent-green);
+    }
+    
+    .grammar-card.transition-type {
+        border-color: var(--accent-blue);
+    }
+    
+    .grammar-card.adjective-type {
+        border-color: var(--accent-red);
+    }
+    
+    .grammar-card.verb-type {
+        border-color: var(--accent-purple);
+    }
+    
+    .grammar-card.conjunction-type {
+        border-color: #ecc94b;
+    }
+    
+    .grammar-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .grammar-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    
+    .grammar-pinyin {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        color: var(--text-medium);
+        margin-bottom: 8px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .grammar-english {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+    
+    /* Grammar-specific reveal styles */
+    .grammar-card.hidden .grammar-pinyin,
+    .grammar-card.hidden .grammar-english {
+        opacity: 0;
+        transform: translateY(10px);
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+    
+    .grammar-card::before {
+        content: "🔍 Tap to reveal pinyin & translation";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .grammar-card.hidden:hover::before {
+        opacity: 1;
+    }
+    
+    .grammar-card.revealed::before {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+    
+    .grammar-card.revealed:hover::before {
+        opacity: 0.7;
+    }
+</style>
+</head>
+<body>
+
+<!-- Slide Navigation Dots -->
+<div class="slide-nav-dots" id="slideNavDots" aria-label="Slide navigation"></div>
+
+<!-- Single floating toggle button - MODIFIED FOR MOBILE -->
+<button class="toggle-reveal-btn" id="toggleRevealBtn" aria-label="Toggle all answers">
+    <i class="fas fa-eye"></i>
+    <span>Show All Answers</span>
+</button>
+
+<!-- Slide counter -->
+<div class="slide-counter" id="slideCounter" aria-live="polite">Slide 1 of 21</div>
+
+<!-- Current slide title display -->
+<div class="slide-title-display" id="slideTitleDisplay" aria-live="polite">副詞與連接詞</div>
+
+<!-- Main content -->
+<div class="slides-container">
+    <!-- Slide 1: Title Slide -->
+    <div class="slide-container" id="slide1" role="region" aria-label="Title slide">
+        <div class="particles" id="particles1" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center; padding-top: clamp(20px, 5vw, 40px);">
+                <h1 style="margin-bottom: 30px;">Chinese Grammar: Adverbs & Transitions</h1>
+                <div class="chinese-title">副詞與連接詞</div>
+                <div class="pinyin revealable" data-original="fùcí yǔ liánjiēcí">fùcí yǔ liánjiēcí</div>
+                <div class="english revealable" data-original="Adverbs and Transitions" style="margin-bottom: 60px;">Adverbs and Transitions</div>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="meaning-card">
+                        <h3 style="color: var(--accent-blue); margin-bottom: 15px;">Learning Objectives</h3>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>Master 18 essential Chinese adverbs and transitions</li>
+                            <li>Learn proper sentence structures and usage patterns</li>
+                            <li>Understand nuanced meanings and contexts</li>
+                            <li>Build complex sentence construction abilities</li>
+                            <li>Each grammar point has multiple sentence examples</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Introduction to Adverbs & Transitions -->
+    <div class="slide-container" id="slide2" role="region" aria-label="Grammar words introduction">
+        <div class="particles" id="particles2" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>18 Essential Adverbs & Transitions</h2>
+            
+            <div class="grammar-grid">
+                <div class="grammar-card adverb-type" data-word="極">
+                    <div class="grammar-chinese">極</div>
+                    <div class="grammar-pinyin">jí</div>
+                    <div class="grammar-english">Extremely</div>
+                </div>
+                <div class="grammar-card transition-type" data-word="接著">
+                    <div class="grammar-chinese">接著</div>
+                    <div class="grammar-pinyin">jiēzhe</div>
+                    <div class="grammar-english">Then/Next</div>
+                </div>
+                <div class="grammar-card transition-type" data-word="結果">
+                    <div class="grammar-chinese">結果</div>
+                    <div class="grammar-pinyin">jiéguǒ</div>
+                    <div class="grammar-english">As a result</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="立刻">
+                    <div class="grammar-chinese">立刻</div>
+                    <div class="grammar-pinyin">lìkè</div>
+                    <div class="grammar-english">Immediately</div>
+                </div>
+                <div class="grammar-card transition-type" data-word="沒想到">
+                    <div class="grammar-chinese">沒想到</div>
+                    <div class="grammar-pinyin">méi xiǎngdào</div>
+                    <div class="grammar-english">Unexpectedly</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="其實">
+                    <div class="grammar-chinese">其實</div>
+                    <div class="grammar-pinyin">qíshí</div>
+                    <div class="grammar-english">Actually</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="其中">
+                    <div class="grammar-chinese">其中</div>
+                    <div class="grammar-pinyin">qízhōng</div>
+                    <div class="grammar-english">Among them</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="完全">
+                    <div class="grammar-chinese">完全</div>
+                    <div class="grammar-pinyin">wánquán</div>
+                    <div class="grammar-english">Completely</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="相當">
+                    <div class="grammar-chinese">相當</div>
+                    <div class="grammar-pinyin">xiāngdāng</div>
+                    <div class="grammar-english">Quite/Fairly</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="一切">
+                    <div class="grammar-chinese">一切</div>
+                    <div class="grammar-pinyin">yīqiè</div>
+                    <div class="grammar-english">Everything</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="已">
+                    <div class="grammar-chinese">已</div>
+                    <div class="grammar-pinyin">yǐ</div>
+                    <div class="grammar-english">Already</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="尤其">
+                    <div class="grammar-chinese">尤其</div>
+                    <div class="grammar-pinyin">yóuqí</div>
+                    <div class="grammar-english">Especially</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="越">
+                    <div class="grammar-chinese">越</div>
+                    <div class="grammar-pinyin">yuè</div>
+                    <div class="grammar-english">The more...</div>
+                </div>
+                <div class="grammar-card adjective-type" data-word="整">
+                    <div class="grammar-chinese">整</div>
+                    <div class="grammar-pinyin">zhěng</div>
+                    <div class="grammar-english">Whole/Entire</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="正">
+                    <div class="grammar-chinese">正</div>
+                    <div class="grammar-pinyin">zhèng</div>
+                    <div class="grammar-english">Exactly/Just</div>
+                </div>
+                <div class="grammar-card conjunction-type" data-word="只要">
+                    <div class="grammar-chinese">只要</div>
+                    <div class="grammar-pinyin">zhǐyào</div>
+                    <div class="grammar-english">As long as</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="最好">
+                    <div class="grammar-chinese">最好</div>
+                    <div class="grammar-pinyin">zuìhǎo</div>
+                    <div class="grammar-english">Had better</div>
+                </div>
+                <div class="grammar-card adverb-type" data-word="同樣">
+                    <div class="grammar-chinese">同樣</div>
+                    <div class="grammar-pinyin">tóngyàng</div>
+                    <div class="grammar-english">Similarly</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card" style="margin-top: 30px;">
+                <h3>Grammar Types Overview</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="grammar-type adverb">Adverb</span>
+                        <span style="font-size: 0.875rem; color: var(--text-medium)">Modifies verbs/adjectives</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="grammar-type transition">Transition</span>
+                        <span style="font-size: 0.875rem; color: var(--text-medium)">Connects ideas</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="grammar-type adjective">Adjective</span>
+                        <span style="font-size: 0.875rem; color: var(--text-medium)">Describes nouns</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="grammar-type conjunction">Conjunction</span>
+                        <span style="font-size: 0.875rem; color: var(--text-medium)">Connects clauses</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: 極 (jí) -->
+    <div class="slide-container" id="slide3" role="region" aria-label="極 slide">
+        <div class="particles" id="particles3" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">極</div>
+                <div class="pinyin revealable" data-original="jí">jí</div>
+                <div class="english revealable" data-original="Extremely">Extremely</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "極" means "extremely" or "very." It's often used as a complement after adjectives with 得 (de) or as part of compound words. It expresses the highest degree of something.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Patterns</h3>
+                <div class="syntax-pattern">Adjective + 極了</div>
+                <div class="syntax-pattern" style="margin-top: 10px;">極 + Adjective</div>
+                <p style="margin-top: 10px;">Used to intensify adjectives to the highest degree.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="這本書好極了！">
+                    <div class="example-chinese">這本書好極了！</div>
+                    <div class="example-pinyin">Zhè běn shū hǎo jíle!</div>
+                    <div class="example-english">This book is extremely good!</div>
+                </div>
+                <div class="example-card" data-example="我餓極了。">
+                    <div class="example-chinese">我餓極了。</div>
+                    <div class="example-pinyin">Wǒ è jíle.</div>
+                    <div class="example-english">I'm extremely hungry.</div>
+                </div>
+                <div class="example-card" data-example="他極有耐心。">
+                    <div class="example-chinese">他極有耐心。</div>
+                    <div class="example-pinyin">Tā jí yǒu nàixīn.</div>
+                    <div class="example-english">He is extremely patient.</div>
+                </div>
+            </div>
+            
+            <div class="contrast-section">
+                <h3>Comparison with 非常</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>極 (jí)</strong>: More intense, often used as complement (極了), more literary<br>
+                    <strong>非常 (fēicháng)</strong>: Very, used before adjectives, more common in speech<br>
+                    Example: 極好 (extremely good) vs 非常好 (very good)<br>
+                    Note: 極了 is more common in spoken Chinese than standalone 極
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: 接著 (jiēzhe) -->
+    <div class="slide-container" id="slide4" role="region" aria-label="接著 slide">
+        <div class="particles" id="particles4" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">接著</div>
+                <div class="pinyin revealable" data-original="jiēzhe">jiēzhe</div>
+                <div class="english revealable" data-original="Then/Next/After that">Then/Next/After that</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type transition">Transition</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "接著" means "then," "next," or "after that." It's used to sequence events in time, showing what happens following a previous action. Often used in narratives and instructions.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">[First action]，接著 + [Second action]</div>
+                <p style="margin-top: 10px;">Used to show chronological sequence of events.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我先洗澡，接著看電視。">
+                    <div class="example-chinese">我先洗澡，接著看電視。</div>
+                    <div class="example-pinyin">Wǒ xiān xǐzǎo, jiēzhe kàn diànshì.</div>
+                    <div class="example-english">I'll take a shower first, then watch TV.</div>
+                </div>
+                <div class="example-card" data-example="他說完話，接著就走了。">
+                    <div class="example-chinese">他說完話，接著就走了。</div>
+                    <div class="example-pinyin">Tā shuō wán huà, jiēzhe jiù zǒu le.</div>
+                    <div class="example-english">After finishing speaking, he then left.</div>
+                </div>
+                <div class="example-card" data-example="請寫名字，接著寫電話號碼。">
+                    <div class="example-chinese">請寫名字，接著寫電話號碼。</div>
+                    <div class="example-pinyin">Qǐng xiě míngzì, jiēzhe xiě diànhuà hàomǎ.</div>
+                    <div class="example-english">Please write your name, then write your phone number.</div>
+                </div>
+            </div>
+            
+            <div class="usage-notes">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Used between two actions to show sequence<br>
+                    • Often appears after a comma in the middle of sentences<br>
+                    • Can be used at beginning of sentence: 接著，... (Then, ...)<br>
+                    • Similar to 然後 (ránhòu) but 接著 emphasizes immediate succession<br>
+                    • 著 (zhe) indicates continuous aspect
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: 結果 (jiéguǒ) -->
+    <div class="slide-container" id="slide5" role="region" aria-label="結果 slide">
+        <div class="particles" id="particles5" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">結果</div>
+                <div class="pinyin revealable" data-original="jiéguǒ">jiéguǒ</div>
+                <div class="english revealable" data-original="As a result / Outcome">As a result / Outcome</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type transition">Transition / Noun</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "結果" has two meanings: 1) As a noun: "result" or "outcome" 2) As a transition: "as a result" or "consequently." It shows the consequence or outcome of a previous action or situation.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Patterns</h3>
+                <div class="syntax-pattern">[Cause/Situation]，結果 + [Result]</div>
+                <div class="syntax-pattern" style="margin-top: 10px;">...的結果是...</div>
+                <p style="margin-top: 10px;">Used to show cause-effect relationships.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="他沒讀書，結果考試不及格。">
+                    <div class="example-chinese">他沒讀書，結果考試不及格。</div>
+                    <div class="example-pinyin">Tā méi dúshū, jiéguǒ kǎoshì bù jígé.</div>
+                    <div class="example-english">He didn't study, as a result he failed the exam.</div>
+                </div>
+                <div class="example-card" data-example="比賽的結果是我們贏了。">
+                    <div class="example-chinese">比賽的結果是我們贏了。</div>
+                    <div class="example-pinyin">Bǐsài de jiéguǒ shì wǒmen yíng le.</div>
+                    <div class="example-english">The result of the competition was that we won.</div>
+                </div>
+                <div class="example-card" data-example="我忘了帶傘，結果淋雨了。">
+                    <div class="example-chinese">我忘了帶傘，結果淋雨了。</div>
+                    <div class="example-pinyin">Wǒ wàng le dài sǎn, jiéguǒ línyǔ le.</div>
+                    <div class="example-english">I forgot to bring an umbrella, as a result I got rained on.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • As transition: Usually shows unexpected or negative results<br>
+                    • Often implies the result wasn't intended or expected<br>
+                    • Can start a sentence: 結果，他沒來 (As a result, he didn't come)<br>
+                    • As noun: Often used with 的: 學習的結果 (the result of studying)<br>
+                    • Different from 所以 (suǒyǐ) which is more neutral "therefore"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: 立刻 (lìkè) -->
+    <div class="slide-container" id="slide6" role="region" aria-label="立刻 slide">
+        <div class="particles" id="particles6" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">立刻</div>
+                <div class="pinyin revealable" data-original="lìkè">lìkè</div>
+                <div class="english revealable" data-original="Immediately / At once">Immediately / At once</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "立刻" means "immediately," "at once," or "right away." It emphasizes that an action happens without any delay after something else. More formal than 馬上 (mǎshàng).
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">立刻 + Verb</div>
+                <p style="margin-top: 10px;">Used to indicate immediate action without delay.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="聽到電話，他立刻接起來。">
+                    <div class="example-chinese">聽到電話，他立刻接起來。</div>
+                    <div class="example-pinyin">Tīng dào diànhuà, tā lìkè jiē qǐlái.</div>
+                    <div class="example-english">Hearing the phone, he answered it immediately.</div>
+                </div>
+                <div class="example-card" data-example="請立刻來辦公室。">
+                    <div class="example-chinese">請立刻來辦公室。</div>
+                    <div class="example-pinyin">Qǐng lìkè lái bàngōngshì.</div>
+                    <div class="example-english">Please come to the office immediately.</div>
+                </div>
+                <div class="example-card" data-example="醫生立刻開始治療。">
+                    <div class="example-chinese">醫生立刻開始治療。</div>
+                    <div class="example-pinyin">Yīshēng lìkè kāishǐ zhìliáo.</div>
+                    <div class="example-english">The doctor began treatment immediately.</div>
+                </div>
+            </div>
+            
+            <div class="contrast-section">
+                <h3>Comparison with 馬上</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>立刻 (lìkè)</strong>: More formal, implies immediate action without delay<br>
+                    <strong>馬上 (mǎshàng)</strong>: More common in speech, can mean "soon" or "in a moment"<br>
+                    Example: 我立刻去做 (I'll do it immediately) vs 我馬上去做 (I'll do it right away)<br>
+                    • 立刻 emphasizes no time gap at all<br>
+                    • 馬上 can have a slight delay implied<br>
+                    • In emergency situations, 立刻 is more appropriate
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: 沒想到 (méi xiǎngdào) -->
+    <div class="slide-container" id="slide7" role="region" aria-label="沒想到 slide">
+        <div class="particles" id="particles7" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">沒想到</div>
+                <div class="pinyin revealable" data-original="méi xiǎngdào">méi xiǎngdào</div>
+                <div class="english revealable" data-original="Unexpectedly / Didn't expect">Unexpectedly / Didn't expect</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type transition">Transition / Expression</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "沒想到" literally means "didn't think of" or "didn't expect." It expresses surprise or unexpectedness about something that happened. Used when reality differs from expectations.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Patterns</h3>
+                <div class="syntax-pattern">沒想到 + [Unexpected situation]</div>
+                <div class="syntax-pattern" style="margin-top: 10px;">Subject + 沒想到 + [Clause]</div>
+                <p style="margin-top: 10px;">Used to express surprise about unexpected situations.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="沒想到會在這裡遇到你。">
+                    <div class="example-chinese">沒想到會在這裡遇到你。</div>
+                    <div class="example-pinyin">Méi xiǎngdào huì zài zhèlǐ yùdào nǐ.</div>
+                    <div class="example-english">I didn't expect to meet you here.</div>
+                </div>
+                <div class="example-card" data-example="沒想到雨下得這麼大。">
+                    <div class="example-chinese">沒想到雨下得這麼大。</div>
+                    <div class="example-pinyin">Méi xiǎngdào yǔ xià de zhème dà.</div>
+                    <div class="example-english">I didn't expect it to rain this heavily.</div>
+                </div>
+                <div class="example-card" data-example="他沒想到自己會贏。">
+                    <div class="example-chinese">他沒想到自己會贏。</div>
+                    <div class="example-pinyin">Tā méi xiǎngdào zìjǐ huì yíng.</div>
+                    <div class="example-english">He didn't expect himself to win.</div>
+                </div>
+            </div>
+            
+            <div class="usage-notes">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Expresses surprise, often pleasant or unpleasant<br>
+                    • Can be used at beginning or middle of sentence<br>
+                    • Often followed by 會 (huì) or 竟然 (jìngrán - unexpectedly)<br>
+                    • Similar to 出乎意料 (chūhū yìliào) but more conversational<br>
+                    • Can be used alone: 沒想到！(I didn't expect that!)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: 其實 (qíshí) -->
+    <div class="slide-container" id="slide8" role="region" aria-label="其實 slide">
+        <div class="particles" id="particles8" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">其實</div>
+                <div class="pinyin revealable" data-original="qíshí">qíshí</div>
+                <div class="english revealable" data-original="Actually / In fact">Actually / In fact</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "其實" means "actually," "in fact," or "as a matter of fact." It's used to introduce a statement that contrasts with or corrects what was previously said or assumed.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">其實 + [True/Contrasting statement]</div>
+                <p style="margin-top: 10px;">Used to present the real or contrasting facts.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="他看起來年輕，其實已經四十歲了。">
+                    <div class="example-chinese">他看起來年輕，其實已經四十歲了。</div>
+                    <div class="example-pinyin">Tā kàn qǐlái niánqīng, qíshí yǐjīng sìshí suì le.</div>
+                    <div class="example-english">He looks young, but actually he's already forty.</div>
+                </div>
+                <div class="example-card" data-example="其實我不喜歡咖啡。">
+                    <div class="example-chinese">其實我不喜歡咖啡。</div>
+                    <div class="example-pinyin">Qíshí wǒ bù xǐhuan kāfēi.</div>
+                    <div class="example-english">Actually, I don't like coffee.</div>
+                </div>
+                <div class="example-card" data-example="大家都說難，其實很簡單。">
+                    <div class="example-chinese">大家都說難，其實很簡單。</div>
+                    <div class="example-pinyin">Dàjiā dōu shuō nán, qíshí hěn jiǎndān.</div>
+                    <div class="example-english">Everyone says it's difficult, but actually it's very simple.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Used to correct misconceptions or reveal true situations<br>
+                    • Often contrasts appearance vs reality<br>
+                    • Can soften statements or make corrections politely<br>
+                    • Position: Usually at beginning of clause, after comma<br>
+                    • Similar to 事實上 (shìshí shàng - in fact) but more conversational<br>
+                    • Not用于 questions
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: 其中 (qízhōng) -->
+    <div class="slide-container" id="slide9" role="region" aria-label="其中 slide">
+        <div class="particles" id="particles9" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">其中</div>
+                <div class="pinyin revealable" data-original="qízhōng">qízhōng</div>
+                <div class="english revealable" data-original="Among them / Of which">Among them / Of which</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb / Pronoun</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "其中" means "among them," "of which," or "in it." It refers to a part or member of a previously mentioned group. Used to specify or highlight something within a larger set.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">[Group]，其中 + [Specific part]</div>
+                <p style="margin-top: 10px;">Used to specify part of a previously mentioned group.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我有三個弟弟，其中兩個在國外。">
+                    <div class="example-chinese">我有三個弟弟，其中兩個在國外。</div>
+                    <div class="example-pinyin">Wǒ yǒu sān gè dìdi, qízhōng liǎng gè zài guówài.</div>
+                    <div class="example-english">I have three younger brothers, two of whom are abroad.</div>
+                </div>
+                <div class="example-card" data-example="這些書很有趣，其中我最喜歡這一本。">
+                    <div class="example-chinese">這些書很有趣，其中我最喜歡這一本。</div>
+                    <div class="example-pinyin">Zhèxiē shū hěn yǒuqù, qízhōng wǒ zuì xǐhuan zhè yī běn.</div>
+                    <div class="example-english">These books are interesting, among them I like this one the most.</div>
+                </div>
+                <div class="example-card" data-example="學生有二十人，其中五個來自美國。">
+                    <div class="example-chinese">學生有二十人，其中五個來自美國。</div>
+                    <div class="example-pinyin">Xuésheng yǒu èrshí rén, qízhōng wǔ gè láizì měiguó.</div>
+                    <div class="example-english">There are twenty students, five of whom are from the United States.</div>
+                </div>
+            </div>
+            
+            <div class="usage-notes">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Always refers back to a previously mentioned group<br>
+                    • Used with specific numbers or descriptions<br>
+                    • Common patterns: 其中一個 (one of them), 其中有些 (some of them)<br>
+                    • Similar to English "of which" or "among them"<br>
+                    • Often used in written and formal spoken Chinese<br>
+                    • Can be followed by 的 for possession: 其中的原因 (the reason among them)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: 完全 (wánquán) -->
+    <div class="slide-container" id="slide10" role="region" aria-label="完全 slide">
+        <div class="particles" id="particles10" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">完全</div>
+                <div class="pinyin revealable" data-original="wánquán">wánquán</div>
+                <div class="english revealable" data-original="Completely / Entirely">Completely / Entirely</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "完全" means "completely," "entirely," or "totally." It emphasizes that something is 100% true or that an action is done thoroughly. Can be used with both positive and negative statements.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">完全 + Adjective/Verb</div>
+                <p style="margin-top: 10px;">Used to emphasize totality or completeness.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我完全同意你的意見。">
+                    <div class="example-chinese">我完全同意你的意見。</div>
+                    <div class="example-pinyin">Wǒ wánquán tóngyì nǐ de yìjiàn.</div>
+                    <div class="example-english">I completely agree with your opinion.</div>
+                </div>
+                <div class="example-card" data-example="這件事我完全不知道。">
+                    <div class="example-chinese">這件事我完全不知道。</div>
+                    <div class="example-pinyin">Zhè jiàn shì wǒ wánquán bù zhīdào.</div>
+                    <div class="example-english">I don't know about this matter at all.</div>
+                </div>
+                <div class="example-card" data-example="他完全改變了想法。">
+                    <div class="example-chinese">他完全改變了想法。</div>
+                    <div class="example-pinyin">Tā wánquán gǎibiàn le xiǎngfǎ.</div>
+                    <div class="example-english">He completely changed his mind.</div>
+                </div>
+            </div>
+            
+            <div class="contrast-section">
+                <h3>Comparison with 全部</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>完全 (wánquán)</strong>: Adverb, modifies verbs/adjectives, means "completely"<br>
+                    <strong>全部 (quánbù)</strong>: Adjective/pronoun, modifies nouns, means "all" or "entire"<br>
+                    Example: 我完全明白 (I completely understand) vs 全部的人都來了 (All the people came)<br>
+                    • 完全 emphasizes degree or extent<br>
+                    • 全部 emphasizes quantity or entirety of group<br>
+                    • 完全 can be used with negative: 完全不懂 (don't understand at all)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: 相當 (xiāngdāng) -->
+    <div class="slide-container" id="slide11" role="region" aria-label="相當 slide">
+        <div class="particles" id="particles11" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">相當</div>
+                <div class="pinyin revealable" data-original="xiāngdāng">xiāngdāng</div>
+                <div class="english revealable" data-original="Quite / Fairly / Considerably">Quite / Fairly / Considerably</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "相當" means "quite," "fairly," or "considerably." It indicates a significant but not extreme degree. More formal than 很 (hěn) and implies a higher degree than 有點 (yǒudiǎn - a bit).
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">相當 + Adjective</div>
+                <p style="margin-top: 10px;">Used to indicate considerable degree.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="這個問題相當困難。">
+                    <div class="example-chinese">這個問題相當困難。</div>
+                    <div class="example-pinyin">Zhège wèntí xiāngdāng kùnnan.</div>
+                    <div class="example-english">This problem is quite difficult.</div>
+                </div>
+                <div class="example-card" data-example="他中文說得相當好。">
+                    <div class="example-chinese">他中文說得相當好。</div>
+                    <div class="example-pinyin">Tā Zhōngwén shuō de xiāngdāng hǎo.</div>
+                    <div class="example-english">He speaks Chinese quite well.</div>
+                </div>
+                <div class="example-card" data-example="這家餐廳相當有名。">
+                    <div class="example-chinese">這家餐廳相當有名。</div>
+                    <div class="example-pinyin">Zhè jiā cāntīng xiāngdāng yǒumíng.</div>
+                    <div class="example-english">This restaurant is quite famous.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Indicates significant but not extreme degree<br>
+                    • More formal than 很 (hěn), less intense than 非常 (fēicháng)<br>
+                    • Often used in written Chinese and formal speech<br>
+                    • Can also mean "corresponding" or "matching" in other contexts<br>
+                    • Not usually used with negative adjectives<br>
+                    • Similar to English "considerably" or "fairly"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: 一切 (yīqiè) -->
+    <div class="slide-container" id="slide12" role="region" aria-label="一切 slide">
+        <div class="particles" id="particles12" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">一切</div>
+                <div class="pinyin revealable" data-original="yīqiè">yīqiè</div>
+                <div class="english revealable" data-original="Everything / All">Everything / All</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb / Pronoun</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "一切" means "everything," "all," or "the whole thing." It refers to all things collectively without exception. Often used in abstract or comprehensive statements.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Patterns</h3>
+                <div class="syntax-pattern">一切 + 都 + Verb</div>
+                <div class="syntax-pattern" style="margin-top: 10px;">Verb + 一切</div>
+                <p style="margin-top: 10px;">Used to refer to everything collectively.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="一切都準備好了。">
+                    <div class="example-chinese">一切都準備好了。</div>
+                    <div class="example-pinyin">Yīqiè dōu zhǔnbèi hǎo le.</div>
+                    <div class="example-english">Everything is ready.</div>
+                </div>
+                <div class="example-card" data-example="我願意為你放棄一切。">
+                    <div class="example-chinese">我願意為你放棄一切。</div>
+                    <div class="example-pinyin">Wǒ yuànyì wèi nǐ fàngqì yīqiè.</div>
+                    <div class="example-english">I'm willing to give up everything for you.</div>
+                </div>
+                <div class="example-card" data-example="感謝你做的一切。">
+                    <div class="example-chinese">感謝你做的一切。</div>
+                    <div class="example-pinyin">Gǎnxiè nǐ zuò de yīqiè.</div>
+                    <div class="example-english">Thank you for everything you've done.</div>
+                </div>
+            </div>
+            
+            <div class="usage-notes">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Refers to all things comprehensively<br>
+                    • Often used with 都 (dōu) to emphasize totality<br>
+                    • More abstract than 所有 (suǒyǒu) which can refer to specific things<br>
+                    • Common phrases: 一切順利 (everything goes smoothly), 一切正常 (everything is normal)<br>
+                    • Can be used as object: 知道一切 (know everything)<br>
+                    • Formal and comprehensive in meaning
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: 已 (yǐ) -->
+    <div class="slide-container" id="slide13" role="region" aria-label="已 slide">
+        <div class="particles" id="particles13" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">已</div>
+                <div class="pinyin revealable" data-original="yǐ">yǐ</div>
+                <div class="english revealable" data-original="Already">Already</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "已" is the formal/literary version of "已經" (yǐjīng), meaning "already." It indicates that an action has been completed or a state has been reached. Mostly used in written Chinese.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">已 + Verb/Adjective</div>
+                <p style="margin-top: 10px;">Used to indicate completion or existing state.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="時間已到。">
+                    <div class="example-chinese">時間已到。</div>
+                    <div class="example-pinyin">Shíjiān yǐ dào.</div>
+                    <div class="example-english">Time is already up.</div>
+                </div>
+                <div class="example-card" data-example="問題已解決。">
+                    <div class="example-chinese">問題已解決。</div>
+                    <div class="example-pinyin">Wèntí yǐ jiějué.</div>
+                    <div class="example-english">The problem has already been solved.</div>
+                </div>
+                <div class="example-card" data-example="他已是教授了。">
+                    <div class="example-chinese">他已是教授了。</div>
+                    <div class="example-pinyin">Tā yǐ shì jiàoshòu le.</div>
+                    <div class="example-english">He is already a professor.</div>
+                </div>
+            </div>
+            
+            <div class="contrast-section">
+                <h3>Comparison with 已經</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>已 (yǐ)</strong>: Formal, written Chinese, concise<br>
+                    <strong>已經 (yǐjīng)</strong>: Common in both spoken and written Chinese<br>
+                    Example: 已通知 (already notified - formal) vs 已經通知了 (already notified - common)<br>
+                    • 已 is often used in announcements, signs, formal documents<br>
+                    • 已經 is used in everyday conversation<br>
+                    • 已 usually doesn't need 了 at the end<br>
+                    • Both indicate completion of action or change of state
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: 尤其 (yóuqí) -->
+    <div class="slide-container" id="slide14" role="region" aria-label="尤其 slide">
+        <div class="particles" id="particles14" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">尤其</div>
+                <div class="pinyin revealable" data-original="yóuqí">yóuqí</div>
+                <div class="english revealable" data-original="Especially / Particularly">Especially / Particularly</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "尤其" means "especially," "particularly," or "above all." It singles out one thing as being more significant than others in a group. Used to emphasize a specific point.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">尤其 + [Emphasized element]</div>
+                <p style="margin-top: 10px;">Used to single out something for special emphasis.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我喜歡水果，尤其是蘋果。">
+                    <div class="example-chinese">我喜歡水果，尤其是蘋果。</div>
+                    <div class="example-pinyin">Wǒ xǐhuan shuǐguǒ, yóuqí shì píngguǒ.</div>
+                    <div class="example-english">I like fruits, especially apples.</div>
+                </div>
+                <div class="example-card" data-example="夏天很熱，尤其是七月。">
+                    <div class="example-chinese">夏天很熱，尤其是七月。</div>
+                    <div class="example-pinyin">Xiàtiān hěn rè, yóuqí shì qīyuè.</div>
+                    <div class="example-english">Summer is hot, especially July.</div>
+                </div>
+                <div class="example-card" data-example="他各方面都不錯，尤其英文很好。">
+                    <div class="example-chinese">他各方面都不錯，尤其英文很好。</div>
+                    <div class="example-pinyin">Tā gè fāngmiàn dōu búcuò, yóuqí Yīngwén hěn hǎo.</div>
+                    <div class="example-english">He's good in all aspects, especially English.</div>
+                </div>
+            </div>
+            
+            <div class="usage-notes">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Used to highlight something within a group<br>
+                    • Often follows a general statement<br>
+                    • Common pattern: ...，尤其是... (..., especially...)<br>
+                    • Can be used with 是: 尤其是 (especially is)<br>
+                    • Similar to 特別 (tèbié) but 尤其 is more formal<br>
+                    • Used in both spoken and written Chinese
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: 越 (yuè) -->
+    <div class="slide-container" id="slide15" role="region" aria-label="越 slide">
+        <div class="particles" id="particles15" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">越</div>
+                <div class="pinyin revealable" data-original="yuè">yuè</div>
+                <div class="english revealable" data-original="The more...">The more...</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "越" is used in the "越...越..." pattern to mean "the more... the more..." It shows a proportional relationship where one change causes another change in the same direction.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">越 + Verb/Adjective + 越 + Verb/Adjective</div>
+                <p style="margin-top: 10px;">Used to show proportional relationships.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我越學越有興趣。">
+                    <div class="example-chinese">我越學越有興趣。</div>
+                    <div class="example-pinyin">Wǒ yuè xué yuè yǒu xìngqù.</div>
+                    <div class="example-english">The more I study, the more interested I become.</div>
+                </div>
+                <div class="example-card" data-example="雨越下越大。">
+                    <div class="example-chinese">雨越下越大。</div>
+                    <div class="example-pinyin">Yǔ yuè xià yuè dà.</div>
+                    <div class="example-english">The rain keeps getting heavier.</div>
+                </div>
+                <div class="example-card" data-example="他越說越快。">
+                    <div class="example-chinese">他越說越快。</div>
+                    <div class="example-pinyin">Tā yuè shuō yuè kuài.</div>
+                    <div class="example-english">The more he talks, the faster he speaks.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Always used in pairs: 越...越...<br>
+                    • Shows proportional increase/decrease<br>
+                    • Can be used with verbs or adjectives<br>
+                    • Common patterns: 越來越好 (getting better and better), 越來越... (more and more...)<br>
+                    • 越來越 + Adj: Indicates continuous change over time<br>
+                    • The two parts usually have the same subject
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: 整 (zhěng) -->
+    <div class="slide-container" id="slide16" role="region" aria-label="整 slide">
+        <div class="particles" id="particles16" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">整</div>
+                <div class="pinyin revealable" data-original="zhěng">zhěng</div>
+                <div class="english revealable" data-original="Whole / Entire / All">Whole / Entire / All</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adjective">Adjective</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "整" means "whole," "entire," or "complete." It emphasizes the entirety of something without missing parts. Often used with measure words or time expressions.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Patterns</h3>
+                <div class="syntax-pattern">整 + Measure Word + Noun</div>
+                <div class="syntax-pattern" style="margin-top: 10px;">整 + Time Expression</div>
+                <p style="margin-top: 10px;">Used to emphasize completeness or entirety.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我整晚沒睡覺。">
+                    <div class="example-chinese">我整晚沒睡覺。</div>
+                    <div class="example-pinyin">Wǒ zhěng wǎn méi shuìjiào.</div>
+                    <div class="example-english">I didn't sleep the whole night.</div>
+                </div>
+                <div class="example-card" data-example="他吃了整塊蛋糕。">
+                    <div class="example-chinese">他吃了整塊蛋糕。</div>
+                    <div class="example-pinyin">Tā chī le zhěng kuài dàngāo.</div>
+                    <div class="example-english">He ate the whole cake.</div>
+                </div>
+                <div class="example-card" data-example="整間房子都很乾淨。">
+                    <div class="example-chinese">整間房子都很乾淨。</div>
+                    <div class="example-pinyin">Zhěng jiān fángzi dōu hěn gānjìng.</div>
+                    <div class="example-english">The whole house is clean.</div>
+                </div>
+            </div>
+            
+            <div class="contrast-section">
+                <h3>Comparison with 全</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>整 (zhěng)</strong>: Emphasizes wholeness, completeness, often with time/measure words<br>
+                    <strong>全 (quán)</strong>: Emphasizes entirety of group, "all" or "entire"<br>
+                    Example: 整年 (the whole year) vs 全年 (the entire year, all year)<br>
+                    • 整 often used with specific units: 整天, 整年, 整個<br>
+                    • 全 used for groups: 全班 (whole class), 全國 (whole country)<br>
+                    • 整 implies "without interruption"<br>
+                    • 全 implies "including all parts"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: 正 (zhèng) -->
+    <div class="slide-container" id="slide17" role="region" aria-label="正 slide">
+        <div class="particles" id="particles17" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">正</div>
+                <div class="pinyin revealable" data-original="zhèng">zhèng</div>
+                <div class="english revealable" data-original="Exactly / Just / Right">Exactly / Just / Right</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "正" has multiple meanings: 1) "exactly," "just" (for emphasis) 2) "right now" (for ongoing action) 3) "upright," "correct." As an adverb, it often emphasizes precision or ongoing action.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Patterns</h3>
+                <div class="syntax-pattern">正 + 在 + Verb (Right now doing)</div>
+                <div class="syntax-pattern" style="margin-top: 10px;">正 + [Emphasized element]</div>
+                <p style="margin-top: 10px;">Used for emphasis or to indicate ongoing action.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我正要去吃飯。">
+                    <div class="example-chinese">我正要去吃飯。</div>
+                    <div class="example-pinyin">Wǒ zhèng yào qù chīfàn.</div>
+                    <div class="example-english">I was just about to go eat.</div>
+                </div>
+                <div class="example-card" data-example="這正是我需要的。">
+                    <div class="example-chinese">這正是我需要的。</div>
+                    <div class="example-pinyin">Zhè zhèng shì wǒ xūyào de.</div>
+                    <div class="example-english">This is exactly what I need.</div>
+                </div>
+                <div class="example-card" data-example="他正在看書。">
+                    <div class="example-chinese">他正在看書。</div>
+                    <div class="example-pinyin">Tā zhèngzài kànshū.</div>
+                    <div class="example-english">He is reading a book right now.</div>
+                </div>
+            </div>
+            
+            <div class="usage-notes">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • For ongoing action: 正在 + Verb or 正 + 在 + Verb<br>
+                    • For emphasis: 正 + 是 (exactly is)<br>
+                    • Can mean "just" as in timing: 我正想打電話給你 (I was just thinking of calling you)<br>
+                    • More formal than 在 for ongoing action<br>
+                    • Also means "correct" or "right": 正確 (zhèngquè)<br>
+                    • In time expressions: 正好 (exactly at that time)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: 只要 (zhǐyào) -->
+    <div class="slide-container" id="slide18" role="region" aria-label="只要 slide">
+        <div class="particles" id="particles18" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">只要</div>
+                <div class="pinyin revealable" data-original="zhǐyào">zhǐyào</div>
+                <div class="english revealable" data-original="As long as / Only if">As long as / Only if</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type conjunction">Conjunction</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "只要" means "as long as" or "only if." It sets a condition that, if met, will lead to a certain result. Often paired with 就 (jiù) in the second clause.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">只要 + [Condition]，就 + [Result]</div>
+                <p style="margin-top: 10px;">Used to set sufficient conditions for results.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="只要你努力，就會成功。">
+                    <div class="example-chinese">只要你努力，就會成功。</div>
+                    <div class="example-pinyin">Zhǐyào nǐ nǔlì, jiù huì chénggōng.</div>
+                    <div class="example-english">As long as you work hard, you will succeed.</div>
+                </div>
+                <div class="example-card" data-example="只要下雨，我就不出門。">
+                    <div class="example-chinese">只要下雨，我就不出門。</div>
+                    <div class="example-pinyin">Zhǐyào xià yǔ, wǒ jiù bù chūmén.</div>
+                    <div class="example-english">As long as it rains, I won't go out.</div>
+                </div>
+                <div class="example-card" data-example="只要有時間，我就看書。">
+                    <div class="example-chinese">只要有時間，我就看書。</div>
+                    <div class="example-pinyin">Zhǐyào yǒu shíjiān, wǒ jiù kànshū.</div>
+                    <div class="example-english">As long as I have time, I read books.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Sets a sufficient condition (if this, then that)<br>
+                    • Often paired with 就 in the result clause<br>
+                    • Different from 只有 (zhǐyǒu) which means "only if" (necessary condition)<br>
+                    • Can be used at beginning or middle of sentence<br>
+                    • Common in conditional statements<br>
+                    • Implies the condition is not difficult to meet
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 19: 最好 (zuìhǎo) -->
+    <div class="slide-container" id="slide19" role="region" aria-label="最好 slide">
+        <div class="particles" id="particles19" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">最好</div>
+                <div class="pinyin revealable" data-original="zuìhǎo">zuìhǎo</div>
+                <div class="english revealable" data-original="Had better / It would be best">Had better / It would be best</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "最好" means "had better" or "it would be best to." It gives strong advice or suggestions, often implying consequences if the advice isn't followed. More direct than 應該 (yīnggāi - should).
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Pattern</h3>
+                <div class="syntax-pattern">最好 + Verb/Statement</div>
+                <p style="margin-top: 10px;">Used to give strong advice or suggestions.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="你最好現在就去。">
+                    <div class="example-chinese">你最好現在就去。</div>
+                    <div class="example-pinyin">Nǐ zuìhǎo xiànzài jiù qù.</div>
+                    <div class="example-english">You'd better go right now.</div>
+                </div>
+                <div class="example-card" data-example="最好帶傘，可能會下雨。">
+                    <div class="example-chinese">最好帶傘，可能會下雨。</div>
+                    <div class="example-pinyin">Zuìhǎo dài sǎn, kěnéng huì xià yǔ.</div>
+                    <div class="example-english">You'd better bring an umbrella, it might rain.</div>
+                </div>
+                <div class="example-card" data-example="我們最好早點出發。">
+                    <div class="example-chinese">我們最好早點出發。</div>
+                    <div class="example-pinyin">Wǒmen zuìhǎo zǎodiǎn chūfā.</div>
+                    <div class="example-english">We'd better leave early.</div>
+                </div>
+            </div>
+            
+            <div class="contrast-section">
+                <h3>Comparison with 應該</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>最好 (zuìhǎo)</strong>: Strong advice, "had better," implies negative consequences if not followed<br>
+                    <strong>應該 (yīnggāi)</strong>: Should, moral obligation or general advice<br>
+                    Example: 你最好休息 (You'd better rest - strong suggestion) vs 你應該休息 (You should rest - general advice)<br>
+                    • 最好 is more urgent and direct<br>
+                    • 應該 is more about duty or what's right<br>
+                    • 最好 often implies the speaker knows best
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 20: 同樣 (tóngyàng) -->
+    <div class="slide-container" id="slide20" role="region" aria-label="同樣 slide">
+        <div class="particles" id="particles20" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">同樣</div>
+                <div class="pinyin revealable" data-original="tóngyàng">tóngyàng</div>
+                <div class="english revealable" data-original="Similarly / Likewise / Same">Similarly / Likewise / Same</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Grammar Type: <span class="grammar-type adverb">Adverb / Adjective</span></h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "同樣" means "similarly," "likewise," or "the same." It indicates that something is identical or very similar to something else previously mentioned. Used for comparisons.
+                </p>
+            </div>
+            
+            <div class="structure-card">
+                <h3>Sentence Patterns</h3>
+                <div class="syntax-pattern">同樣 + 的 + Noun</div>
+                <div class="syntax-pattern" style="margin-top: 10px;">同樣 + [Statement]</div>
+                <p style="margin-top: 10px;">Used to indicate similarity or sameness.</p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我們有同樣的問題。">
+                    <div class="example-chinese">我們有同樣的問題。</div>
+                    <div class="example-pinyin">Wǒmen yǒu tóngyàng de wèntí.</div>
+                    <div class="example-english">We have the same problem.</div>
+                </div>
+                <div class="example-card" data-example="同樣的方法可以用在這裡。">
+                    <div class="example-chinese">同樣的方法可以用在這裡。</div>
+                    <div class="example-pinyin">Tóngyàng de fāngfǎ kěyǐ yòng zài zhèlǐ.</div>
+                    <div class="example-english">The same method can be used here.</div>
+                </div>
+                <div class="example-card" data-example="他同樣喜歡運動。">
+                    <div class="example-chinese">他同樣喜歡運動。</div>
+                    <div class="example-pinyin">Tā tóngyàng xǐhuan yùndòng.</div>
+                    <div class="example-english">He similarly likes sports.</div>
+                </div>
+            </div>
+            
+            <div class="usage-notes">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    • Can be used as adjective: 同樣的 + Noun<br>
+                    • Can be used as adverb: 同樣 + Verb<br>
+                    • Emphasizes similarity or identity<br>
+                    • Common in comparisons and analogies<br>
+                    • Similar to 一樣 (yīyàng) but more formal<br>
+                    • Often used in 同樣地 (tóngyàng de - similarly) as adverb<br>
+                    • Can connect parallel ideas: 同樣，... (Similarly, ...)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 21: Complete Grammar Review Table -->
+    <div class="slide-container" id="slide21" role="region" aria-label="Complete grammar review">
+        <div class="particles" id="particles21" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Complete Grammar Review</h2>
+            
+            <div class="meaning-card">
+                <h3>All 18 Grammar Words with Examples</h3>
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Chinese</th>
+                                <th>Pinyin</th>
+                                <th>English</th>
+                                <th>Type</th>
+                                <th>Example Sentence 1</th>
+                                <th>Example Sentence 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-word="極">
+                                <td style="font-family: 'Noto Sans TC';">極</td>
+                                <td>jí</td>
+                                <td>Extremely</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>這本書好極了！</td>
+                                <td>我餓極了。</td>
+                            </tr>
+                            <tr data-word="接著">
+                                <td style="font-family: 'Noto Sans TC';">接著</td>
+                                <td>jiēzhe</td>
+                                <td>Then/Next</td>
+                                <td><span class="grammar-type transition">Transition</span></td>
+                                <td>我先洗澡，接著看電視。</td>
+                                <td>他說完話，接著就走了。</td>
+                            </tr>
+                            <tr data-word="結果">
+                                <td style="font-family: 'Noto Sans TC';">結果</td>
+                                <td>jiéguǒ</td>
+                                <td>As a result</td>
+                                <td><span class="grammar-type transition">Transition</span></td>
+                                <td>他沒讀書，結果考試不及格。</td>
+                                <td>比賽的結果是我們贏了。</td>
+                            </tr>
+                            <tr data-word="立刻">
+                                <td style="font-family: 'Noto Sans TC';">立刻</td>
+                                <td>lìkè</td>
+                                <td>Immediately</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>聽到電話，他立刻接起來。</td>
+                                <td>請立刻來辦公室。</td>
+                            </tr>
+                            <tr data-word="沒想到">
+                                <td style="font-family: 'Noto Sans TC';">沒想到</td>
+                                <td>méi xiǎngdào</td>
+                                <td>Unexpectedly</td>
+                                <td><span class="grammar-type transition">Transition</span></td>
+                                <td>沒想到會在這裡遇到你。</td>
+                                <td>沒想到雨下得這麼大。</td>
+                            </tr>
+                            <tr data-word="其實">
+                                <td style="font-family: 'Noto Sans TC';">其實</td>
+                                <td>qíshí</td>
+                                <td>Actually</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>他看起來年輕，其實已經四十歲了。</td>
+                                <td>其實我不喜歡咖啡。</td>
+                            </tr>
+                            <tr data-word="其中">
+                                <td style="font-family: 'Noto Sans TC';">其中</td>
+                                <td>qízhōng</td>
+                                <td>Among them</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>我有三個弟弟，其中兩個在國外。</td>
+                                <td>這些書很有趣，其中我最喜歡這一本。</td>
+                            </tr>
+                            <tr data-word="完全">
+                                <td style="font-family: 'Noto Sans TC';">完全</td>
+                                <td>wánquán</td>
+                                <td>Completely</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>我完全同意你的意見。</td>
+                                <td>這件事我完全不知道。</td>
+                            </tr>
+                            <tr data-word="相當">
+                                <td style="font-family: 'Noto Sans TC';">相當</td>
+                                <td>xiāngdāng</td>
+                                <td>Quite/Fairly</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>這個問題相當困難。</td>
+                                <td>他中文說得相當好。</td>
+                            </tr>
+                            <tr data-word="一切">
+                                <td style="font-family: 'Noto Sans TC';">一切</td>
+                                <td>yīqiè</td>
+                                <td>Everything</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>一切都準備好了。</td>
+                                <td>我願意為你放棄一切。</td>
+                            </tr>
+                            <tr data-word="已">
+                                <td style="font-family: 'Noto Sans TC';">已</td>
+                                <td>yǐ</td>
+                                <td>Already</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>時間已到。</td>
+                                <td>問題已解決。</td>
+                            </tr>
+                            <tr data-word="尤其">
+                                <td style="font-family: 'Noto Sans TC';">尤其</td>
+                                <td>yóuqí</td>
+                                <td>Especially</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>我喜歡水果，尤其是蘋果。</td>
+                                <td>夏天很熱，尤其是七月。</td>
+                            </tr>
+                            <tr data-word="越">
+                                <td style="font-family: 'Noto Sans TC';">越</td>
+                                <td>yuè</td>
+                                <td>The more...</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>我越學越有興趣。</td>
+                                <td>雨越下越大。</td>
+                            </tr>
+                            <tr data-word="整">
+                                <td style="font-family: 'Noto Sans TC';">整</td>
+                                <td>zhěng</td>
+                                <td>Whole/Entire</td>
+                                <td><span class="grammar-type adjective">Adjective</span></td>
+                                <td>我整晚沒睡覺。</td>
+                                <td>他吃了整塊蛋糕。</td>
+                            </tr>
+                            <tr data-word="正">
+                                <td style="font-family: 'Noto Sans TC';">正</td>
+                                <td>zhèng</td>
+                                <td>Exactly/Just</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>我正要去吃飯。</td>
+                                <td>這正是我需要的。</td>
+                            </tr>
+                            <tr data-word="只要">
+                                <td style="font-family: 'Noto Sans TC';">只要</td>
+                                <td>zhǐyào</td>
+                                <td>As long as</td>
+                                <td><span class="grammar-type conjunction">Conjunction</span></td>
+                                <td>只要你努力，就會成功。</td>
+                                <td>只要下雨，我就不出門。</td>
+                            </tr>
+                            <tr data-word="最好">
+                                <td style="font-family: 'Noto Sans TC';">最好</td>
+                                <td>zuìhǎo</td>
+                                <td>Had better</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>你最好現在就去。</td>
+                                <td>最好帶傘，可能會下雨。</td>
+                            </tr>
+                            <tr data-word="同樣">
+                                <td style="font-family: 'Noto Sans TC';">同樣</td>
+                                <td>tóngyàng</td>
+                                <td>Similarly</td>
+                                <td><span class="grammar-type adverb">Adverb</span></td>
+                                <td>我們有同樣的問題。</td>
+                                <td>同樣的方法可以用在這裡。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <div class="chinese-title">文法學習完成！</div>
+                <div class="pinyin revealable" data-original="wénfǎ xuéxí wánchéng!">wénfǎ xuéxí wánchéng!</div>
+                <div class="english revealable" data-original="Grammar Learning Complete!">Grammar Learning Complete!</div>
+                
+                <div style="max-width: 600px; margin: 30px auto;">
+                    <p style="font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--text-medium); line-height: 1.6;">
+                        恭喜！你已經學會了18個重要的中文副詞與連接詞。<br>
+                        <em>Gōngxǐ! Nǐ yǐjīng xuéhuì le 18 gè zhòngyào de Zhōngwén fùcí yǔ liánjiēcí.</em><br>
+                        Congratulations! You have learned 18 important Chinese adverbs and transitions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Simple detection for revealed elements
+    function isRevealedElement(element) {
+        return element.classList.contains('revealed');
+    }
+    
+    // Check if device is mobile/touch
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+    
+    // Initialize tooltip for a single element
+    function initializeTooltipForElement(element) {
+        if (element.dataset.tooltipInitialized) return;
+        
+        let tooltipTimer = null;
+        let isTouching = false;
+        
+        // Set timeout based on element class
+        const timeoutDuration = isRevealedElement(element) ? 500 : 1000;
+        
+        // Mouse events - for desktop
+        element.addEventListener('mouseenter', () => {
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '1');
+            
+            tooltipTimer = setTimeout(() => {
+                element.style.setProperty('--tooltip-opacity', '0');
+                tooltipTimer = null;
+            }, timeoutDuration);
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        // Touch events for mobile
+        element.addEventListener('touchstart', (e) => {
+            isTouching = true;
+            
+            // Don't show tooltip for revealed elements on mobile
+            if (isRevealedElement(element) && isTouchDevice()) {
+                return; // Skip showing tooltip for revealed elements on mobile
+            }
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '1');
+            
+            tooltipTimer = setTimeout(() => {
+                element.style.setProperty('--tooltip-opacity', '0');
+                tooltipTimer = null;
+            }, timeoutDuration);
+        });
+        
+        element.addEventListener('touchend', () => {
+            isTouching = false;
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        element.addEventListener('touchcancel', () => {
+            isTouching = false;
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        // Add click handler to hide tooltip on click
+        element.addEventListener('click', () => {
+            if (isTouching) {
+                if (tooltipTimer) {
+                    clearTimeout(tooltipTimer);
+                    tooltipTimer = null;
+                }
+                element.style.setProperty('--tooltip-opacity', '0');
+            }
+        });
+        
+        element.dataset.tooltipInitialized = 'true';
+    }
+    
+    // Get all elements that could have ::after content
+    const elementsWithTooltips = document.querySelectorAll(`
+        .chinese-title,
+        .chinese-title.hidden,
+        .chinese-title.revealed,
+        .vocab-card,
+        .vocab-card.hidden,
+        .vocab-card.revealed,
+        .grammar-card,
+        .grammar-card.hidden,
+        .grammar-card.revealed,
+        .example-card,
+        .example-card.hidden,
+        .example-card.revealed,
+        .nav-dot
+    `);
+    
+    // Initialize existing elements
+    elementsWithTooltips.forEach(initializeTooltipForElement);
+    
+    // Set up observer for dynamically added elements
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) { // Element node
+                        // Check if this element or its children need tooltips
+                        const newElements = node.querySelectorAll(`
+                            .chinese-title,
+                            .vocab-card,
+                            .grammar-card,
+                            .example-card,
+                            .nav-dot
+                        `);
+                        
+                        if (node.matches && node.matches(`
+                            .chinese-title,
+                            .vocab-card,
+                            .grammar-card,
+                            .example-card,
+                            .nav-dot
+                        `)) {
+                            initializeTooltipForElement(node);
+                        }
+                        
+                        newElements.forEach(initializeTooltipForElement);
+                    }
+                });
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    // Add CSS custom property support for all tooltip elements
+    const style = document.createElement('style');
+    style.textContent = `
+        .chinese-title::after,
+        .vocab-card::before,
+        .grammar-card::before,
+        .example-card::before,
+        .nav-dot::after {
+            opacity: var(--tooltip-opacity, 0) !important;
+            transition: opacity 0.2s ease !important;
+        }
+        
+        /* Specific styles for revealed state */
+        .chinese-title.revealed::after,
+        .vocab-card.revealed::before,
+        .grammar-card.revealed::before,
+        .example-card.revealed::before {
+            background: rgba(56, 178, 172, 0.9) !important;
+            content: "✓ Revealed" !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+    // Create floating particles for visual effect
+    function createParticles(containerId, characters) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        // Reduce particle count on mobile for performance
+        const isMobile = window.innerWidth <= 768;
+        const particleCount = isMobile ? 5 : 15;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = characters[Math.floor(Math.random() * characters.length)];
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.fontSize = `${Math.random() * 20 + 16}px`;
+            particle.style.opacity = `${Math.random() * 0.1 + 0.05}`;
+            particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+            container.appendChild(particle);
+        }
+    }
+    
+    // Characters to use for particles - grammar related characters
+    const grammarChars = ['極', '接', '著', '結', '果', '立', '刻', '沒', '想', '到', '其', '實', '中', '完', '全', '相', '當', '一', '切', '已', '尤', '越', '整', '正', '只', '要', '最', '好', '同', '樣'];
+    
+    // Create particles for each slide
+    for (let i = 1; i <= 21; i++) {
+        createParticles(`particles${i}`, grammarChars);
+    }
+    
+    // TAP TO REVEAL FUNCTIONALITY
+    function initializeTapToReveal() {
+        const toggleBtn = document.getElementById('toggleRevealBtn');
+        let allRevealed = false;
+        
+        // Get all revealable cards and elements
+        const grammarCards = document.querySelectorAll('.grammar-card');
+        const exampleCards = document.querySelectorAll('.example-card');
+        const revealableElements = document.querySelectorAll('.revealable');
+        const tableRows = document.querySelectorAll('.comparison-table tbody tr');
+        const chineseTitles = document.querySelectorAll('.chinese-title');
+        
+        // Function to hide content
+        function hideContent(element) {
+            if (element.classList.contains('grammar-card') || 
+                element.classList.contains('example-card')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+            } else if (element.classList.contains('chinese-title')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+            } else if (element.classList.contains('revealable')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+                element.textContent = '';
+            } else if (element.tagName === 'TR') {
+                element.classList.add('hidden');
+            }
+        }
+        
+        // Function to reveal content
+        function revealContent(element) {
+            if (element.classList.contains('grammar-card') || 
+                element.classList.contains('example-card')) {
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+            } else if (element.classList.contains('chinese-title')) {
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+            } else if (element.classList.contains('revealable')) {
+                const originalText = element.getAttribute('data-original');
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+                element.textContent = originalText;
+            } else if (element.tagName === 'TR') {
+                element.classList.remove('hidden');
+            }
+        }
+        
+        // Set up click handlers for Chinese titles
+        chineseTitles.forEach(title => {
+            title.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Find the container
+                const titleContainer = this.closest('div[style*="text-align: center"]') || this.parentElement;
+                
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                    
+                    // Also reveal the pinyin and english elements within the same container
+                    const allElements = Array.from(titleContainer.querySelectorAll('.pinyin.revealable, .english.revealable'));
+                    
+                    allElements.forEach(element => {
+                        const originalText = element.getAttribute('data-original');
+                        if (originalText) {
+                            element.classList.remove('hidden');
+                            element.classList.add('revealed');
+                            element.textContent = originalText;
+                        }
+                    });
+                } else {
+                    hideContent(this);
+                    
+                    // Also hide the pinyin and english elements
+                    const allElements = Array.from(titleContainer.querySelectorAll('.pinyin.revealable, .english.revealable'));
+                    allElements.forEach(element => {
+                        element.classList.add('hidden');
+                        element.classList.remove('revealed');
+                        element.textContent = '';
+                    });
+                }
+            });
+            
+            // Initialize as hidden
+            title.classList.add('hidden');
+        });
+        
+        // Set up click handlers for grammar cards
+        grammarCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            card.classList.add('hidden');
+        });
+        
+        // Set up click handlers for example cards
+        exampleCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            card.classList.add('hidden');
+        });
+        
+        // Set up click handlers for individual revealable elements (pinyin/english in titles)
+        revealableElements.forEach(element => {
+            const originalText = element.getAttribute('data-original') || element.textContent;
+            element.setAttribute('data-original', originalText);
+            
+            element.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            element.classList.add('hidden');
+        });
+        
+        // Set up click handlers for table rows
+        tableRows.forEach(row => {
+            row.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            row.classList.add('hidden');
+        });
+        
+        // Toggle button functionality
+        toggleBtn.addEventListener('click', function() {
+            allRevealed = !allRevealed;
+            
+            if (allRevealed) {
+                // Reveal all
+                grammarCards.forEach(card => revealContent(card));
+                exampleCards.forEach(card => revealContent(card));
+                revealableElements.forEach(element => revealContent(element));
+                tableRows.forEach(row => revealContent(row));
+                chineseTitles.forEach(title => revealContent(title));
+                
+                // Update button
+                toggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i><span>Hide All Answers</span>';
+                toggleBtn.classList.add('hide-mode');
+            } else {
+                // Hide all
+                grammarCards.forEach(card => hideContent(card));
+                exampleCards.forEach(card => hideContent(card));
+                revealableElements.forEach(element => hideContent(element));
+                tableRows.forEach(row => hideContent(row));
+                chineseTitles.forEach(title => hideContent(title));
+                
+                // Update button
+                toggleBtn.innerHTML = '<i class="fas fa-eye"></i><span>Show All Answers</span>';
+                toggleBtn.classList.remove('hide-mode');
+            }
+        });
+    }
+    
+    // Slide navigation functionality
+    const slideCounter = document.getElementById('slideCounter');
+    const slideTitleDisplay = document.getElementById('slideTitleDisplay');
+    const slideNavDots = document.getElementById('slideNavDots');
+    
+    let currentSlide = 1;
+    const totalSlides = 21;
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Slide titles for display
+    const slideTitles = [
+        "副詞與連接詞",
+        "18個文法詞彙",
+        "極 (jí)",
+        "接著 (jiēzhe)",
+        "結果 (jiéguǒ)",
+        "立刻 (lìkè)",
+        "沒想到 (méi xiǎngdào)",
+        "其實 (qíshí)",
+        "其中 (qízhōng)",
+        "完全 (wánquán)",
+        "相當 (xiāngdāng)",
+        "一切 (yīqiè)",
+        "已 (yǐ)",
+        "尤其 (yóuqí)",
+        "越 (yuè)",
+        "整 (zhěng)",
+        "正 (zhèng)",
+        "只要 (zhǐyào)",
+        "最好 (zuìhǎo)",
+        "同樣 (tóngyàng)",
+        "完整文法複習"
+    ];
+    
+    // Create navigation dots
+    function createNavDots() {
+        slideNavDots.innerHTML = '';
+        
+        for (let i = 1; i <= totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot';
+            dot.dataset.slide = i;
+            dot.dataset.title = slideTitles[i-1];
+            dot.setAttribute('aria-label', `Go to slide ${i}: ${slideTitles[i-1]}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            
+            const dotSpan = document.createElement('span');
+            dotSpan.className = 'sr-only';
+            dotSpan.textContent = `Slide ${i}`;
+            dot.appendChild(dotSpan);
+            
+            slideNavDots.appendChild(dot);
+        }
+    }
+    
+    // Go to specific slide
+    function goToSlide(slideNumber) {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        const targetSlide = Math.max(1, Math.min(totalSlides, slideNumber));
+        
+        // Add loading state
+        document.querySelectorAll('.slide-container')[targetSlide - 1]?.classList.add('loading');
+        
+        const targetElement = document.getElementById(`slide${targetSlide}`);
+        
+        if (targetElement) {
+            // Smooth scroll to target
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Update after scroll completes
+            setTimeout(() => {
+                currentSlide = targetSlide;
+                updateUI();
+                isScrolling = false;
+                document.querySelectorAll('.slide-container')[targetSlide - 1]?.classList.remove('loading');
+                
+                // Update URL hash without scrolling
+                history.replaceState(null, null, `#slide${targetSlide}`);
+            }, 300);
+        }
+    }
+    
+    // Update UI elements
+    function updateUI() {
+        // Update counter
+        slideCounter.textContent = `Slide ${currentSlide} of ${totalSlides}`;
+        
+        // Update title display
+        slideTitleDisplay.textContent = slideTitles[currentSlide - 1];
+        
+        // Update navigation dots
+        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+            if (index + 1 === currentSlide) {
+                dot.classList.add('active');
+                dot.setAttribute('aria-current', 'true');
+            } else {
+                dot.classList.remove('active');
+                dot.removeAttribute('aria-current');
+            }
+        });
+    }
+    
+    // Detect slide changes via scroll - BUT DON'T AUTO-JUMP
+    const observer = new IntersectionObserver((entries) => {
+        // Just update current slide indicator, don't auto-scroll
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                const slideId = entry.target.id;
+                const slideNumber = parseInt(slideId.replace('slide', ''));
+                if (!isNaN(slideNumber) && slideNumber !== currentSlide) {
+                    currentSlide = slideNumber;
+                    updateUI();
+                }
+            }
+        });
+    }, {
+        threshold: [0.3, 0.5, 0.7],
+        rootMargin: '0px 0px 0px 0px' // No margin
+    });
+    
+    // Check initial hash
+    function checkInitialHash() {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#slide')) {
+            const slideNumber = parseInt(hash.replace('#slide', ''));
+            if (!isNaN(slideNumber) && slideNumber >= 1 && slideNumber <= totalSlides) {
+                goToSlide(slideNumber);
+            }
+        }
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create navigation dots
+        createNavDots();
+        
+        // Initialize tap to reveal functionality
+        initializeTapToReveal();
+        
+        // Observe all slides
+        document.querySelectorAll('.slide-container').forEach(slide => {
+            observer.observe(slide);
+        });
+        
+        // Add keyboard navigation (optional - users can still use if they want)
+        document.addEventListener('keydown', (e) => {
+            // Don't interfere with form inputs
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            switch(e.key) {
+                case 'ArrowUp':
+                case 'ArrowLeft':
+                case 'PageUp':
+                    goToSlide(currentSlide - 1);
+                    e.preventDefault();
+                    break;
+                case 'ArrowDown':
+                case 'ArrowRight':
+                case 'PageDown':
+                case ' ':
+                    goToSlide(currentSlide + 1);
+                    e.preventDefault();
+                    break;
+                case 'Home':
+                    goToSlide(1);
+                    e.preventDefault();
+                    break;
+                case 'End':
+                    goToSlide(totalSlides);
+                    e.preventDefault();
+                    break;
+            }
+        });
+        
+        // Add navigation buttons to each slide
+        const slides = document.querySelectorAll('.slide-container');
+        slides.forEach((slide, index) => {
+            const navDiv = document.createElement('div');
+            navDiv.className = 'navigation';
+            navDiv.innerHTML = `
+                <button class="nav-btn" onclick="goToSlide(${index})" ${index === 0 ? 'disabled' : ''}>
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+                </button>
+                <div class="slide-number">Slide ${index + 1} of ${totalSlides}</div>
+                <button class="nav-btn" onclick="goToSlide(${index + 2})" ${index === totalSlides - 1 ? 'disabled' : ''}>
+                    Next <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
+            `;
+            slide.appendChild(navDiv);
+        });
+        
+        // Check for hash on load
+        checkInitialHash();
+        
+        // Initialize UI
+        updateUI();
+        
+        // Handle resize for responsive adjustments
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Recreate particles on resize for better mobile performance
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('.particles').forEach(particle => {
+                        particle.innerHTML = '';
+                    });
+                    for (let i = 1; i <= 21; i++) {
+                        createParticles(`particles${i}`, grammarChars);
+                    }
+                }
+            }, 250);
+        });
+        
+        // REMOVED: Touch swipe navigation - let users scroll normally
+        // Instead, we'll just ensure normal scrolling works
+        document.body.style.overflowY = 'auto';
+        document.documentElement.style.overflowY = 'auto';
+        
+        // Prevent any default touch behaviors that might interfere
+        document.addEventListener('touchmove', function(e) {
+            // Allow normal touch scrolling
+        }, { passive: true });
+    });
+    
+    // Expose functions to global scope for inline onclick handlers
+    window.goToSlide = goToSlide;
+    
+    // Force light mode on any system
+    function forceLightMode() {
+        // Set meta tag for color scheme
+        const meta = document.createElement('meta');
+        meta.name = 'color-scheme';
+        meta.content = 'light';
+        document.head.appendChild(meta);
+        
+        // Set CSS variables to light mode
+        document.documentElement.style.setProperty('color-scheme', 'light');
+        document.documentElement.style.setProperty('--color-scheme', 'light');
+        
+        // Force background and text colors
+        document.body.style.backgroundColor = '#f8fafc';
+        document.body.style.color = '#2d3748';
+    }
+    
+    // Call on load
+    window.addEventListener('load', forceLightMode);
+    // Also call immediately
+    forceLightMode();
+</script>
+
+</body>
+</html>

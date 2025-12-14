@@ -1,0 +1,3336 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#667eea">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Chinese Vocabulary: Academics & Subjects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <style>
+    /* (All CSS styles remain exactly the same as in your original code) */
+    /* Reset and Base */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Force light mode and prevent dark mode */
+    html, body {
+        color-scheme: light only !important;
+    }
+
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        --card-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --text-light: #718096;
+        --accent-blue: #4299e1;
+        --accent-green: #38b2ac;
+        --accent-red: #f56565;
+        --accent-purple: #9f7aea;
+        --accent-yellow: #ecc94b;
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+        --border-radius-sm: 8px;
+        --border-radius-md: 12px;
+        --border-radius-lg: 20px;
+        --spacing-xs: 8px;
+        --spacing-sm: 12px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+        --spacing-xxl: 48px;
+    }
+
+    body {
+        background: var(--primary-gradient);
+        font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* Force light colors */
+        background: var(--primary-gradient) !important;
+        color: var(--text-dark) !important;
+    }
+
+    /* Container */
+    .slides-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Slide Container */
+    .slide-container {
+        background: var(--secondary-gradient);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: var(--spacing-xl);
+        position: relative;
+        width: 100%;
+        transition: all 0.3s ease;
+        min-height: min-content;
+        scroll-margin-top: 80px;
+        /* Force light background */
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    }
+
+    /* Navigation Dots */
+    .slide-nav-dots {
+        position: fixed;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e0 transparent;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 2px;
+    }
+
+    .slide-nav-dots::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 2px;
+    }
+
+    .nav-dot {
+        width: 14px;
+        height: 14px;
+        min-width: 14px;
+        min-height: 14px;
+        border-radius: 50%;
+        background: #cbd5e0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        touch-action: manipulation;
+        flex-shrink: 0;
+    }
+
+    .nav-dot:hover,
+    .nav-dot:focus {
+        transform: scale(1.2);
+        background: #a0aec0;
+        outline: none;
+    }
+
+    .nav-dot.active {
+        background: #667eea;
+        transform: scale(1.3);
+        box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    }
+
+    .nav-dot::after {
+        content: attr(data-title);
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--text-dark);
+        color: white;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 1001;
+    }
+
+    .nav-dot:hover::after {
+        opacity: 1;
+    }
+
+    /* Typography - FIXED CENTERING */
+    .chinese-title {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(2rem, 5vw, 4.5rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        cursor: pointer;
+        position: relative;
+        display: block; /* Fixed: changed from inline-block to block */
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        width: 100%; /* Added for proper centering */
+    }
+
+    .chinese-title:hover {
+        background-color: rgba(102, 126, 234, 0.1);
+    }
+
+    .chinese-title::after {
+        content: "🔍 Tap for pinyin & translation";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin-top: 8px;
+    }
+
+    .chinese-title.hidden:hover::after {
+        opacity: 1;
+    }
+
+    .chinese-title.revealed::after {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+
+    .chinese-title.revealed:hover::after {
+        opacity: 0.7;
+    }
+
+    .pinyin {
+        font-size: clamp(1.25rem, 2.5vw, 2rem);
+        color: var(--text-medium);
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 500;
+        line-height: 1.3;
+        width: 100%; /* Added for proper centering */
+        display: block; /* Added for proper centering */
+    }
+
+    .english {
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 600;
+        line-height: 1.3;
+        width: 100%; /* Added for proper centering */
+        display: block; /* Added for proper centering */
+    }
+
+    /* Cards and Sections */
+    .character-breakdown {
+        background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: var(--border-radius-md);
+        margin: 20px auto;
+        width: 100%;
+        max-width: 90%;
+        border-left: 5px solid var(--accent-green);
+    }
+
+    .meaning-card {
+        background: white;
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+        margin: 15px 0;
+        border-top: 4px solid var(--accent-blue);
+    }
+
+    .example-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: clamp(15px, 2.5vw, 25px);
+        margin: 30px 0;
+    }
+
+    .example-card {
+        background: var(--card-gradient);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        position: relative;
+        transition: transform 0.2s ease;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .example-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .example-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+        color: var(--text-dark);
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .example-pinyin {
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        color: var(--text-medium);
+        margin-bottom: 10px;
+        font-style: italic;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .example-english {
+        font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+        color: var(--text-dark);
+        line-height: 1.4;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .usage-notes {
+        background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-red);
+    }
+
+    /* Vocabulary Grid */
+    .vocab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: clamp(15px, 2vw, 20px);
+        margin: 30px 0;
+    }
+
+    .vocab-card {
+        background: white;
+        padding: clamp(15px, 2.5vw, 25px);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 150px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .vocab-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .vocab-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .vocab-pinyin {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        color: var(--text-medium);
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .vocab-english {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* TAP TO REVEAL STYLES - MODIFIED FOR WHOLE CARD TAPPING */
+    .vocab-card.hidden .vocab-pinyin,
+    .vocab-card.hidden .vocab-english,
+    .example-card.hidden .example-pinyin,
+    .example-card.hidden .example-english,
+    .revealable.hidden {
+        opacity: 0;
+        transform: translateY(10px);
+        height: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .vocab-card::before,
+    .example-card::before {
+        content: "🔍 Tap to reveal pinyin & translation";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(102, 126, 234, 0.9);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .vocab-card.hidden:hover::before,
+    .example-card.hidden:hover::before {
+        opacity: 1;
+    }
+
+    .vocab-card.revealed::before,
+    .example-card.revealed::before {
+        content: "✓ Revealed";
+        background: rgba(56, 178, 172, 0.9);
+        opacity: 0;
+    }
+
+    .vocab-card.revealed:hover::before,
+    .example-card.revealed:hover::before {
+        opacity: 0.7;
+    }
+
+    /* SINGLE TOGGLE BUTTON - MODIFIED FOR MOBILE */
+    .toggle-reveal-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .toggle-reveal-btn:hover {
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .toggle-reveal-btn.hide-mode {
+        background: var(--accent-red);
+        box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
+    }
+
+    .toggle-reveal-btn.hide-mode:hover {
+        box-shadow: 0 6px 20px rgba(245, 101, 101, 0.4);
+    }
+
+    /* For individual revealable elements (pinyin and english in main titles) */
+    .revealable {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .revealable.hidden {
+        background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e0 50%, #e2e8f0 75%);
+        background-size: 200% 100%;
+        animation: none; /* Removed auto-animation */
+        color: transparent !important;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    /* Only animate on hover for vocabulary review */
+    .revealable.hidden:hover {
+        animation: shimmer 1.5s infinite;
+    }
+
+    .revealable.hidden::before {
+        content: "🔍";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--text-medium);
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+
+    .revealable.revealed {
+        background: rgba(56, 178, 172, 0.1);
+        color: inherit !important;
+        animation: none;
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    /* Tables - FIXED FOR MOBILE HIDE FUNCTION */
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        margin: 30px 0;
+    }
+
+    .comparison-table th {
+        background: var(--primary-gradient);
+        color: white;
+        padding: clamp(12px, 2vw, 18px);
+        text-align: left;
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        font-weight: 600;
+    }
+
+    .comparison-table td {
+        padding: clamp(12px, 1.5vw, 16px);
+        border-bottom: 1px solid #e2e8f0;
+        font-size: clamp(0.9rem, 1.2vw, 1.125rem);
+        position: relative;
+    }
+
+    /* Make table cells revealable */
+    .comparison-table tr {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .comparison-table tr:hover {
+        background-color: #f7fafc;
+    }
+
+    /* FIXED: Mobile hide function - changed to use opacity instead of color: transparent */
+    .comparison-table tr.hidden td:nth-child(2),
+    .comparison-table tr.hidden td:nth-child(3),
+    .comparison-table tr.hidden td:nth-child(4),
+    .comparison-table tr.hidden td:nth-child(5) {
+        opacity: 0;
+        background: linear-gradient(90deg, #f7fafc 25%, #e2e8f0 50%, #f7fafc 75%);
+        background-size: 200% 100%;
+        animation: none;
+        position: relative;
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+    }
+
+    .comparison-table tr:not(.hidden) td:nth-child(2),
+    .comparison-table tr:not(.hidden) td:nth-child(3),
+    .comparison-table tr:not(.hidden) td:nth-child(4),
+    .comparison-table tr:not(.hidden) td:nth-child(5) {
+        opacity: 1;
+        height: auto;
+        padding: clamp(12px, 1.5vw, 16px);
+    }
+
+    /* Only animate on hover */
+    .comparison-table tr.hidden:hover td:nth-child(2),
+    .comparison-table tr.hidden:hover td:nth-child(3),
+    .comparison-table tr.hidden:hover td:nth-child(4),
+    .comparison-table tr.hidden:hover td:nth-child(5) {
+        animation: shimmer 1.5s infinite;
+    }
+
+    .comparison-table tr.hidden::after {
+        content: "🔍";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.5;
+        font-size: 0.8em;
+        z-index: 1;
+    }
+
+    /* Particles */
+    .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        font-family: 'Noto Sans TC', sans-serif;
+        color: rgba(102, 126, 234, 0.1);
+        font-size: clamp(16px, 2vw, 24px);
+        user-select: none;
+    }
+
+    .content-area {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        min-height: 0;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4 {
+        font-family: 'Noto Sans TC', sans-serif;
+        color: var(--text-dark);
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 4vw, 4rem);
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 3vw, 2.625rem);
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        margin-bottom: 10px;
+    }
+
+    /* Navigation */
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius-md);
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+    }
+
+    .nav-btn {
+        padding: 12px 24px;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+
+    .nav-btn:hover,
+    .nav-btn:focus {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        outline: none;
+    }
+
+    .nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .slide-number {
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+        color: var(--text-medium);
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    /* UI Elements */
+    .slide-counter {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text-dark);
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .slide-title-display {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        font-weight: 500;
+        color: var(--text-dark);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 999;
+        max-width: 250px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0,0,0,0.1);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+    /* Lists */
+    ul, ol {
+        padding-left: 20px;
+        margin: 10px 0;
+    }
+
+    li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+
+    /* Responsive Design */
+
+    /* Large Desktop */
+    @media (min-width: 1400px) {
+        .slides-container {
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-xxl);
+        }
+    }
+
+    /* Desktop */
+    @media (max-width: 1199px) {
+        .slides-container {
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-lg);
+        }
+        
+        .slide-nav-dots {
+            right: 15px;
+        }
+    }
+
+    /* Tablet */
+    @media (max-width: 991px) {
+        .slide-nav-dots {
+            position: fixed;
+            top: 50%;
+            right: 15px;
+            bottom: auto;
+            left: auto;
+            transform: translateY(-50%);
+            flex-direction: column;
+            max-height: 70vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: auto;
+            padding: 12px 10px;
+            border-radius: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e0 transparent;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar {
+            width: 3px;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 2px;
+        }
+        
+        .nav-dot::after {
+            right: 18px;
+            font-size: 11px;
+            padding: 5px 8px;
+        }
+        
+        .example-section {
+            grid-template-columns: 1fr;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .slides-container {
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+        }
+        
+        .slide-container {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            min-height: auto !important;
+            display: block !important;
+            margin-bottom: 15px;
+            scroll-margin-top: 60px;
+        }
+        
+        /* MOBILE DOTS - HORIZONTAL SCROLLABLE */
+        .slide-nav-dots {
+            position: fixed;
+            top: auto;
+            bottom: 30px; /* Moved up to avoid overlapping with toggle button */
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            flex-direction: row;
+            flex-wrap: nowrap;
+            max-height: none;
+            max-width: 90vw;
+            height: auto;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px 15px;
+            border-radius: 25px;
+            gap: 10px;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .slide-nav-dots::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+            min-height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: #cbd5e0;
+        }
+        
+        .nav-dot.active {
+            width: 14px;
+            height: 14px;
+            min-width: 14px;
+            min-height: 14px;
+            border-radius: 50%;
+            background: #667eea;
+            transform: scale(1);
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+        
+        .nav-dot:hover {
+            transform: scale(1.1);
+        }
+        
+        .nav-dot::after {
+            display: none;
+        }
+        
+        /* FIXED: Mobile slide counter and title display */
+        .slide-counter {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 0.7rem;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: block !important;
+        }
+        
+        .slide-title-display {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 0.7rem;
+            max-width: 150px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: block !important;
+        }
+        
+        .navigation {
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+        }
+        
+        .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .slide-number {
+            order: -1;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+        
+        .character-breakdown {
+            padding: var(--spacing-md);
+            max-width: 100%;
+        }
+        
+        .meaning-card {
+            padding: var(--spacing-md);
+        }
+        
+        .comparison-table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            white-space: nowrap;
+            min-width: 120px;
+        }
+        
+        .particle {
+            display: none;
+        }
+        
+        /* MOBILE TOGGLE BUTTON - EYE ICON ONLY ON RIGHT SIDE */
+        .toggle-reveal-btn {
+            position: fixed;
+            bottom: 50px;
+            right: 20px; /* Changed from center to right side */
+            left: auto; /* Reset left positioning */
+            transform: none; /* Remove centering transform */
+            padding: 16px; /* Make it bigger */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .toggle-reveal-btn span {
+            display: none; /* Hide text on mobile */
+        }
+        
+        .toggle-reveal-btn i {
+            font-size: 1.5rem; /* Make eye icon bigger */
+            margin: 0;
+        }
+        
+        .toggle-reveal-btn:hover {
+            transform: scale(1.1); /* Different hover effect for mobile */
+        }
+        
+        /* Enable normal scrolling */
+        body {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 575px) {
+        body {
+            background: var(--secondary-gradient);
+        }
+        
+        .slides-container {
+            padding: var(--spacing-xs);
+            gap: var(--spacing-xs);
+        }
+        
+        .slide-container {
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            padding: 20px 15px;
+            margin-bottom: 10px;
+            min-height: auto !important;
+            display: block !important;
+        }
+        
+        .slide-nav-dots {
+            bottom: 15px; /* Adjusted for toggle button */
+            padding: 8px 12px;
+            max-width: 85vw;
+            border-radius: 20px;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            min-width: 10px;
+            min-height: 10px;
+            border-radius: 50%;
+        }
+        
+        .nav-dot.active {
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+            min-height: 12px;
+            border-radius: 50%;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+        }
+        
+        .example-card,
+        .meaning-card,
+        .vocab-card {
+            padding: 15px;
+        }
+        
+        .navigation {
+            margin-top: 20px;
+            padding: 12px;
+        }
+        
+        .toggle-reveal-btn {
+            bottom: 50px;
+            right: 15px;
+            padding: 14px;
+            width: 56px;
+            height: 56px;
+        }
+        
+        .toggle-reveal-btn i {
+            font-size: 1.4rem;
+        }
+        
+        .slide-counter,
+        .slide-title-display {
+            display: block !important;
+            position: fixed !important;
+            z-index: 1000 !important;
+        }
+        
+        .slide-counter {
+            top: 8px;
+            left: 8px;
+            font-size: 0.65rem;
+            padding: 5px 8px;
+        }
+        
+        .slide-title-display {
+            top: 8px;
+            right: 8px;
+            font-size: 0.65rem;
+            max-width: 120px;
+            padding: 5px 8px;
+        }
+    }
+
+    /* Landscape Mode */
+    @media (max-height: 600px) and (orientation: landscape) {
+        .slide-container {
+            min-height: auto;
+            padding: 20px;
+        }
+        
+        .slide-nav-dots {
+            max-height: 60vh;
+        }
+        
+        .chinese-title {
+            font-size: clamp(1.5rem, 3vh, 2.5rem);
+            margin-bottom: 10px;
+        }
+        
+        .pinyin {
+            font-size: clamp(1rem, 2vh, 1.5rem);
+            margin-bottom: 15px;
+        }
+        
+        .english {
+            font-size: clamp(1.25rem, 2.5vh, 1.75rem);
+            margin-bottom: 20px;
+        }
+        
+        .vocab-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .toggle-reveal-btn {
+            bottom: 10px;
+            right: 10px;
+            padding: 12px;
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    /* Print Styles */
+    @media print {
+        body {
+            background: white !important;
+            font-size: 12pt;
+        }
+        
+        .slides-container {
+            display: block;
+            padding: 0;
+            gap: 0;
+        }
+        
+        .slide-container {
+            page-break-after: always;
+            page-break-inside: avoid;
+            border-radius: 0;
+            box-shadow: none;
+            border: 1px solid #ddd;
+            margin: 0;
+            padding: 20pt;
+            min-height: auto;
+            break-inside: avoid;
+        }
+        
+        .navigation,
+        .slide-nav-dots,
+        .slide-counter,
+        .slide-title-display,
+        .particles,
+        .toggle-reveal-btn {
+            display: none !important;
+        }
+        
+        .chinese-title {
+            font-size: 24pt;
+            color: black !important;
+        }
+        
+        .pinyin {
+            font-size: 14pt;
+            color: #333 !important;
+        }
+        
+        .english {
+            font-size: 16pt;
+            color: black !important;
+        }
+        
+        .vocab-chinese {
+            font-size: 18pt;
+        }
+        
+        .vocab-pinyin {
+            font-size: 11pt;
+        }
+        
+        .vocab-english {
+            font-size: 10pt;
+        }
+        
+        a {
+            color: black !important;
+            text-decoration: none;
+        }
+        
+        @page {
+            margin: 0.5in;
+        }
+        
+        /* Always show all content when printing */
+        .vocab-card.hidden .vocab-pinyin,
+        .vocab-card.hidden .vocab-english,
+        .example-card.hidden .example-pinyin,
+        .example-card.hidden .example-english,
+        .revealable.hidden {
+            opacity: 1 !important;
+            transform: none !important;
+            height: auto !important;
+            margin: inherit !important;
+            color: inherit !important;
+            background: none !important;
+            animation: none !important;
+        }
+        
+        .vocab-card.hidden::before,
+        .example-card.hidden::before {
+            display: none !important;
+        }
+    }
+
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+        :root {
+            --text-dark: #000000;
+            --text-medium: #333333;
+            --accent-blue: #0066cc;
+            --accent-green: #008000;
+            --accent-red: #cc0000;
+        }
+        
+        .slide-container {
+            border: 2px solid #000;
+        }
+        
+        .nav-dot {
+            border: 1px solid #000;
+        }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+        
+        .nav-dot,
+        .vocab-card,
+        .example-card,
+        .nav-btn,
+        .toggle-reveal-btn {
+            transition: none !important;
+        }
+        
+        .nav-dot:hover,
+        .vocab-card:hover,
+        .example-card:hover,
+        .nav-btn:hover,
+        .toggle-reveal-btn:hover {
+            transform: none !important;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 0; }
+        }
+    }
+
+    /* DISABLE DARK MODE COMPLETELY */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            --card-gradient: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%) !important;
+            --text-dark: #2d3748 !important;
+            --text-medium: #4a5568 !important;
+            --text-light: #718096 !important;
+        }
+        
+        body {
+            background: var(--primary-gradient) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .slide-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .character-breakdown {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%) !important;
+        }
+        
+        .usage-notes {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+        }
+        
+        .meaning-card,
+        .vocab-card {
+            background: white !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .comparison-table th {
+            background: var(--primary-gradient) !important;
+            color: white !important;
+        }
+        
+        .comparison-table td {
+            background: white !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .slide-nav-dots {
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+        
+        .slide-title-display {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: var(--text-dark) !important;
+        }
+        
+        .navigation {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .nav-dot::after {
+            background: var(--text-dark) !important;
+            color: white !important;
+        }
+    }
+
+    /* Accessibility */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Focus styles */
+    :focus-visible {
+        outline: 2px solid #667eea;
+        outline-offset: 2px;
+    }
+
+    /* Loading state */
+    .slide-container.loading {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    /* Custom scrollbar */
+    @media (min-width: 768px) {
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    }
+    
+    /* Additional fixes for normal scrolling */
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    body {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+    
+    /* Emotion-specific styles */
+    .emotion-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin: 25px 0;
+    }
+    
+    .emotion-card {
+        background: white;
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: all 0.3s ease;
+        border-top: 4px solid;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .emotion-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .emotion-card.positive {
+        border-color: var(--accent-green);
+    }
+    
+    .emotion-card.negative {
+        border-color: var(--accent-red);
+    }
+    
+    .emotion-card.neutral {
+        border-color: var(--accent-blue);
+    }
+    
+    .emotion-card.social {
+        border-color: var(--accent-purple);
+    }
+    
+    .emotion-chinese {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    
+    .synonym-section {
+        background: linear-gradient(135deg, #e6e6ff 0%, #d6d6ff 100%);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-purple);
+    }
+    
+    .antonym-section {
+        background: linear-gradient(135deg, #ffe6e6 0%, #ffd6d6 100%);
+        padding: 20px;
+        border-radius: var(--border-radius-md);
+        margin: 20px 0;
+        border-left: 5px solid var(--accent-red);
+    }
+</style>
+</head>
+<body>
+
+<!-- Slide Navigation Dots -->
+<div class="slide-nav-dots" id="slideNavDots" aria-label="Slide navigation"></div>
+
+<!-- Single floating toggle button - MODIFIED FOR MOBILE -->
+<button class="toggle-reveal-btn" id="toggleRevealBtn" aria-label="Toggle all answers">
+    <i class="fas fa-eye"></i>
+    <span>Show All Answers</span>
+</button>
+
+<!-- Slide counter -->
+<div class="slide-counter" id="slideCounter" aria-live="polite">Slide 1 of 20</div>
+
+<!-- Current slide title display -->
+<div class="slide-title-display" id="slideTitleDisplay" aria-live="polite">學術與科目詞彙</div>
+
+<!-- Main content -->
+<div class="slides-container">
+    <!-- Slide 1: Title Slide -->
+    <div class="slide-container" id="slide1" role="region" aria-label="Title slide">
+        <div class="particles" id="particles1" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center; padding-top: clamp(20px, 5vw, 40px);">
+                <h1 style="margin-bottom: 30px;">Chinese Academics & Subjects Vocabulary</h1>
+                <div class="chinese-title">學術與科目詞彙</div>
+                <div class="pinyin revealable" data-original="xuéshù yǔ kēmù cíhuì">xuéshù yǔ kēmù cíhuì</div>
+                <div class="english revealable" data-original="Academics and Subjects Vocabulary" style="margin-bottom: 60px;">Academics and Subjects Vocabulary</div>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="meaning-card">
+                        <h3 style="color: var(--accent-blue); margin-bottom: 15px;">Learning Objectives</h3>
+                        <ul style="line-height: 1.6; padding-left: 20px;">
+                            <li>Master 20+ essential academics and subjects vocabulary words</li>
+                            <li>Learn school subjects and mathematical operations</li>
+                            <li>Understand educational levels and academic terms</li>
+                            <li>Build complete academic conversation abilities</li>
+                            <li>Each vocabulary word has at least two sentence examples</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Basic Academic Subjects Introduction -->
+    <div class="slide-container" id="slide2" role="region" aria-label="Basic academic subjects introduction">
+        <div class="particles" id="particles2" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Core Academic Subjects</h2>
+            
+            <div class="emotion-grid">
+                <div class="emotion-card positive" data-word="數學">
+                    <div class="emotion-chinese">數學</div>
+                    <div class="vocab-pinyin">shùxué</div>
+                    <div class="vocab-english">Mathematics</div>
+                </div>
+                <div class="emotion-card positive" data-word="歷史">
+                    <div class="emotion-chinese">歷史</div>
+                    <div class="vocab-pinyin">lìshǐ</div>
+                    <div class="vocab-english">History</div>
+                </div>
+                <div class="emotion-card positive" data-word="英語">
+                    <div class="emotion-chinese">英語</div>
+                    <div class="vocab-pinyin">yīngyǔ</div>
+                    <div class="vocab-english">English</div>
+                </div>
+                <div class="emotion-card positive" data-word="作文">
+                    <div class="emotion-chinese">作文</div>
+                    <div class="vocab-pinyin">zuòwén</div>
+                    <div class="vocab-english">Composition/Writing</div>
+                </div>
+                <div class="emotion-card positive" data-word="書法">
+                    <div class="emotion-chinese">書法</div>
+                    <div class="vocab-pinyin">shūfǎ</div>
+                    <div class="vocab-english">Calligraphy</div>
+                </div>
+                <div class="emotion-card positive" data-word="念書">
+                    <div class="emotion-chinese">念書/唸書</div>
+                    <div class="vocab-pinyin">niànshū</div>
+                    <div class="vocab-english">To study/read books</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Academic Categories</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Languages</strong>: 英語 (yīngyǔ), 作文 (zuòwén), 文法 (wénfǎ)</li>
+                    <li><strong>Sciences & Math</strong>: 數學 (shùxué), 加上 (jiāshàng), 減 (jiǎn)</li>
+                    <li><strong>Humanities</strong>: 歷史 (lìshǐ), 書法 (shūfǎ), 詞 (cí)</li>
+                    <li><strong>Chinese Language</strong>: 漢字 (hànzì), 詞 (cí), 文法 (wénfǎ)</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我每天都要念書。">
+                    <div class="example-chinese">我每天都要念書。</div>
+                    <div class="example-pinyin">Wǒ měitiān dōu yào niànshū.</div>
+                    <div class="example-english">I have to study every day.</div>
+                </div>
+                <div class="example-card" data-example="數學是我最喜歡的科目。">
+                    <div class="example-chinese">數學是我最喜歡的科目。</div>
+                    <div class="example-pinyin">Shùxué shì wǒ zuì xǐhuān de kēmù.</div>
+                    <div class="example-english">Mathematics is my favorite subject.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: 念書/唸書 (niànshū) -->
+    <div class="slide-container" id="slide3" role="region" aria-label="念書/唸書 slide">
+        <div class="particles" id="particles3" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">念書/唸書</div>
+                <div class="pinyin revealable" data-original="niànshū">niànshū</div>
+                <div class="english revealable" data-original="To study/read books">To study/read books</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "念書" or "唸書" combines "念/唸" (to read/study) and "書" (book). Both forms are correct - 念書 is more common in Mainland China, while 唸書 is more common in Taiwan. The character "念" shows "今" (now) over "心" (heart), meaning "to think of now in one's heart."
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="他正在圖書館念書。">
+                    <div class="example-chinese">他正在圖書館念書。</div>
+                    <div class="example-pinyin">Tā zhèngzài túshūguǎn niànshū.</div>
+                    <div class="example-english">He is studying in the library.</div>
+                </div>
+                <div class="example-card" data-example="我要好好念書才能考好試。">
+                    <div class="example-chinese">我要好好念書才能考好試。</div>
+                    <div class="example-pinyin">Wǒ yào hǎohǎo niànshū cáinéng kǎo hǎo shì.</div>
+                    <div class="example-english">I need to study hard to do well on the test.</div>
+                </div>
+                <div class="example-card" data-example="她喜歡在安靜的地方唸書。">
+                    <div class="example-chinese">她喜歡在安靜的地方唸書。</div>
+                    <div class="example-pinyin">Tā xǐhuān zài ānjìng de dìfāng niànshū.</div>
+                    <div class="example-english">She likes to study in quiet places.</div>
+                </div>
+            </div>
+            
+            <div class="synonym-section">
+                <h3>Related Vocabulary</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>學習 (xuéxí)</strong> - to learn/study</li>
+                    <li><strong>讀書 (dúshū)</strong> - to read/study (more formal)</li>
+                    <li><strong>自習 (zìxí)</strong> - self-study</li>
+                    <li><strong>複習 (fùxí)</strong> - to review/revise</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: 歷史 (lìshǐ) -->
+    <div class="slide-container" id="slide4" role="region" aria-label="歷史 slide">
+        <div class="particles" id="particles4" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">歷史</div>
+                <div class="pinyin revealable" data-original="lìshǐ">lìshǐ</div>
+                <div class="english revealable" data-original="History">History</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "歷史" combines "歷" (to experience/go through) and "史" (history/record). "歷" contains "厂" (cliff) over "秝" (grain plants in order), suggesting orderly progression through time. "史" depicts a hand holding a record, representing historical records.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我對中國歷史很感興趣。">
+                    <div class="example-chinese">我對中國歷史很感興趣。</div>
+                    <div class="example-pinyin">Wǒ duì Zhōngguó lìshǐ hěn gǎn xìngqù.</div>
+                    <div class="example-english">I'm very interested in Chinese history.</div>
+                </div>
+                <div class="example-card" data-example="歷史老師講課很有趣。">
+                    <div class="example-chinese">歷史老師講課很有趣。</div>
+                    <div class="example-pinyin">Lìshǐ lǎoshī jiǎngkè hěn yǒuqù.</div>
+                    <div class="example-english">The history teacher's lessons are very interesting.</div>
+                </div>
+                <div class="example-card" data-example="我們要從歷史中學習教訓。">
+                    <div class="example-chinese">我們要從歷史中學習教訓。</div>
+                    <div class="example-pinyin">Wǒmen yào cóng lìshǐ zhōng xuéxí jiàoxùn.</div>
+                    <div class="example-english">We need to learn lessons from history.</div>
+                </div>
+            </div>
+            
+            <div class="antonym-section">
+                <h3>Related Fields</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    <strong>地理 (dìlǐ)</strong> - geography<br>
+                    <strong>政治 (zhèngzhì)</strong> - politics<br>
+                    <strong>文化 (wénhuà)</strong> - culture<br>
+                    <strong>考古學 (kǎogǔxué)</strong> - archaeology
+                </p>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "歷史" refers to both history as an academic subject and historical events. It can be used as a noun ("學習歷史" - study history) or as an adjective ("歷史事件" - historical event). In Chinese education, history is a core subject throughout school years.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: 數學 (shùxué) -->
+    <div class="slide-container" id="slide5" role="region" aria-label="數學 slide">
+        <div class="particles" id="particles5" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">數學</div>
+                <div class="pinyin revealable" data-original="shùxué">shùxué</div>
+                <div class="english revealable" data-original="Mathematics">Mathematics</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">數</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">shù - number/count</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">學</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">xué - study/learning</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="數學是我最強的科目。">
+                    <div class="example-chinese">數學是我最強的科目。</div>
+                    <div class="example-pinyin">Shùxué shì wǒ zuì qiáng de kēmù.</div>
+                    <div class="example-english">Mathematics is my strongest subject.</div>
+                </div>
+                <div class="example-card" data-example="我們每天都有數學課。">
+                    <div class="example-chinese">我們每天都有數學課。</div>
+                    <div class="example-pinyin">Wǒmen měitiān dōu yǒu shùxué kè.</div>
+                    <div class="example-english">We have math class every day.</div>
+                </div>
+                <div class="example-card" data-example="數學作業很難。">
+                    <div class="example-chinese">數學作業很難。</div>
+                    <div class="example-pinyin">Shùxué zuòyè hěn nán.</div>
+                    <div class="example-english">The math homework is difficult.</div>
+                </div>
+            </div>
+            
+            <div class="synonym-section">
+                <h3>Synonyms & Related Terms</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>算術 (suànshù)</strong> - arithmetic</li>
+                    <li><strong>計算 (jìsuàn)</strong> - calculation/computation</li>
+                    <li><strong>幾何 (jǐhé)</strong> - geometry</li>
+                    <li><strong>代數 (dàishù)</strong> - algebra</li>
+                    <li><strong>微積分 (wēijīfēn)</strong> - calculus</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: 書法 (shūfǎ) -->
+    <div class="slide-container" id="slide6" role="region" aria-label="書法 slide">
+        <div class="particles" id="particles6" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">書法</div>
+                <div class="pinyin revealable" data-original="shūfǎ">shūfǎ</div>
+                <div class="english revealable" data-original="Calligraphy">Calligraphy</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">書</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">shū - book/writing</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">法</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">fǎ - method/law</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我爺爺的書法很漂亮。">
+                    <div class="example-chinese">我爺爺的書法很漂亮。</div>
+                    <div class="example-pinyin">Wǒ yéye de shūfǎ hěn piàoliang.</div>
+                    <div class="example-english">My grandfather's calligraphy is very beautiful.</div>
+                </div>
+                <div class="example-card" data-example="學校有書法課。">
+                    <div class="example-chinese">學校有書法課。</div>
+                    <div class="example-pinyin">Xuéxiào yǒu shūfǎ kè.</div>
+                    <div class="example-english">The school has calligraphy class.</div>
+                </div>
+                <div class="example-card" data-example="學習書法需要耐心。">
+                    <div class="example-chinese">學習書法需要耐心。</div>
+                    <div class="example-pinyin">Xuéxí shūfǎ xūyào nàixīn.</div>
+                    <div class="example-english">Learning calligraphy requires patience.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "書法" is the traditional Chinese art of writing characters with brush and ink. It's both an art form and a cultural practice. In many Chinese schools, students learn basic calligraphy to appreciate Chinese culture and improve handwriting. Different styles include 楷書 (kǎishū - regular script), 行書 (xíngshū - running script), and 草書 (cǎoshū - cursive script).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: 英語 (yīngyǔ) -->
+    <div class="slide-container" id="slide7" role="region" aria-label="英語 slide">
+        <div class="particles" id="particles7" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">英語</div>
+                <div class="pinyin revealable" data-original="yīngyǔ">yīngyǔ</div>
+                <div class="english revealable" data-original="English language">English language</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Combination</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "英語" combines "英" (England/Britain) and "語" (language). "英" originally meant "flower" but now commonly refers to England/UK. "語" means language or speech. Together they mean "English language."
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我在學習英語。">
+                    <div class="example-chinese">我在學習英語。</div>
+                    <div class="example-pinyin">Wǒ zài xuéxí yīngyǔ.</div>
+                    <div class="example-english">I am learning English.</div>
+                </div>
+                <div class="example-card" data-example="英語是全球通用的語言。">
+                    <div class="example-chinese">英語是全球通用的語言。</div>
+                    <div class="example-pinyin">Yīngyǔ shì quánqiú tōngyòng de yǔyán.</div>
+                    <div class="example-english">English is a globally used language.</div>
+                </div>
+                <div class="example-card" data-example="我的英語老師來自美國。">
+                    <div class="example-chinese">我的英語老師來自美國。</div>
+                    <div class="example-pinyin">Wǒ de yīngyǔ lǎoshī láizì Měiguó.</div>
+                    <div class="example-english">My English teacher is from the United States.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Cultural Usage</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    English is a compulsory subject in Chinese schools from elementary through high school. "英語" specifically refers to the English language, while "英文" (yīngwén) often refers to written English. Many universities require passing English proficiency tests for graduation. English education emphasizes reading and grammar, with growing focus on speaking skills.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: 作文 (zuòwén) & 文法 (wénfǎ) -->
+    <div class="slide-container" id="slide8" role="region" aria-label="作文 and 文法 slide">
+        <div class="particles" id="particles8" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Writing & Grammar</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">作文</div>
+                    <div class="pinyin revealable" data-original="zuòwén">zuòwén</div>
+                    <div class="english revealable" data-original="Composition/Writing">Composition/Writing</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="我每週要寫一篇作文。">
+                            <div class="example-chinese">我每週要寫一篇作文。</div>
+                            <div class="example-pinyin">Wǒ měi zhōu yào xiě yī piān zuòwén.</div>
+                            <div class="example-english">I have to write one composition every week.</div>
+                        </div>
+                        <div class="example-card" data-example="老師說我的作文進步了。">
+                            <div class="example-chinese">老師說我的作文進步了。</div>
+                            <div class="example-pinyin">Lǎoshī shuō wǒ de zuòwén jìnbù le.</div>
+                            <div class="example-english">The teacher said my composition has improved.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">文法</div>
+                    <div class="pinyin revealable" data-original="wénfǎ">wénfǎ</div>
+                    <div class="english revealable" data-original="Grammar">Grammar</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="英文文法很難學。">
+                            <div class="example-chinese">英文文法很難學。</div>
+                            <div class="example-pinyin">Yīngwén wénfǎ hěn nán xué.</div>
+                            <div class="example-english">English grammar is difficult to learn.</div>
+                        </div>
+                        <div class="example-card" data-example="我要複習中文文法。">
+                            <div class="example-chinese">我要複習中文文法。</div>
+                            <div class="example-pinyin">Wǒ yào fùxí Zhōngwén wénfǎ.</div>
+                            <div class="example-english">I need to review Chinese grammar.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Character Analysis</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>作文 (zuòwén)</h4>
+                        <p style="line-height: 1.6;">
+                            "作" means "to make/do" and "文" means "writing/literature." So "作文" literally means "to make writing" or "composed writing." It refers to writing assignments, essays, or compositions in school.
+                        </p>
+                    </div>
+                    <div>
+                        <h4>文法 (wénfǎ)</h4>
+                        <p style="line-height: 1.6;">
+                            "文" means "writing/language" and "法" means "method/law." So "文法" literally means "language method" or "rules of writing." It refers to grammar rules of any language.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: 漢字 (hànzì) & 詞 (cí) -->
+    <div class="slide-container" id="slide9" role="region" aria-label="漢字 and 詞 slide">
+        <div class="particles" id="particles9" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Chinese Language Components</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">漢字</div>
+                    <div class="pinyin revealable" data-original="hànzì">hànzì</div>
+                    <div class="english revealable" data-original="Chinese characters">Chinese characters</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="學習漢字需要時間。">
+                            <div class="example-chinese">學習漢字需要時間。</div>
+                            <div class="example-pinyin">Xuéxí hànzì xūyào shíjiān.</div>
+                            <div class="example-english">Learning Chinese characters takes time.</div>
+                        </div>
+                        <div class="example-card" data-example="這個漢字怎麼寫？">
+                            <div class="example-chinese">這個漢字怎麼寫？</div>
+                            <div class="example-pinyin">Zhège hànzì zěnme xiě?</div>
+                            <div class="example-english">How do you write this Chinese character?</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">詞</div>
+                    <div class="pinyin revealable" data-original="cí">cí</div>
+                    <div class="english revealable" data-original="Word/Vocabulary">Word/Vocabulary</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="我每天學五個新詞。">
+                            <div class="example-chinese">我每天學五個新詞。</div>
+                            <div class="example-pinyin">Wǒ měitiān xué wǔ gè xīn cí.</div>
+                            <div class="example-english">I learn five new words every day.</div>
+                        </div>
+                        <div class="example-card" data-example="這個詞是什麼意思？">
+                            <div class="example-chinese">這個詞是什麼意思？</div>
+                            <div class="example-pinyin">Zhège cí shì shénme yìsi?</div>
+                            <div class="example-english">What does this word mean?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Language Learning Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "漢字" refers specifically to Chinese characters used in written Chinese. "詞" refers to words or vocabulary terms, which can consist of one or more characters. For example, "學生" (student) is a 詞 made of two 漢字. Understanding both individual characters and how they combine into words is essential for learning Chinese.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Mathematical Operations -->
+    <div class="slide-container" id="slide10" role="region" aria-label="Mathematical operations slide">
+        <div class="particles" id="particles10" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Mathematical Operations</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card" data-word="加上">
+                    <div class="vocab-chinese">加上</div>
+                    <div class="vocab-pinyin">jiāshàng</div>
+                    <div class="vocab-english">Plus/Add</div>
+                </div>
+                <div class="vocab-card" data-word="減">
+                    <div class="vocab-chinese">減</div>
+                    <div class="vocab-pinyin">jiǎn</div>
+                    <div class="vocab-english">Minus/Subtract</div>
+                </div>
+                <div class="vocab-card" data-word="乘">
+                    <div class="vocab-chinese">乘</div>
+                    <div class="vocab-pinyin">chéng</div>
+                    <div class="vocab-english">Multiply</div>
+                </div>
+                <div class="vocab-card" data-word="除">
+                    <div class="vocab-chinese">除</div>
+                    <div class="vocab-pinyin">chú</div>
+                    <div class="vocab-english">Divide</div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="二加上三等於五。">
+                    <div class="example-chinese">二加上三等於五。</div>
+                    <div class="example-pinyin">Èr jiāshàng sān děngyú wǔ.</div>
+                    <div class="example-english">Two plus three equals five.</div>
+                </div>
+                <div class="example-card" data-example="十減四等於六。">
+                    <div class="example-chinese">十減四等於六。</div>
+                    <div class="example-pinyin">Shí jiǎn sì děngyú liù.</div>
+                    <div class="example-english">Ten minus four equals six.</div>
+                </div>
+                <div class="example-card" data-example="三乘四等於十二。">
+                    <div class="example-chinese">三乘四等於十二。</div>
+                    <div class="example-pinyin">Sān chéng sì děngyú shí'èr.</div>
+                    <div class="example-english">Three times four equals twelve.</div>
+                </div>
+                <div class="example-card" data-example="十二除以三等於四。">
+                    <div class="example-chinese">十二除以三等於四。</div>
+                    <div class="example-pinyin">Shí'èr chúyǐ sān děngyú sì.</div>
+                    <div class="example-english">Twelve divided by three equals four.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Mathematical Symbols</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>+</strong> : 加號 (jiāhào) or 加上 (jiāshàng)</li>
+                    <li><strong>-</strong> : 減號 (jiǎnhào) or 減 (jiǎn)</li>
+                    <li><strong>×</strong> : 乘號 (chénghào) or 乘 (chéng)</li>
+                    <li><strong>÷</strong> : 除號 (chúhào) or 除 (chú)</li>
+                    <li><strong>=</strong> : 等於 (děngyú)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: 加上 (jiāshàng) -->
+    <div class="slide-container" id="slide11" role="region" aria-label="加上 slide">
+        <div class="particles" id="particles11" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">加上</div>
+                <div class="pinyin revealable" data-original="jiāshàng">jiāshàng</div>
+                <div class="english revealable" data-original="Plus/Add">Plus/Add</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "加上" combines "加" (add) and "上" (up/on). "加" shows "力" (strength) and "口" (mouth), suggesting adding strength through speech or numbers. "上" means upward or addition. Together they mean "to add on" or "plus."
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="五加上七等於十二。">
+                    <div class="example-chinese">五加上七等於十二。</div>
+                    <div class="example-pinyin">Wǔ jiāshàng qī děngyú shí'èr.</div>
+                    <div class="example-english">Five plus seven equals twelve.</div>
+                </div>
+                <div class="example-card" data-example="加上運費總共一百元。">
+                    <div class="example-chinese">加上運費總共一百元。</div>
+                    <div class="example-pinyin">Jiāshàng yùnfèi zǒnggòng yībǎi yuán.</div>
+                    <div class="example-english">Including shipping fee, it's 100 yuan total.</div>
+                </div>
+                <div class="example-card" data-example="我再加上一些例子。">
+                    <div class="example-chinese">我再加上一些例子。</div>
+                    <div class="example-pinyin">Wǒ zài jiāshàng yīxiē lìzi.</div>
+                    <div class="example-english">I'll add a few more examples.</div>
+                </div>
+            </div>
+            
+            <div class="synonym-section">
+                <h3>Related Terms</h3>
+                <ul style="line-height: 1.6; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>加 (jiā)</strong> - to add (shorter form)</li>
+                    <li><strong>加法 (jiāfǎ)</strong> - addition (the operation)</li>
+                    <li><strong>增加 (zēngjiā)</strong> - to increase</li>
+                    <li><strong>附加 (fùjiā)</strong> - additional/supplementary</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Educational Levels -->
+    <div class="slide-container" id="slide12" role="region" aria-label="Educational levels slide">
+        <div class="particles" id="particles12" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Educational Levels</h2>
+            
+            <div class="vocab-grid">
+                <div class="vocab-card" data-word="國小">
+                    <div class="vocab-chinese">國小</div>
+                    <div class="vocab-pinyin">guóxiǎo</div>
+                    <div class="vocab-english">Elementary School</div>
+                </div>
+                <div class="vocab-card" data-word="中學">
+                    <div class="vocab-chinese">中學</div>
+                    <div class="vocab-pinyin">zhōngxué</div>
+                    <div class="vocab-english">Middle/High School</div>
+                </div>
+                <div class="vocab-card" data-word="學院">
+                    <div class="vocab-chinese">學院</div>
+                    <div class="vocab-pinyin">xuéyuàn</div>
+                    <div class="vocab-english">College/Institute</div>
+                </div>
+                <div class="vocab-card" data-word="大學生">
+                    <div class="vocab-chinese">大學生</div>
+                    <div class="vocab-pinyin">dàxuéshēng</div>
+                    <div class="vocab-english">University Student</div>
+                </div>
+                <div class="vocab-card" data-word="教授">
+                    <div class="vocab-chinese">教授</div>
+                    <div class="vocab-pinyin">jiàoshòu</div>
+                    <div class="vocab-english">Professor</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Education System</h3>
+                <ul style="line-height: 1.6; margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Elementary Education</strong>: 國小 (6 years, ages 6-12)</li>
+                    <li><strong>Secondary Education</strong>: 中學 (6 years: 國中 3 years + 高中 3 years)</li>
+                    <li><strong>Higher Education</strong>: 學院/大學 (college/university, 4+ years)</li>
+                    <li><strong>People</strong>: 大學生 (university student), 教授 (professor)</li>
+                </ul>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我的妹妹在國小讀書。">
+                    <div class="example-chinese">我的妹妹在國小讀書。</div>
+                    <div class="example-pinyin">Wǒ de mèimei zài guóxiǎo dúshū.</div>
+                    <div class="example-english">My younger sister studies in elementary school.</div>
+                </div>
+                <div class="example-card" data-example="王教授在大學教書。">
+                    <div class="example-chinese">王教授在大學教書。</div>
+                    <div class="example-pinyin">Wáng jiàoshòu zài dàxué jiāoshū.</div>
+                    <div class="example-english">Professor Wang teaches at the university.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: 國小 (guóxiǎo) & 中學 (zhōngxué) -->
+    <div class="slide-container" id="slide13" role="region" aria-label="國小 and 中學 slide">
+        <div class="particles" id="particles13" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Primary & Secondary Education</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">國小</div>
+                    <div class="pinyin revealable" data-original="guóxiǎo">guóxiǎo</div>
+                    <div class="english revealable" data-original="Elementary School">Elementary School</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="我兒子今年上國小一年級。">
+                            <div class="example-chinese">我兒子今年上國小一年級。</div>
+                            <div class="example-pinyin">Wǒ érzi jīnnián shàng guóxiǎo yī niánjí.</div>
+                            <div class="example-english">My son is in first grade of elementary school this year.</div>
+                        </div>
+                        <div class="example-card" data-example="國小的作業比較簡單。">
+                            <div class="example-chinese">國小的作業比較簡單。</div>
+                            <div class="example-pinyin">Guóxiǎo de zuòyè bǐjiào jiǎndān.</div>
+                            <div class="example-english">Elementary school homework is relatively simple.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">中學</div>
+                    <div class="pinyin revealable" data-original="zhōngxué">zhōngxué</div>
+                    <div class="english revealable" data-original="Middle/High School">Middle/High School</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="中學的課程比較難。">
+                            <div class="example-chinese">中學的課程比較難。</div>
+                            <div class="example-pinyin">Zhōngxué de kèchéng bǐjiào nán.</div>
+                            <div class="example-english">Middle school curriculum is more difficult.</div>
+                        </div>
+                        <div class="example-card" data-example="她明年要上中學。">
+                            <div class="example-chinese">她明年要上中學。</div>
+                            <div class="example-pinyin">Tā míngnián yào shàng zhōngxué.</div>
+                            <div class="example-english">She will enter middle school next year.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--text-dark);">國</div>
+                        <div style="font-size: clamp(0.75rem, 1vw, 0.875rem); color: var(--text-medium);">guó - country/national</div>
+                        <p style="font-size: 0.875rem; margin-top: 5px;">Refers to national/public school</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--text-dark);">小</div>
+                        <div style="font-size: clamp(0.75rem, 1vw, 0.875rem); color: var(--text-medium);">xiǎo - small</div>
+                        <p style="font-size: 0.875rem; margin-top: 5px;">Elementary level education</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--text-dark);">中</div>
+                        <div style="font-size: clamp(0.75rem, 1vw, 0.875rem); color: var(--text-medium);">zhōng - middle</div>
+                        <p style="font-size: 0.875rem; margin-top: 5px;">Secondary level education</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: 學院 (xuéyuàn) & 大學生 (dàxuéshēng) -->
+    <div class="slide-container" id="slide14" role="region" aria-label="學院 and 大學生 slide">
+        <div class="particles" id="particles14" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">學院/大學生</div>
+                <div class="pinyin revealable" data-original="xuéyuàn/dàxuéshēng">xuéyuàn/dàxuéshēng</div>
+                <div class="english revealable" data-original="College/University Student">College/University Student</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">學</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">xué - study</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">院</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">yuàn - institution</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">大</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">dà - big/university</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">生</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">shēng - student</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="我在大學讀經濟學。">
+                    <div class="example-chinese">我在大學讀經濟學。</div>
+                    <div class="example-pinyin">Wǒ zài dàxué dú jīngjìxué.</div>
+                    <div class="example-english">I study economics at university.</div>
+                </div>
+                <div class="example-card" data-example="大學生常常在圖書館學習。">
+                    <div class="example-chinese">大學生常常在圖書館學習。</div>
+                    <div class="example-pinyin">Dàxuéshēng chángcháng zài túshūguǎn xuéxí.</div>
+                    <div class="example-english">University students often study in the library.</div>
+                </div>
+                <div class="example-card" data-example="這所學院很有名。">
+                    <div class="example-chinese">這所學院很有名。</div>
+                    <div class="example-pinyin">Zhè suǒ xuéyuàn hěn yǒumíng.</div>
+                    <div class="example-english">This college is very famous.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Extended Meanings</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "學院" typically refers to colleges or specialized institutes within universities. "大學" refers to comprehensive universities. "大學生" specifically means university undergraduate students. Graduate students are called "研究生" (yánjiūshēng). The Chinese higher education system includes 本科 (běnkē - undergraduate), 碩士 (shuòshì - master's), and 博士 (bóshì - doctoral) programs.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: 教授 (jiàoshòu) -->
+    <div class="slide-container" id="slide15" role="region" aria-label="教授 slide">
+        <div class="particles" id="particles15" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">教授</div>
+                <div class="pinyin revealable" data-original="jiàoshòu">jiàoshòu</div>
+                <div class="english revealable" data-original="Professor">Professor</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Analysis</h3>
+                <p style="line-height: 1.6; margin-top: 15px;">
+                    "教授" combines "教" (teach) and "授" (impart/grant). "教" shows "孝" (filial piety) with "攵" (hand holding stick), suggesting teaching through discipline. "授" shows "手" (hand) and "受" (receive), meaning to hand over knowledge. Together they mean "professor" - one who imparts knowledge.
+                </p>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="張教授教我們中文。">
+                    <div class="example-chinese">張教授教我們中文。</div>
+                    <div class="example-pinyin">Zhāng jiàoshòu jiāo wǒmen Zhōngwén.</div>
+                    <div class="example-english">Professor Zhang teaches us Chinese.</div>
+                </div>
+                <div class="example-card" data-example="教授，我有問題想問。">
+                    <div class="example-chinese">教授，我有問題想問。</div>
+                    <div class="example-pinyin">Jiàoshòu, wǒ yǒu wèntí xiǎng wèn.</div>
+                    <div class="example-english">Professor, I have a question I'd like to ask.</div>
+                </div>
+                <div class="example-card" data-example="他是大學的資深教授。">
+                    <div class="example-chinese">他是大學的資深教授。</div>
+                    <div class="example-pinyin">Tā shì dàxué de zīshēn jiàoshòu.</div>
+                    <div class="example-english">He is a senior professor at the university.</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Notes</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "教授" is a formal title for university professors. In Chinese universities, there are different ranks: 助理教授 (zhùlǐ jiàoshòu - assistant professor), 副教授 (fùjiàoshòu - associate professor), and 教授 (jiàoshòu - full professor). It's also used as a respectful term when addressing any university teacher, similar to "professor" in English.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: 放假 (fàngjià) & 春假 (chūnjià) -->
+    <div class="slide-container" id="slide16" role="region" aria-label="放假 and 春假 slide">
+        <div class="particles" id="particles16" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>School Breaks & Holidays</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="chinese-title">放假</div>
+                    <div class="pinyin revealable" data-original="fàngjià">fàngjià</div>
+                    <div class="english revealable" data-original="To have a holiday/break">To have a holiday/break</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="我們下週開始放假。">
+                            <div class="example-chinese">我們下週開始放假。</div>
+                            <div class="example-pinyin">Wǒmen xià zhōu kāishǐ fàngjià.</div>
+                            <div class="example-english">We start our holiday next week.</div>
+                        </div>
+                        <div class="example-card" data-example="學校放假三天。">
+                            <div class="example-chinese">學校放假三天。</div>
+                            <div class="example-pinyin">Xuéxiào fàngjià sān tiān.</div>
+                            <div class="example-english">The school has a three-day break.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="chinese-title">春假</div>
+                    <div class="pinyin revealable" data-original="chūnjià">chūnjià</div>
+                    <div class="english revealable" data-original="Spring break">Spring break</div>
+                    
+                    <div class="example-section" style="margin-top: 20px;">
+                        <div class="example-card" data-example="春假我們要去旅行。">
+                            <div class="example-chinese">春假我們要去旅行。</div>
+                            <div class="example-pinyin">Chūnjià wǒmen yào qù lǚxíng.</div>
+                    <div class="example-english">We're going traveling during spring break.</div>
+                        </div>
+                        <div class="example-card" data-example="春假有兩個星期。">
+                            <div class="example-chinese">春假有兩個星期。</div>
+                            <div class="example-pinyin">Chūnjià yǒu liǎng gè xīngqī.</div>
+                            <div class="example-english">Spring break is two weeks long.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>School Calendar Notes</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <h4>放假 (fàngjià)</h4>
+                        <p style="line-height: 1.6;">
+                            Literally "release holiday." Can refer to any school break or holiday period. Common school breaks include 寒假 (hánjià - winter break), 暑假 (shǔjià - summer break), and various public holidays.
+                        </p>
+                    </div>
+                    <div>
+                        <h4>春假 (chūnjià)</h4>
+                        <p style="line-height: 1.6;">
+                            Specifically refers to spring break, usually around April. In some educational systems, this coincides with清明節 (Qīngmíng jié - Tomb Sweeping Day) holidays. Duration varies by school and region.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: 放假 (fàngjià) -->
+    <div class="slide-container" id="slide17" role="region" aria-label="放假 slide">
+        <div class="particles" id="particles17" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">放假</div>
+                <div class="pinyin revealable" data-original="fàngjià">fàngjià</div>
+                <div class="english revealable" data-original="To have a holiday/break">To have a holiday/break</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">放</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">fàng - release/let go</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">假</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">jià - holiday/vacation</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="孩子們最喜歡放假。">
+                    <div class="example-chinese">孩子們最喜歡放假。</div>
+                    <div class="example-pinyin">Háizimen zuì xǐhuān fàngjià.</div>
+                    <div class="example-english">Children like holidays the most.</div>
+                </div>
+                <div class="example-card" data-example="放假的時候可以做自己喜歡的事。">
+                    <div class="example-chinese">放假的時候可以做自己喜歡的事。</div>
+                    <div class="example-pinyin">Fàngjià de shíhòu kěyǐ zuò zìjǐ xǐhuān de shì.</div>
+                    <div class="example-english">During holidays, you can do things you like.</div>
+                </div>
+                <div class="example-card" data-example="我們什麼時候放假？">
+                    <div class="example-chinese">我們什麼時候放假？</div>
+                    <div class="example-pinyin">Wǒmen shénme shíhòu fàngjià?</div>
+                    <div class="example-english">When do we have a break?</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Cultural Significance</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    School holidays in China follow the lunar calendar for traditional festivals and the solar calendar for modern holidays. Major school breaks include summer vacation (暑假, usually July-August, about 2 months), winter vacation (寒假, around Chinese New Year, about 1 month), and various shorter breaks around national holidays.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: 春假 (chūnjià) -->
+    <div class="slide-container" id="slide18" role="region" aria-label="春假 slide">
+        <div class="particles" id="particles18" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center;">
+                <div class="chinese-title">春假</div>
+                <div class="pinyin revealable" data-original="chūnjià">chūnjià</div>
+                <div class="english revealable" data-original="Spring break">Spring break</div>
+            </div>
+            
+            <div class="character-breakdown">
+                <h3>Character Breakdown</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">春</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">chūn - spring</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'Noto Sans TC'; font-size: clamp(2rem, 5vw, 3rem); color: var(--text-dark);">假</div>
+                        <div style="font-size: clamp(0.875rem, 1.2vw, 1rem); color: var(--text-medium);">jià - holiday/vacation</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-section">
+                <div class="example-card" data-example="春假後就要考試了。">
+                    <div class="example-chinese">春假後就要考試了。</div>
+                    <div class="example-pinyin">Chūnjià hòu jiù yào kǎoshì le.</div>
+                    <div class="example-english">After spring break, we'll have exams.</div>
+                </div>
+                <div class="example-card" data-example="春假時天氣很好。">
+                    <div class="example-chinese">春假時天氣很好。</div>
+                    <div class="example-pinyin">Chūnjià shí tiānqì hěn hǎo.</div>
+                    <div class="example-english">The weather is good during spring break.</div>
+                </div>
+                <div class="example-card" data-example="你們春假有什麼計劃？">
+                    <div class="example-chinese">你們春假有什麼計劃？</div>
+                    <div class="example-pinyin">Nǐmen chūnjià yǒu shénme jìhuà?</div>
+                    <div class="example-english">What are your plans for spring break?</div>
+                </div>
+            </div>
+            
+            <div class="meaning-card">
+                <h3>Usage Context</h3>
+                <p style="line-height: 1.6; margin-top: 10px;">
+                    "春假" specifically refers to spring break in the academic calendar. It usually occurs in April and may coincide with清明節 (Qīngmíng Festival). For universities, spring break might be shorter (1 week) compared to elementary and secondary schools. Students often use this time for travel, family visits, or catching up on studies.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 19: Complete Vocabulary Review -->
+    <div class="slide-container" id="slide19" role="region" aria-label="Complete vocabulary review">
+        <div class="particles" id="particles19" aria-hidden="true"></div>
+        <div class="content-area">
+            <h2>Complete Vocabulary Review</h2>
+            
+            <div class="meaning-card">
+                <h3>All 20 Vocabulary Words with Examples</h3>
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Chinese</th>
+                                <th>Pinyin</th>
+                                <th>English</th>
+                                <th>Example Sentence 1</th>
+                                <th>Example Sentence 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-word="念書">
+                                <td style="font-family: 'Noto Sans TC';">念書/唸書</td>
+                                <td>niànshū</td>
+                                <td>To study/read books</td>
+                                <td>我每天都要念書。</td>
+                                <td>他正在圖書館念書。</td>
+                            </tr>
+                            <tr data-word="歷史">
+                                <td style="font-family: 'Noto Sans TC';">歷史</td>
+                                <td>lìshǐ</td>
+                                <td>History</td>
+                                <td>我對中國歷史很感興趣。</td>
+                                <td>歷史老師講課很有趣。</td>
+                            </tr>
+                            <tr data-word="數學">
+                                <td style="font-family: 'Noto Sans TC';">數學</td>
+                                <td>shùxué</td>
+                                <td>Mathematics</td>
+                                <td>數學是我最強的科目。</td>
+                                <td>我們每天都有數學課。</td>
+                            </tr>
+                            <tr data-word="書法">
+                                <td style="font-family: 'Noto Sans TC';">書法</td>
+                                <td>shūfǎ</td>
+                                <td>Calligraphy</td>
+                                <td>我爺爺的書法很漂亮。</td>
+                                <td>學校有書法課。</td>
+                            </tr>
+                            <tr data-word="英語">
+                                <td style="font-family: 'Noto Sans TC';">英語</td>
+                                <td>yīngyǔ</td>
+                                <td>English</td>
+                                <td>我在學習英語。</td>
+                                <td>英語是全球通用的語言。</td>
+                            </tr>
+                            <tr data-word="作文">
+                                <td style="font-family: 'Noto Sans TC';">作文</td>
+                                <td>zuòwén</td>
+                                <td>Composition/Writing</td>
+                                <td>我每週要寫一篇作文。</td>
+                                <td>老師說我的作文進步了。</td>
+                            </tr>
+                            <tr data-word="漢字">
+                                <td style="font-family: 'Noto Sans TC';">漢字</td>
+                                <td>hànzì</td>
+                                <td>Chinese characters</td>
+                                <td>學習漢字需要時間。</td>
+                                <td>這個漢字怎麼寫？</td>
+                            </tr>
+                            <tr data-word="詞">
+                                <td style="font-family: 'Noto Sans TC';">詞</td>
+                                <td>cí</td>
+                                <td>Word/Vocabulary</td>
+                                <td>我每天學五個新詞。</td>
+                                <td>這個詞是什麼意思？</td>
+                            </tr>
+                            <tr data-word="文法">
+                                <td style="font-family: 'Noto Sans TC';">文法</td>
+                                <td>wénfǎ</td>
+                                <td>Grammar</td>
+                                <td>英文文法很難學。</td>
+                                <td>我要複習中文文法。</td>
+                            </tr>
+                            <tr data-word="加上">
+                                <td style="font-family: 'Noto Sans TC';">加上</td>
+                                <td>jiāshàng</td>
+                                <td>Plus/Add</td>
+                                <td>五加上七等於十二。</td>
+                                <td>加上運費總共一百元。</td>
+                            </tr>
+                            <tr data-word="減">
+                                <td style="font-family: 'Noto Sans TC';">減</td>
+                                <td>jiǎn</td>
+                                <td>Minus/Subtract</td>
+                                <td>十減四等於六。</td>
+                                <td>我需要減去這個數字。</td>
+                            </tr>
+                            <tr data-word="乘">
+                                <td style="font-family: 'Noto Sans TC';">乘</td>
+                                <td>chéng</td>
+                                <td>Multiply</td>
+                                <td>三乘四等於十二。</td>
+                                <td>你會乘法的技巧嗎？</td>
+                            </tr>
+                            <tr data-word="除">
+                                <td style="font-family: 'Noto Sans TC';">除</td>
+                                <td>chú</td>
+                                <td>Divide</td>
+                                <td>十二除以三等於四。</td>
+                                <td>除法的概念比較難。</td>
+                            </tr>
+                            <tr data-word="國小">
+                                <td style="font-family: 'Noto Sans TC';">國小</td>
+                                <td>guóxiǎo</td>
+                                <td>Elementary School</td>
+                                <td>我的妹妹在國小讀書。</td>
+                                <td>國小的作業比較簡單。</td>
+                            </tr>
+                            <tr data-word="中學">
+                                <td style="font-family: 'Noto Sans TC';">中學</td>
+                                <td>zhōngxué</td>
+                                <td>Middle/High School</td>
+                                <td>中學的課程比較難。</td>
+                                <td>她明年要上中學。</td>
+                            </tr>
+                            <tr data-word="學院">
+                                <td style="font-family: 'Noto Sans TC';">學院</td>
+                                <td>xuéyuàn</td>
+                                <td>College/Institute</td>
+                                <td>這所學院很有名。</td>
+                                <td>他在學院學設計。</td>
+                            </tr>
+                            <tr data-word="大學生">
+                                <td style="font-family: 'Noto Sans TC';">大學生</td>
+                                <td>dàxuéshēng</td>
+                                <td>University Student</td>
+                                <td>大學生常常在圖書館學習。</td>
+                                <td>我是台灣大學的大學生。</td>
+                            </tr>
+                            <tr data-word="教授">
+                                <td style="font-family: 'Noto Sans TC';">教授</td>
+                                <td>jiàoshòu</td>
+                                <td>Professor</td>
+                                <td>張教授教我們中文。</td>
+                                <td>教授，我有問題想問。</td>
+                            </tr>
+                            <tr data-word="放假">
+                                <td style="font-family: 'Noto Sans TC';">放假</td>
+                                <td>fàngjià</td>
+                                <td>To have a holiday/break</td>
+                                <td>我們下週開始放假。</td>
+                                <td>孩子們最喜歡放假。</td>
+                            </tr>
+                            <tr data-word="春假">
+                                <td style="font-family: 'Noto Sans TC';">春假</td>
+                                <td>chūnjià</td>
+                                <td>Spring break</td>
+                                <td>春假我們要去旅行。</td>
+                                <td>春假後就要考試了。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 20: Learning Complete -->
+    <div class="slide-container" id="slide20" role="region" aria-label="Learning complete slide">
+        <div class="particles" id="particles20" aria-hidden="true"></div>
+        <div class="content-area">
+            <div style="text-align: center; padding-top: clamp(20px, 5vw, 40px);">
+                <div class="chinese-title">學習完成！</div>
+                <div class="pinyin revealable" data-original="xuéxí wánchéng!">xuéxí wánchéng!</div>
+                <div class="english revealable" data-original="Learning Complete!">Learning Complete!</div>
+                
+                <div style="max-width: 600px; margin: 30px auto;">
+                    <p style="font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--text-medium); line-height: 1.6;">
+                        恭喜！你已經學會了20個重要的中文學術與科目詞彙，每個詞都有至少兩個例句。<br>
+                        <em>Gōngxǐ! Nǐ yǐjīng xuéhuì le 20 gè zhòngyào de Zhōngwén xuéshù yǔ kēmù cíhuì, měigè cí dōu yǒu zhìshǎo liǎng gè lìjù.</em><br>
+                        Congratulations! You have learned 20 important Chinese academics and subjects vocabulary words, each with at least two example sentences.
+                    </p>
+                </div>
+                
+                <div class="meaning-card" style="max-width: 800px; margin: 30px auto;">
+                    <h3 style="color: var(--accent-green);">What You've Learned</h3>
+                    <ul style="line-height: 1.6; padding-left: 20px; margin-top: 15px;">
+                        <li>Core academic subjects: 數學, 歷史, 英語, 作文, 書法</li>
+                        <li>Chinese language components: 漢字, 詞, 文法</li>
+                        <li>Mathematical operations: 加上, 減, 乘, 除</li>
+                        <li>Educational levels: 國小, 中學, 學院, 大學生, 教授</li>
+                        <li>School breaks: 放假, 春假</li>
+                        <li>The verb for studying: 念書/唸書</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <button class="nav-btn" onclick="goToSlide(1)" style="margin: 0 10px;">
+                        <i class="fas fa-redo" aria-hidden="true"></i> Review Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Simple detection for revealed elements
+    function isRevealedElement(element) {
+        return element.classList.contains('revealed');
+    }
+    
+    // Check if device is mobile/touch
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+    
+    // Initialize tooltip for a single element
+    function initializeTooltipForElement(element) {
+        if (element.dataset.tooltipInitialized) return;
+        
+        let tooltipTimer = null;
+        let isTouching = false;
+        
+        // Set timeout based on element class
+        const timeoutDuration = isRevealedElement(element) ? 500 : 1000;
+        
+        // Mouse events - for desktop
+        element.addEventListener('mouseenter', () => {
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '1');
+            
+            tooltipTimer = setTimeout(() => {
+                element.style.setProperty('--tooltip-opacity', '0');
+                tooltipTimer = null;
+            }, timeoutDuration);
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        // Touch events for mobile
+        element.addEventListener('touchstart', (e) => {
+            isTouching = true;
+            
+            // Don't show tooltip for revealed elements on mobile
+            if (isRevealedElement(element) && isTouchDevice()) {
+                return; // Skip showing tooltip for revealed elements on mobile
+            }
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '1');
+            
+            tooltipTimer = setTimeout(() => {
+                element.style.setProperty('--tooltip-opacity', '0');
+                tooltipTimer = null;
+            }, timeoutDuration);
+        });
+        
+        element.addEventListener('touchend', () => {
+            isTouching = false;
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        element.addEventListener('touchcancel', () => {
+            isTouching = false;
+            
+            if (tooltipTimer) {
+                clearTimeout(tooltipTimer);
+                tooltipTimer = null;
+            }
+            element.style.setProperty('--tooltip-opacity', '0');
+        });
+        
+        // Add click handler to hide tooltip on click
+        element.addEventListener('click', () => {
+            if (isTouching) {
+                if (tooltipTimer) {
+                    clearTimeout(tooltipTimer);
+                    tooltipTimer = null;
+                }
+                element.style.setProperty('--tooltip-opacity', '0');
+            }
+        });
+        
+        element.dataset.tooltipInitialized = 'true';
+    }
+    
+    // Get all elements that could have ::after content
+    const elementsWithTooltips = document.querySelectorAll(`
+        .chinese-title,
+        .chinese-title.hidden,
+        .chinese-title.revealed,
+        .vocab-card,
+        .vocab-card.hidden,
+        .vocab-card.revealed,
+        .example-card,
+        .example-card.hidden,
+        .example-card.revealed,
+        .nav-dot
+    `);
+    
+    // Initialize existing elements
+    elementsWithTooltips.forEach(initializeTooltipForElement);
+    
+    // Set up observer for dynamically added elements
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) { // Element node
+                        // Check if this element or its children need tooltips
+                        const newElements = node.querySelectorAll(`
+                            .chinese-title,
+                            .vocab-card,
+                            .example-card,
+                            .nav-dot
+                        `);
+                        
+                        if (node.matches && node.matches(`
+                            .chinese-title,
+                            .vocab-card,
+                            .example-card,
+                            .nav-dot
+                        `)) {
+                            initializeTooltipForElement(node);
+                        }
+                        
+                        newElements.forEach(initializeTooltipForElement);
+                    }
+                });
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    // Add CSS custom property support for all tooltip elements
+    const style = document.createElement('style');
+    style.textContent = `
+        .chinese-title::after,
+        .vocab-card::before,
+        .example-card::before,
+        .nav-dot::after {
+            opacity: var(--tooltip-opacity, 0) !important;
+            transition: opacity 0.2s ease !important;
+        }
+        
+        /* Specific styles for revealed state */
+        .chinese-title.revealed::after,
+        .vocab-card.revealed::before,
+        .example-card.revealed::before {
+            background: rgba(56, 178, 172, 0.9) !important;
+            content: "✓ Revealed" !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+    // Create floating particles for visual effect
+    function createParticles(containerId, characters) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        // Reduce particle count on mobile for performance
+        const isMobile = window.innerWidth <= 768;
+        const particleCount = isMobile ? 5 : 15;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = characters[Math.floor(Math.random() * characters.length)];
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.fontSize = `${Math.random() * 20 + 16}px`;
+            particle.style.opacity = `${Math.random() * 0.1 + 0.05}`;
+            particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+            container.appendChild(particle);
+        }
+    }
+    
+    // Characters to use for particles - updated for academics vocabulary
+    const academicChars = ['學', '數', '歷', '英', '文', '作', '書', '法', '漢', '字', '詞', '加', '減', '乘', '除', '國', '小', '中', '教', '授', '放', '假', '春'];
+    
+    // Create particles for each slide
+    for (let i = 1; i <= 20; i++) {
+        createParticles(`particles${i}`, academicChars);
+    }
+    
+    // TAP TO REVEAL FUNCTIONALITY
+    function initializeTapToReveal() {
+        const toggleBtn = document.getElementById('toggleRevealBtn');
+        let allRevealed = false;
+        
+        // Get all revealable cards and elements
+        const vocabCards = document.querySelectorAll('.vocab-card, .emotion-card');
+        const exampleCards = document.querySelectorAll('.example-card');
+        const revealableElements = document.querySelectorAll('.revealable');
+        const tableRows = document.querySelectorAll('.comparison-table tbody tr');
+        const chineseTitles = document.querySelectorAll('.chinese-title');
+        
+        // Function to hide content
+        function hideContent(element) {
+            if (element.classList.contains('vocab-card') || 
+                element.classList.contains('emotion-card') || 
+                element.classList.contains('example-card')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+            } else if (element.classList.contains('chinese-title')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+            } else if (element.classList.contains('revealable')) {
+                element.classList.add('hidden');
+                element.classList.remove('revealed');
+                element.textContent = '';
+            } else if (element.tagName === 'TR') {
+                element.classList.add('hidden');
+            }
+        }
+        
+        // Function to reveal content
+        function revealContent(element) {
+            if (element.classList.contains('vocab-card') || 
+                element.classList.contains('emotion-card') || 
+                element.classList.contains('example-card')) {
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+            } else if (element.classList.contains('chinese-title')) {
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+            } else if (element.classList.contains('revealable')) {
+                const originalText = element.getAttribute('data-original');
+                element.classList.remove('hidden');
+                element.classList.add('revealed');
+                element.textContent = originalText;
+            } else if (element.tagName === 'TR') {
+                element.classList.remove('hidden');
+            }
+        }
+        
+        // Set up click handlers for Chinese titles
+        chineseTitles.forEach(title => {
+            title.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Find the container
+                const titleContainer = this.closest('div[style*="text-align: center"]') || this.parentElement;
+                
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                    
+                    // Also reveal the pinyin and english elements within the same container
+                    const allElements = Array.from(titleContainer.querySelectorAll('.pinyin.revealable, .english.revealable'));
+                    
+                    allElements.forEach(element => {
+                        const originalText = element.getAttribute('data-original');
+                        if (originalText) {
+                            element.classList.remove('hidden');
+                            element.classList.add('revealed');
+                            element.textContent = originalText;
+                        }
+                    });
+                } else {
+                    hideContent(this);
+                    
+                    // Also hide the pinyin and english elements
+                    const allElements = Array.from(titleContainer.querySelectorAll('.pinyin.revealable, .english.revealable'));
+                    allElements.forEach(element => {
+                        element.classList.add('hidden');
+                        element.classList.remove('revealed');
+                        element.textContent = '';
+                    });
+                }
+            });
+            
+            // Initialize as hidden
+            title.classList.add('hidden');
+        });
+        
+        // Set up click handlers for vocabulary cards
+        vocabCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            card.classList.add('hidden');
+        });
+        
+        // Set up click handlers for example cards
+        exampleCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            card.classList.add('hidden');
+        });
+        
+        // Set up click handlers for individual revealable elements (pinyin/english in titles)
+        revealableElements.forEach(element => {
+            const originalText = element.getAttribute('data-original') || element.textContent;
+            element.setAttribute('data-original', originalText);
+            
+            element.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            element.classList.add('hidden');
+        });
+        
+        // Set up click handlers for table rows
+        tableRows.forEach(row => {
+            row.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.classList.contains('hidden')) {
+                    revealContent(this);
+                } else {
+                    hideContent(this);
+                }
+            });
+            
+            // Initialize as hidden
+            row.classList.add('hidden');
+        });
+        
+        // Toggle button functionality
+        toggleBtn.addEventListener('click', function() {
+            allRevealed = !allRevealed;
+            
+            if (allRevealed) {
+                // Reveal all
+                vocabCards.forEach(card => revealContent(card));
+                exampleCards.forEach(card => revealContent(card));
+                revealableElements.forEach(element => revealContent(element));
+                tableRows.forEach(row => revealContent(row));
+                chineseTitles.forEach(title => revealContent(title));
+                
+                // Update button
+                toggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i><span>Hide All Answers</span>';
+                toggleBtn.classList.add('hide-mode');
+            } else {
+                // Hide all
+                vocabCards.forEach(card => hideContent(card));
+                exampleCards.forEach(card => hideContent(card));
+                revealableElements.forEach(element => hideContent(element));
+                tableRows.forEach(row => hideContent(row));
+                chineseTitles.forEach(title => hideContent(title));
+                
+                // Update button
+                toggleBtn.innerHTML = '<i class="fas fa-eye"></i><span>Show All Answers</span>';
+                toggleBtn.classList.remove('hide-mode');
+            }
+        });
+    }
+    
+    // Slide navigation functionality
+    const slideCounter = document.getElementById('slideCounter');
+    const slideTitleDisplay = document.getElementById('slideTitleDisplay');
+    const slideNavDots = document.getElementById('slideNavDots');
+    
+    let currentSlide = 1;
+    const totalSlides = 20;
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Slide titles for display - updated for academics vocabulary
+    const slideTitles = [
+        "學術與科目詞彙",
+        "核心學術科目",
+        "念書/唸書 (niànshū)",
+        "歷史 (lìshǐ)",
+        "數學 (shùxué)",
+        "書法 (shūfǎ)",
+        "英語 (yīngyǔ)",
+        "作文 & 文法",
+        "漢字 & 詞",
+        "數學運算",
+        "加上 (jiāshàng)",
+        "教育階段",
+        "國小 & 中學",
+        "學院 & 大學生",
+        "教授 (jiàoshòu)",
+        "放假 & 春假",
+        "放假 (fàngjià)",
+        "春假 (chūnjià)",
+        "完整詞彙複習",
+        "學習完成"
+    ];
+    
+    // Create navigation dots
+    function createNavDots() {
+        slideNavDots.innerHTML = '';
+        
+        for (let i = 1; i <= totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot';
+            dot.dataset.slide = i;
+            dot.dataset.title = slideTitles[i-1];
+            dot.setAttribute('aria-label', `Go to slide ${i}: ${slideTitles[i-1]}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            
+            const dotSpan = document.createElement('span');
+            dotSpan.className = 'sr-only';
+            dotSpan.textContent = `Slide ${i}`;
+            dot.appendChild(dotSpan);
+            
+            slideNavDots.appendChild(dot);
+        }
+    }
+    
+    // Go to specific slide
+    function goToSlide(slideNumber) {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        const targetSlide = Math.max(1, Math.min(totalSlides, slideNumber));
+        
+        // Add loading state
+        document.querySelectorAll('.slide-container')[targetSlide - 1]?.classList.add('loading');
+        
+        const targetElement = document.getElementById(`slide${targetSlide}`);
+        
+        if (targetElement) {
+            // Smooth scroll to target
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Update after scroll completes
+            setTimeout(() => {
+                currentSlide = targetSlide;
+                updateUI();
+                isScrolling = false;
+                document.querySelectorAll('.slide-container')[targetSlide - 1]?.classList.remove('loading');
+                
+                // Update URL hash without scrolling
+                history.replaceState(null, null, `#slide${targetSlide}`);
+            }, 300);
+        }
+    }
+    
+    // Update UI elements
+    function updateUI() {
+        // Update counter
+        slideCounter.textContent = `Slide ${currentSlide} of ${totalSlides}`;
+        
+        // Update title display
+        slideTitleDisplay.textContent = slideTitles[currentSlide - 1];
+        
+        // Update navigation dots
+        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+            if (index + 1 === currentSlide) {
+                dot.classList.add('active');
+                dot.setAttribute('aria-current', 'true');
+            } else {
+                dot.classList.remove('active');
+                dot.removeAttribute('aria-current');
+            }
+        });
+    }
+    
+    // Detect slide changes via scroll - BUT DON'T AUTO-JUMP
+    const observer = new IntersectionObserver((entries) => {
+        // Just update current slide indicator, don't auto-scroll
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                const slideId = entry.target.id;
+                const slideNumber = parseInt(slideId.replace('slide', ''));
+                if (!isNaN(slideNumber) && slideNumber !== currentSlide) {
+                    currentSlide = slideNumber;
+                    updateUI();
+                }
+            }
+        });
+    }, {
+        threshold: [0.3, 0.5, 0.7],
+        rootMargin: '0px 0px 0px 0px' // No margin
+    });
+    
+    // Check initial hash
+    function checkInitialHash() {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#slide')) {
+            const slideNumber = parseInt(hash.replace('#slide', ''));
+            if (!isNaN(slideNumber) && slideNumber >= 1 && slideNumber <= totalSlides) {
+                goToSlide(slideNumber);
+            }
+        }
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create navigation dots
+        createNavDots();
+        
+        // Initialize tap to reveal functionality
+        initializeTapToReveal();
+        
+        // Observe all slides
+        document.querySelectorAll('.slide-container').forEach(slide => {
+            observer.observe(slide);
+        });
+        
+        // Add keyboard navigation (optional - users can still use if they want)
+        document.addEventListener('keydown', (e) => {
+            // Don't interfere with form inputs
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            switch(e.key) {
+                case 'ArrowUp':
+                case 'ArrowLeft':
+                case 'PageUp':
+                    goToSlide(currentSlide - 1);
+                    e.preventDefault();
+                    break;
+                case 'ArrowDown':
+                case 'ArrowRight':
+                case 'PageDown':
+                case ' ':
+                    goToSlide(currentSlide + 1);
+                    e.preventDefault();
+                    break;
+                case 'Home':
+                    goToSlide(1);
+                    e.preventDefault();
+                    break;
+                case 'End':
+                    goToSlide(totalSlides);
+                    e.preventDefault();
+                    break;
+            }
+        });
+        
+        // Add navigation buttons to each slide
+        const slides = document.querySelectorAll('.slide-container');
+        slides.forEach((slide, index) => {
+            const navDiv = document.createElement('div');
+            navDiv.className = 'navigation';
+            navDiv.innerHTML = `
+                <button class="nav-btn" onclick="goToSlide(${index})" ${index === 0 ? 'disabled' : ''}>
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+                </button>
+                <div class="slide-number">Slide ${index + 1} of ${totalSlides}</div>
+                <button class="nav-btn" onclick="goToSlide(${index + 2})" ${index === totalSlides - 1 ? 'disabled' : ''}>
+                    Next <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
+            `;
+            slide.appendChild(navDiv);
+        });
+        
+        // Check for hash on load
+        checkInitialHash();
+        
+        // Initialize UI
+        updateUI();
+        
+        // Handle resize for responsive adjustments
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Recreate particles on resize for better mobile performance
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('.particles').forEach(particle => {
+                        particle.innerHTML = '';
+                    });
+                    for (let i = 1; i <= 20; i++) {
+                        createParticles(`particles${i}`, academicChars);
+                    }
+                }
+            }, 250);
+        });
+        
+        // REMOVED: Touch swipe navigation - let users scroll normally
+        // Instead, we'll just ensure normal scrolling works
+        document.body.style.overflowY = 'auto';
+        document.documentElement.style.overflowY = 'auto';
+        
+        // Prevent any default touch behaviors that might interfere
+        document.addEventListener('touchmove', function(e) {
+            // Allow normal touch scrolling
+        }, { passive: true });
+    });
+    
+    // Expose functions to global scope for inline onclick handlers
+    window.goToSlide = goToSlide;
+    
+    // Force light mode on any system
+    function forceLightMode() {
+        // Set meta tag for color scheme
+        const meta = document.createElement('meta');
+        meta.name = 'color-scheme';
+        meta.content = 'light';
+        document.head.appendChild(meta);
+        
+        // Set CSS variables to light mode
+        document.documentElement.style.setProperty('color-scheme', 'light');
+        document.documentElement.style.setProperty('--color-scheme', 'light');
+        
+        // Force background and text colors
+        document.body.style.backgroundColor = '#f8fafc';
+        document.body.style.color = '#2d3748';
+    }
+    
+    // Call on load
+    window.addEventListener('load', forceLightMode);
+    // Also call immediately
+    forceLightMode();
+</script>
+
+</body>
+</html>
