@@ -898,49 +898,60 @@
                 touch-action: manipulation;
             }
         }
-        /* Style for clickable vocabulary words */
-.clickable-word {
+     /* Floating mute button styles */
+.mute-btn {
+    position: fixed;
+    bottom: 90px; /* Position above the toggle button */
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-green), #2c7a7b);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
     cursor: pointer;
-    position: relative;
-    transition: all 0.2s ease;
-    display: inline-block;
-    padding: 2px 4px;
-    border-radius: 4px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
-.clickable-word:hover {
-    background-color: rgba(102, 126, 234, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.mute-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
 }
 
-.clickable-word.playing {
-    background-color: rgba(56, 178, 172, 0.2);
-    color: var(--accent-green);
-    animation: pulse 1.5s infinite;
+.mute-btn.muted {
+    background: linear-gradient(135deg, var(--accent-red), #c53030);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+.mute-btn.muted::before {
+    content: '🔇';
 }
 
-.clickable-word::after {
+.mute-btn:not(.muted)::before {
     content: '🔊';
-    font-size: 0.7em;
-    margin-left: 4px;
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
 }
 
-.clickable-word:hover::after {
-    opacity: 1;
+/* Adjust toggle button position for mute button */
+.toggle-btn {
+    bottom: 30px;
+    right: 30px;
+    /* Keep existing toggle button styles */
 }
 
-.clickable-word.playing::after {
-    content: '⏸';
-    opacity: 1;
+/* Media query adjustments for mobile */
+@media (max-width: 768px) {
+    .mute-btn {
+        bottom: 80px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
 }
     </style>
 </head>
@@ -2443,8 +2454,7 @@
     </div>
 
 
-    <script>
-        // Vocabulary data
+   <script>// Vocabulary data
 const vocabulary = [
     { chinese: "度", pinyin: "dù", english: "degree (temperature/angle)", audio: "audio/part3/words/du.mp3" },
     { chinese: "颱風", pinyin: "táifēng", english: "typhoon", audio: "audio/part3/words/taifeng.mp3" },
@@ -2545,9 +2555,16 @@ class AudioPlayer {
         this.isPlaying = false;
         this.currentAudioElement = null;
         this.currentPlayingElement = null;
+        this.isMuted = false; // Add muted state to AudioPlayer
     }
     
     playAudio(audioUrl, element = null) {
+        // Check if muted
+        if (this.isMuted) {
+            console.log('Audio is muted, not playing');
+            return; // Don't play audio if muted
+        }
+        
         // Stop current audio
         this.stop();
         
@@ -2586,13 +2603,21 @@ class AudioPlayer {
     }
     
     fallbackToTTS(element) {
+        // Check if muted
+        if (this.isMuted) {
+            console.log('Audio is muted, skipping TTS');
+            return; // Don't use TTS if muted
+        }
+        
         // Fallback to Text-to-Speech
         let textToSpeak = "Audio not available";
         
-        if (element && element.classList.contains('clickable-word')) {
-            // For vocabulary review words, speak the Chinese word
-            const chineseText = element.textContent;
-            const englishText = element.closest('.word-card')?.querySelector('.english')?.textContent || '';
+        if (element && element.classList.contains('word-card')) {
+            // For vocabulary cards, speak the Chinese word
+            const chineseElement = element.querySelector('.chinese');
+            const englishElement = element.querySelector('.english');
+            const chineseText = chineseElement ? chineseElement.textContent : '';
+            const englishText = englishElement ? englishElement.textContent : '';
             textToSpeak = `${chineseText}. ${englishText}`;
         }
         
@@ -2668,10 +2693,24 @@ class AudioPlayer {
     }
     
     togglePlayPause(audioUrl, element) {
+        // Check if muted
+        if (this.isMuted) {
+            console.log('Audio is muted, cannot play');
+            return; // Don't play audio if muted
+        }
+        
         if (this.isPlaying && this.currentPlayingElement === element) {
             this.stop();
         } else {
             this.playAudio(audioUrl, element);
+        }
+    }
+    
+    // Method to set mute state
+    setMuted(muted) {
+        this.isMuted = muted;
+        if (muted) {
+            this.stop(); // Stop any currently playing audio
         }
     }
 }
@@ -2688,6 +2727,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const wordGrid = document.getElementById('wordGrid');
     const progressFill = document.getElementById('progressFill');
     const currentSlideElement = document.getElementById('currentSlide');
+    const muteBtn = document.getElementById('muteBtn');
     
     let allRevealed = false;
     let currentSlide = 1;
@@ -2695,6 +2735,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize audio player
     const audioPlayer = new AudioPlayer();
+    
+    // Initialize mute button functionality
+    muteBtn.addEventListener('click', function() {
+        const isNowMuted = !audioPlayer.isMuted;
+        audioPlayer.setMuted(isNowMuted);
+        
+        this.classList.toggle('muted', isNowMuted);
+        
+        if (isNowMuted) {
+            this.setAttribute('title', 'Unmute Audio');
+            console.log('Audio muted');
+        } else {
+            this.setAttribute('title', 'Mute Audio');
+            console.log('Audio unmuted');
+        }
+    });
     
     // Initialize sentence audio buttons
     dialogueLines.forEach(line => {
@@ -2798,19 +2854,17 @@ document.addEventListener('DOMContentLoaded', function() {
         navDots.appendChild(dot);
     }
     
-    // Create vocabulary cards with clickable Chinese words
+    // Create vocabulary cards with audio data attribute
     vocabulary.forEach(word => {
         const wordCard = document.createElement('div');
         wordCard.className = 'word-card';
+        wordCard.setAttribute('data-audio', word.audio);
+        wordCard.setAttribute('title', 'Tap anywhere to hear pronunciation');
         
-        // Create clickable Chinese word
+        // Create Chinese word (no longer clickable separately)
         const chineseElement = document.createElement('div');
-        chineseElement.className = 'chinese clickable-word';
+        chineseElement.className = 'chinese';
         chineseElement.textContent = word.chinese;
-        chineseElement.setAttribute('data-audio', word.audio);
-        chineseElement.setAttribute('data-pinyin', word.pinyin);
-        chineseElement.setAttribute('data-english', word.english);
-        chineseElement.setAttribute('title', `Click to hear pronunciation: ${word.pinyin}`);
         
         // Add pinyin and english
         const pinyinElement = document.createElement('div');
@@ -2826,52 +2880,21 @@ document.addEventListener('DOMContentLoaded', function() {
         wordCard.appendChild(pinyinElement);
         wordCard.appendChild(englishElement);
         
-        // Click handler for card (reveal pinyin/english)
+        // Click handler for card - BOTH reveals translation AND plays audio
         wordCard.addEventListener('click', function(e) {
-            // Only toggle reveal if NOT clicking on the Chinese word
-            if (!e.target.classList.contains('clickable-word') && 
-                !e.target.closest('.clickable-word')) {
-                e.stopPropagation();
-                this.classList.toggle('revealed');
+            e.stopPropagation();
+            
+            // First, toggle reveal state
+            this.classList.toggle('revealed');
+            
+            // Then play audio
+            const audioUrl = this.getAttribute('data-audio');
+            if (audioUrl) {
+                audioPlayer.togglePlayPause(audioUrl, this);
             }
         });
         
         wordGrid.appendChild(wordCard);
-    });
-    
-    // Handle clicks on vocabulary review words ONLY
-    document.addEventListener('click', function(e) {
-        const clickableWord = e.target.closest('.clickable-word');
-        
-        if (clickableWord) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // If it's a vocabulary card, don't toggle reveal when clicking the word
-            if (clickableWord.closest('.word-card')) {
-                e.stopImmediatePropagation();
-            }
-            
-            const audioUrl = clickableWord.getAttribute('data-audio');
-            if (audioUrl) {
-                audioPlayer.togglePlayPause(audioUrl, clickableWord);
-            } else {
-                // If no audio URL, try to get from vocabulary data
-                const wordText = clickableWord.textContent.trim();
-                const vocabItem = vocabulary.find(v => 
-                    v.chinese === wordText || 
-                    v.chinese.includes(wordText)
-                );
-                
-                if (vocabItem && vocabItem.audio) {
-                    clickableWord.setAttribute('data-audio', vocabItem.audio);
-                    audioPlayer.togglePlayPause(vocabItem.audio, clickableWord);
-                } else {
-                    // Fallback to TTS
-                    audioPlayer.fallbackToTTS(clickableWord);
-                }
-            }
-        }
     });
     
     // Scroll to specific slide
@@ -2984,6 +3007,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 toggleBtn.click();
                 break;
+            case 'm':
+            case 'M':
+                e.preventDefault();
+                muteBtn.click();
+                break;
             case 'Escape':
                 audioPlayer.stop();
                 break;
@@ -2995,7 +3023,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Only stop audio if clicking outside audio controls
         if (!e.target.closest('.audio-btn') && 
             !e.target.closest('.dialogue-audio-btn') && 
-            !e.target.closest('.clickable-word')) {
+            !e.target.closest('.word-card') &&
+            !e.target.closest('.mute-btn')) {
             audioPlayer.stop();
         }
     });
@@ -3015,8 +3044,7 @@ window.addEventListener('load', function() {
     console.log('Page fully loaded');
     // Ensure progress bar is visible on load
     document.getElementById('progressFill').style.width = '5.26%'; // 1/19 * 100%
-});
-    </script>
-   
+});</script>
+   <button class="mute-btn" id="muteBtn" title="Toggle Audio"></button>
 </body>
 </html>
