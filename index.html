@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Level 2 Learning Materials</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            --accent-blue: #4299e1;
+            --accent-green: #38b2ac;
+            --accent-purple: #9f7aea;
+            --accent-yellow: #ecc94b;
+            --text-dark: #2d3748;
+            --text-medium: #4a5568;
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background: var(--primary-gradient);
+            color: var(--text-dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--secondary-gradient);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4c51bf 0%, #5a67d8 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .main-content {
+            padding: 40px 30px;
+        }
+
+        .section-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-blue);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-blue);
+        }
+
+        .card-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            color: var(--text-medium);
+        }
+
+        .card-stat i {
+            color: var(--accent-green);
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-medium);
+        }
+
+        .dialogues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .dialogue-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .dialogue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--accent-purple);
+        }
+
+        .dialogue-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6e6ff 100%);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .dialogue-icon {
+            font-size: 1.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 10px;
+        }
+
+        .dialogue-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .dialogue-body {
+            padding: 20px;
+        }
+
+        .audio-stats {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .audio-stat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .audio-stat:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--accent-purple);
+        }
+
+        .view-btn {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .view-btn:hover {
+            background: #805ad5;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #f7fafc;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+
+        .footer-text {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            padding-left: 50px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-medium);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #e2e8f0;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .filter-btn:hover {
+            background: #cbd5e0;
+        }
+
+        .filter-btn.active:hover {
+            background: #3182ce;
+        }
+
+        .card.hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dialogues-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-box {
+                min-width: 100px;
+                padding: 10px 15px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .main-content {
+                padding: 20px 15px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>TOCFL Level 2 Learning Hub</h1>
+                <div class="subtitle">Comprehensive Chinese Learning Materials for Intermediate Learners</div>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-number">29</div>
+                        <div class="stat-label">Learning Modules</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">19</div>
+                        <div class="stat-label">Dialogue Sets</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Audio Files</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">25</div>
+                        <div class="stat-label">Vocabulary Themes</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Search and Filter -->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search modules by title or topic...">
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Materials</button>
+                <button class="filter-btn" data-filter="dialogues">Dialogues</button>
+                <button class="filter-btn" data-filter="vocabulary">Vocabulary</button>
+                <button class="filter-btn" data-filter="grammar">Grammar</button>
+                <button class="filter-btn" data-filter="audio">With Audio</button>
+            </div>
+
+            <!-- Dialogues Section -->
+            <div class="section-title">
+                <i class="fas fa-comments"></i>
+                <span>Listening & Dialogues</span>
+            </div>
+
+            <div class="dialogues-grid">
+                <a href="dialogues/part-1.html" class="dialogue-card" data-category="dialogues audio">
+                    <div class="dialogue-header">
+                        <div class="dialogue-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <div class="dialogue-title">Dialogue Part 1</div>
+                        <div class="card-subtitle">Beginner Conversations</div>
+                    </div>
+                    <div class="dialogue-body">
+                        <div class="audio-stats">
+                            <div class="audio-stat">
+                                <span>Total Audio Files:</span>
+                                <span class="stat-value">5+</span>
+                            </div>
+                            <div class="audio-stat">
+                                <span>Sentences:</span>
+                                <span class="stat-value">20+</span>
+                            </div>
+                            <div class="audio-stat">
+                                <span>Vocabulary:</span>
+                                <span class="stat-value">50+ words</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Basic daily conversations with sentence-by-sentence audio practice.</p>
+                        <div class="view-btn">Practice Now →</div>
+                    </div>
+                </a>
+
+                <a href="dialogues/part-2.html" class="dialogue-card" data-category="dialogues audio">
+                    <div class="dialogue-header">
+                        <div class="dialogue-icon">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <div class="dialogue-title">Dialogue Part 2</div>
+                        <div class="card-subtitle">Intermediate Conversations</div>
+                    </div>
+                    <div class="dialogue-body">
+                        <div class="audio-stats">
+                            <div class="audio-stat">
+                                <span>Total Audio Files:</span>
+                                <span class="stat-value">5+</span>
+                            </div>
+                            <div class="audio-stat">
+                                <span>Sentences:</span>
+                                <span class="stat-value">20+</span>
+                            </div>
+                            <div class="audio-stat">
+                                <span>Vocabulary:</span>
+                                <span class="stat-value">60+ words</span>
+                            </div>
+                        </div>
+                        <p class="card-description">More complex dialogues with vocabulary breakdown and audio support.</p>
+                        <div class="view-btn">Practice Now →</div>
+                    </div>
+                </a>
+
+                <a href="dialogues/part-3.html" class="dialogue-card" data-category="dialogues audio">
+                    <div class="dialogue-header">
+                        <div class="dialogue-icon">
+                            <i class="fas fa-microphone-alt"></i>
+                        </div>
+                        <div class="dialogue-title">Dialogue Part 3</div>
+                        <div class="card-subtitle">Advanced Conversations</div>
+                    </div>
+                    <div class="dialogue-body">
+                        <div class="audio-stats">
+                            <div class="audio-stat">
+                                <span>Total Audio Files:</span>
+                                <span class="stat-value">95+</span>
+                            </div>
+                            <div class="audio-stat">
+                                <span>Dialogues:</span>
+                                <span class="stat-value">19 complete</span>
+                            </div>
+                            <div class="audio-stat">
+                                <span>Vocabulary:</span>
+                                <span class="stat-value">80+ words</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Comprehensive dialogue practice with full audio support for each sentence.</p>
+                        <div class="view-btn">Practice Now →</div>
+                    </div>
+                </a>
+
+                <a href="dialogues/part-4.html" class="dialogue-card" data-category="dialogues">
+                    <div class="dialogue-header">
+                        <div class="dialogue-icon">
+                            <i class="fas fa-conversation"></i>
+                        </div>
+                        <div class="dialogue-title">Dialogue Part 4</div>
+                        <div class="card-subtitle">Real-life Scenarios</div>
+                    </div>
+                    <div class="dialogue-body">
+                        <div class="audio-stats">
+                            <div class="audio-stat">
+                                <span>Dialogues:</span>
+                                <span class="stat-value">Multiple scenarios</span>
+                            </div>
+                            <div class="audio-stat">
+                                <span>Focus:</span>
+                                <span class="stat-value">Practical usage</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Scenario-based dialogues for real-world Chinese communication.</p>
+                        <div class="view-btn">Practice Now →</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Vocabulary Materials Section -->
+            <div class="section-title">
+                <i class="fas fa-book-open"></i>
+                <span>Vocabulary & Theme Studies</span>
+            </div>
+
+            <div class="card-grid">
+                <!-- Family and Personal -->
+                <a href="materials/family.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="card-title">Family & Personal Info</div>
+                        <div class="card-subtitle">Relationships and personal details</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-users"></i>
+                                <span>Family terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Learn family relationships, personal information, and introductory phrases.</p>
+                    </div>
+                </a>
+
+                <!-- Daily Life -->
+                <a href="materials/daily-routine-items.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="card-title">Daily Routine & Items</div>
+                        <div class="card-subtitle">Everyday activities and objects</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-clock"></i>
+                                <span>Daily activities</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Vocabulary for daily routines, household items, and common activities.</p>
+                    </div>
+                </a>
+
+                <!-- Academics -->
+                <a href="materials/academics.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="card-title">Academics & Subjects</div>
+                        <div class="card-subtitle">School and study vocabulary</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-book"></i>
+                                <span>School subjects</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Academic vocabulary, school subjects, and educational terms.</p>
+                    </div>
+                </a>
+
+                <!-- Food and Cooking -->
+                <a href="materials/cooking-taste.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="card-title">Cooking & Taste</div>
+                        <div class="card-subtitle">Food preparation and flavors</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-utensil-spoon"></i>
+                                <span>Cooking terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Cooking vocabulary, taste descriptions, and food preparation terms.</p>
+                    </div>
+                </a>
+
+                <!-- Staple Foods -->
+                <a href="materials/staples-meats.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <div class="card-title">Staples & Meats</div>
+                        <div class="card-subtitle">Basic foods and proteins</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-bread-slice"></i>
+                                <span>Food items</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Vocabulary for staple foods, meats, and basic ingredients.</p>
+                    </div>
+                </a>
+
+                <!-- Clothing and Money -->
+                <a href="materials/clothing-money.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="card-title">Clothing & Money</div>
+                        <div class="card-subtitle">Fashion and financial terms</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Financial terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Clothing vocabulary, fashion terms, and money-related expressions.</p>
+                    </div>
+                </a>
+
+                <!-- House and Home -->
+                <a href="materials/house.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-house"></i>
+                        </div>
+                        <div class="card-title">House & Home</div>
+                        <div class="card-subtitle">Home vocabulary and furniture</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-couch"></i>
+                                <span>Furniture terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Home-related vocabulary, rooms, furniture, and household items.</p>
+                    </div>
+                </a>
+
+                <!-- School Life -->
+                <a href="materials/school-life.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="card-title">School Life</div>
+                        <div class="card-subtitle">Campus and student life</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Student life</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Vocabulary for school life, campus activities, and student experiences.</p>
+                    </div>
+                </a>
+
+                <!-- Nature -->
+                <a href="materials/nature.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="card-title">Nature</div>
+                        <div class="card-subtitle">Natural environment vocabulary</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-mountain"></i>
+                                <span>Nature terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Vocabulary for nature, environment, weather, and natural phenomena.</p>
+                    </div>
+                </a>
+
+                <!-- Leisure Activities -->
+                <a href="materials/leisure.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="card-title">Leisure Activities</div>
+                        <div class="card-subtitle">Hobbies and free time</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-hiking"></i>
+                                <span>Hobbies</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Vocabulary for leisure activities, hobbies, and entertainment.</p>
+                    </div>
+                </a>
+
+                <!-- Entertainment -->
+                <a href="materials/entertainment.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div class="card-title">Entertainment</div>
+                        <div class="card-subtitle">Media and entertainment</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-tv"></i>
+                                <span>Media terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Entertainment vocabulary, media terms, and cultural activities.</p>
+                    </div>
+                </a>
+
+                <!-- Shopping -->
+                <a href="materials/shopping.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="card-title">Shopping</div>
+                        <div class="card-subtitle">Retail and commerce</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-store"></i>
+                                <span>Shopping terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Shopping vocabulary, retail terms, and commercial expressions.</p>
+                    </div>
+                </a>
+
+                <!-- Transportation -->
+                <a href="materials/transportation-direction.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="card-title">Transportation & Direction</div>
+                        <div class="card-subtitle">Travel and navigation</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-map-signs"></i>
+                                <span>Directions</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Transportation vocabulary, directions, and travel-related terms.</p>
+                    </div>
+                </a>
+
+                <!-- Culture and Society -->
+                <a href="materials/culture-society-travel.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <div class="card-title">Culture, Society & Travel</div>
+                        <div class="card-subtitle">Social and cultural terms</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-passport"></i>
+                                <span>Travel terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Cultural vocabulary, social terms, and travel-related expressions.</p>
+                    </div>
+                </a>
+
+                <!-- Health and Medical -->
+                <a href="materials/health-medical.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="card-title">Health & Medical</div>
+                        <div class="card-subtitle">Healthcare vocabulary</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-hospital"></i>
+                                <span>Medical terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Health-related vocabulary, medical terms, and wellness expressions.</p>
+                    </div>
+                </a>
+
+                <!-- Work and Management -->
+                <a href="materials/work-management.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="card-title">Work & Management</div>
+                        <div class="card-subtitle">Professional vocabulary</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Business terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Workplace vocabulary, management terms, and professional expressions.</p>
+                    </div>
+                </a>
+
+                <!-- Emotional Expressions -->
+                <a href="materials/emotional-expressions.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <div class="card-title">Emotional Expressions</div>
+                        <div class="card-subtitle">Feelings and emotions</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-heart"></i>
+                                <span>Emotions</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Vocabulary for expressing emotions, feelings, and psychological states.</p>
+                    </div>
+                </a>
+
+                <!-- Correspondence and Action -->
+                <a href="materials/correspondence-action.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="card-title">Correspondence & Action</div>
+                        <div class="card-subtitle">Communication verbs</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Communication</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Vocabulary for correspondence, communication, and action verbs.</p>
+                    </div>
+                </a>
+
+                <!-- Logistics and Body -->
+                <a href="materials/logistics-body.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="card-title">Logistics & Body</div>
+                        <div class="card-subtitle">Transport and anatomy</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-route"></i>
+                                <span>Logistics terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Logistics vocabulary, body parts, and transportation-related terms.</p>
+                    </div>
+                </a>
+
+                <!-- Abstract Concepts -->
+                <a href="materials/abstract.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="card-title">Abstract Concepts</div>
+                        <div class="card-subtitle">Philosophical and abstract terms</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Abstract ideas</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Vocabulary for abstract concepts, philosophical ideas, and complex terms.</p>
+                    </div>
+                </a>
+
+                <!-- Grammar and Language -->
+                <a href="materials/adverbs-transition.html" class="card" data-category="grammar">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="card-title">Adverbs & Transition Words</div>
+                        <div class="card-subtitle">Sentence connectors</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Transition words</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Adverbs and transition words for connecting ideas in Chinese.</p>
+                    </div>
+                </a>
+
+                <a href="materials/conjunctions-adverbs.html" class="card" data-category="grammar">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="card-title">Conjunctions & Adverbs</div>
+                        <div class="card-subtitle">Sentence structure</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-paragraph"></i>
+                                <span>Sentence connectors</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Conjunctions and adverbs for creating complex sentences.</p>
+                    </div>
+                </a>
+
+                <a href="materials/auxiliary-types.html" class="card" data-category="grammar">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="card-title">Auxiliary Types</div>
+                        <div class="card-subtitle">Grammatical particles</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-cogs"></i>
+                                <span>Grammar particles</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Chinese auxiliary words and grammatical particles.</p>
+                    </div>
+                </a>
+
+                <a href="materials/prepositions-conditions.html" class="card" data-category="grammar">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="card-title">Prepositions & Conditions</div>
+                        <div class="card-subtitle">Spatial and conditional terms</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-location-arrow"></i>
+                                <span>Prepositions</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Prepositions and conditional expressions in Chinese.</p>
+                    </div>
+                </a>
+
+                <a href="materials/times-and-personal-info.html" class="card" data-category="vocabulary">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-title">Times & Personal Info</div>
+                        <div class="card-subtitle">Temporal expressions</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-stats">
+                            <div class="card-stat">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Time terms</span>
+                            </div>
+                        </div>
+                        <p class="card-description">Time expressions and personal information vocabulary.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-text">
+                <p>TOCFL Level 2 Learning Materials • Last Updated: December 14, 2025</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">
+                    <i class="fas fa-info-circle"></i> All materials follow TOCFL (Test of Chinese as a Foreign Language) Level 2 standards
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.card, .dialogue-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title, .dialogue-title')?.textContent.toLowerCase() || '';
+                const subtitle = card.querySelector('.card-subtitle')?.textContent.toLowerCase() || '';
+                const description = card.querySelector('.card-description')?.textContent.toLowerCase() || '';
+                
+                if (title.includes(searchTerm) || subtitle.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = '';
+                    card.classList.remove('hidden');
+                } else {
+                    card.style.display = 'none';
+                    card.classList.add('hidden');
+                }
+            });
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                const cards = document.querySelectorAll('.card, .dialogue-card');
+                
+                if (filter === 'all') {
+                    cards.forEach(card => {
+                        card.style.display = '';
+                        card.classList.remove('hidden');
+                    });
+                } else {
+                    cards.forEach(card => {
+                        const categories = card.getAttribute('data-category');
+                        if (categories && categories.includes(filter)) {
+                            card.style.display = '';
+                            card.classList.remove('hidden');
+                        } else {
+                            card.style.display = 'none';
+                            card.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Focus search on Ctrl/Cmd + F
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+            
+            // Clear search on Escape
+            if (e.key === 'Escape') {
+                document.getElementById('searchInput').value = '';
+                document.querySelectorAll('.card, .dialogue-card').forEach(card => {
+                    card.style.display = '';
+                    card.classList.remove('hidden');
+                });
+                document.getElementById('searchInput').blur();
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
