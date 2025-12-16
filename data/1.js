@@ -841,10 +841,7 @@ const dialoguesDB = [
 
 // Configuration
 const CONFIG = {
-    REVIEW_SLIDE_INDEX: 21, // Adjust based on total slides (1 start slide + 19 content slides + 1 review slide)
+    REVIEW_SLIDE_INDEX: 20, 
     SWIPE_THRESHOLD: 50,
     AUDIO_DELAY: 300,
-    // TOTAL_VOCABULARY_WORDS: 80,
-    // TOTAL_DIALOGUES: 19,
-    // TOTAL_SENTENCES: 76
 };

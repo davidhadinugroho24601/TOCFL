@@ -387,26 +387,26 @@ class SlideManager {
     // TOUCH/SWIPE SUPPORT
     // ====================
     
-    handleTouchStart(e) {
-        this.touchStartX = e.changedTouches[0].screenX;
-    }
+    // handleTouchStart(e) {
+    //     this.touchStartX = e.changedTouches[0].screenX;
+    // }
     
-    handleTouchEnd(e) {
-        this.touchEndX = e.changedTouches[0].screenX;
-        this.handleSwipe();
-    }
+    // handleTouchEnd(e) {
+    //     this.touchEndX = e.changedTouches[0].screenX;
+    //     this.handleSwipe();
+    // }
     
-    handleSwipe() {
-        const diff = this.touchStartX - this.touchEndX;
+    // handleSwipe() {
+    //     const diff = this.touchStartX - this.touchEndX;
         
-        if (Math.abs(diff) > CONFIG.SWIPE_THRESHOLD) {
-            if (diff > 0 && this.currentSlide < this.totalSlides - 1) {
-                this.nextSlide();
-            } else if (diff < 0 && this.currentSlide > 0) {
-                this.prevSlide();
-            }
-        }
-    }
+    //     if (Math.abs(diff) > CONFIG.SWIPE_THRESHOLD) {
+    //         if (diff > 0 && this.currentSlide < this.totalSlides - 1) {
+    //             this.nextSlide();
+    //         } else if (diff < 0 && this.currentSlide > 0) {
+    //             this.prevSlide();
+    //         }
+    //     }
+    // }
     
     // ====================
     // CONTROL METHODS
