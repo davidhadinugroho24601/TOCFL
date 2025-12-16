@@ -1167,3 +1167,41 @@
     } */
 }
     
+
+/* Add these styles to your existing CSS file */
+
+/* Improve emoji display */
+.home-btn span {
+    font-size: 16px;
+    line-height: 1;
+    display: inline-block;
+}
+
+/* Optional: Add subtle animation to restart icon on hover */
+.home-btn:hover span:first-child {
+    transform: rotate(-10deg);
+    transition: transform 0.2s ease;
+}
+
+/* Optional: Differentiate the two buttons slightly */
+.home-btn:first-child { /* Home button */
+    background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+}
+
+.home-btn:nth-child(2) { /* Restart button */
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+.home-btn:first-child:hover {
+    background: linear-gradient(135deg, #FF5722 0%, #FF9800 100%);
+}
+
+.home-btn:nth-child(2):hover {
+    background: linear-gradient(135deg, #1976D2 0%, #2196F3 100%);
+}
+
+/* Button group to keep them together */
+.button-group {
+    display: flex;
+    gap: 12px; /* Space between buttons */
+}

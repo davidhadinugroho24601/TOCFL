@@ -1,9 +1,9 @@
 // Slide Titles Database
 const slideTitles = [
     { 
-        title: "Home", 
-        subtitle: "Introduction", 
-        icon: "🏠" 
+    title: "Start Here", 
+    subtitle: "Introduction to what you'll learn", 
+    icon: "📍"
     },
     { 
         title: "天氣與環境", 
@@ -131,9 +131,41 @@ const audioDB = {
     // Add more audio files here as needed
 };
 
+// Dialogue Database - Complete 19 dialogues
+const dialoguesDB = [
+    // Dialogue 1: Weather and Environment
+    {
+        id: 1,
+        title: "天氣與環境",
+        titleTranslation: "Weather and Environment",
+        context: "Two friends discussing weather and environmental issues",
+        lines: [
+            {
+                speaker: "A",
+                chinese: "今天氣溫有三十<span class='vocab-highlight' data-word='度'>度</span>，真是太熱了！聽說明天有<span class='vocab-highlight' data-word='颱風'>颱風</span>要來。",
+                pinyin: "Jīntiān qìwēn yǒu sānshí dù, zhēnshi tài rè le! Tīng shuō míngtiān yǒu táifēng yào lái.",
+                english: "Today's temperature is 30 degrees, it's so hot! I heard a typhoon is coming tomorrow.",
+                audio: "audio/part3/dialogue1/sentence1.mp3"
+            },
+            {
+                speaker: "B",
+                chinese: "是啊，這個<span class='vocab-highlight' data-word='季節'>季節</span>的變化真大。我們應該多注意<span class='vocab-highlight' data-word='環保'>環保</span>，減少製造<span class='vocab-highlight' data-word='垃圾'>垃圾</span>，避免環境<span class='vocab-highlight' data-word='汙染'>汙染</span>。",
+                pinyin: "Shì a, zhège jìjié de biànhuà zhēn dà. Wǒmen yīnggāi duō zhùyì huánbǎo, jiǎnshǎo zhìzào lèsè, bìmiǎn huánjìng wūrǎn.",
+                english: "Yes, the changes in this season are really big. We should pay more attention to environmental protection, reduce creating garbage, and avoid environmental pollution.",
+                audio: "audio/part3/dialogue1/sentence2.mp3"
+            },
+            // ... add more lines for dialogue 1
+        ],
+        fullAudio: "audio/part3/dialogue1/dialogue.mp3"
+    },
+    // Dialogue 2-19 (add your content here)
+    // ... rest of your 18 dialogues
+];
+
 // Configuration constants
 const CONFIG = {
     REVIEW_SLIDE_INDEX: 20,
     SWIPE_THRESHOLD: 50,
     AUDIO_DELAY: 300
 };
+

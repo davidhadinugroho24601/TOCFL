@@ -7,178 +7,30 @@
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
 </head>
 <body>
+    <!-- Only container and static elements remain -->
     <div class="container">
-        <!-- Header Controls - Simplified -->
+        <!-- Header Controls - Always visible -->
         <div class="header-controls">
-            <button class="home-btn" onclick="goToSlide(0)">
-                <span>🏠</span> Home
-            </button>
+             <div class="button-group">
+        <button class="home-btn" onclick="window.location.href='https://davidhadinugroho24601.github.io/TOCFL/';">
+            <span>🏠</span> Home
+        </button>
+        <button class="home-btn restart-btn" onclick="goToSlide(0)">
+            <span>↩️</span> Restart
+        </button>
+    </div>
             <div class="slide-counter" id="slideCounter">1/22</div>
         </div>
 
-        <!-- Opening Slide -->
-        <div class="slide active" id="slide0">
-            <div class="intro-slide">
-                <h1 class="intro-title">Chinese Dialogue Practice</h1>
-                <p class="intro-subtitle">Master 80 Target Words Through 19 Natural Conversations</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">80</div>
-                        <div class="stat-label">Target Vocabulary Words</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">19</div>
-                        <div class="stat-label">Dialogue Scenes</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">76</div>
-                        <div class="stat-label">Example Sentences</div>
-                    </div>
-                </div>
-
-                <button class="start-btn" onclick="goToSlide(1)">
-                    Start Learning →
-                </button>
-            </div>
-        </div>
-
-        <!-- Dialogue Slides 1-19 -->
-        <!-- Slide 1 -->
-        <div class="slide" id="slide1">
-            <div class="dialogue-header">
-                <h2 class="slide-title">
-                    天氣與環境
-                    <div class="title-translation">Weather and Environment</div>
-                </h2>
-            </div>
-            
-            <div class="dialogue-audio-container">
-                <button class="dialogue-audio-btn" data-audio="audio/part3/dialogue1/dialogue.mp3">
-                    <span>▶</span> Play Dialogue
-                </button>
-            </div>
-            
-            <div class="dialogue-context">Two friends discussing weather and environmental issues</div>
-            
-            <div class="dialogue-container">
-                <div class="dialogue-line">
-                    <div class="speaker-avatar speaker-A">A</div>
-                    <div class="dialogue-content">
-                        <div class="chinese-text">今天氣溫有三十<span class="vocab-highlight" data-word="度">度</span>，真是太熱了！聽說明天有<span class="vocab-highlight" data-word="颱風">颱風</span>要來。</div>
-                        <div class="pinyin-text">Jīntiān qìwēn yǒu sānshí dù, zhēnshi tài rè le! Tīng shuō míngtiān yǒu táifēng yào lái.</div>
-                        <div class="english-text">Today's temperature is 30 degrees, it's so hot! I heard a typhoon is coming tomorrow.</div>
-                        <div class="audio-controls-mini">
-                            <button class="audio-btn" data-audio="audio/part3/dialogue1/sentence1.mp3">
-                                <span>▶</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="dialogue-line">
-                    <div class="speaker-avatar speaker-B">B</div>
-                    <div class="dialogue-content">
-                        <div class="chinese-text">是啊，這個<span class="vocab-highlight" data-word="季節">季節</span>的變化真大。我們應該多注意<span class="vocab-highlight" data-word="環保">環保</span>，減少製造<span class="vocab-highlight" data-word="垃圾">垃圾</span>，避免環境<span class="vocab-highlight" data-word="汙染">汙染</span>。</div>
-                        <div class="pinyin-text">Shì a, zhège jìjié de biànhuà zhēn dà. Wǒmen yīnggāi duō zhùyì huánbǎo, jiǎnshǎo zhìzào lèsè, bìmiǎn huánjìng wūrǎn.</div>
-                        <div class="english-text">Yes, the changes in this season are really big. We should pay more attention to environmental protection, reduce creating garbage, and avoid environmental pollution.</div>
-                        <div class="audio-controls-mini">
-                            <button class="audio-btn" data-audio="audio/part3/dialogue1/sentence2.mp3">
-                                <span>▶</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="dialogue-line">
-                    <div class="speaker-avatar speaker-A">A</div>
-                    <div class="dialogue-content">
-                        <div class="chinese-text">你說得對。我發現很多河流的<span class="vocab-highlight" data-word="底">底</span><span class="vocab-highlight" data-word="底下">底下</span>都有很多垃圾。這些垃圾會影響水的質量，造成嚴重的汙染。</div>
-                        <div class="pinyin-text">Nǐ shuō dé duì. Wǒ fāxiàn hěnduō héliú de dǐ dǐxià dōu yǒu hěnduō lèsè. Zhèxiē lèsè huì yǐngxiǎng shuǐ de zhìliàng, zàochéng yánzhòng de wūrǎn.</div>
-                        <div class="english-text">You're right. I've found that at the bottom of many rivers there's a lot of garbage. This garbage affects water quality and causes serious pollution.</div>
-                        <div class="audio-controls-mini">
-                            <button class="audio-btn" data-audio="audio/part3/dialogue1/sentence3.mp3">
-                                <span>▶</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="dialogue-line">
-                    <div class="speaker-avatar speaker-B">B</div>
-                    <div class="dialogue-content">
-                        <div class="chinese-text">是的，河流<span class="vocab-highlight" data-word="內">內</span>的汙染會影響整個生態系統。我們應該從自身做起，做好分類回收。</div>
-                        <div class="pinyin-text">Shì de, héliú nèi de wūrǎn huì yǐngxiǎng zhěnggè shēngtài xìtǒng. Wǒmen yīnggāi cóng zìshēn zuò qǐ, zuò hǎo fēnlèi huíshōu.</div>
-                        <div class="english-text">Yes, pollution inside rivers affects the entire ecosystem. We should start with ourselves and do good classification and recycling.</div>
-                        <div class="audio-controls-mini">
-                            <button class="audio-btn" data-audio="audio/part3/dialogue1/sentence4.mp3">
-                                <span>▶</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Add more dialogue slides here (2-19) -->
-
-        <!-- Word Review Slide (Slide 20) -->
-        <div class="slide" id="slide20">
-            <div class="word-review-slide">
-                <div class="dialogue-header">
-                    <h2 class="slide-title">
-                        📚 Vocabulary Mastery
-                        <div class="title-translation">All 80 Target Words</div>
-                    </h2>
-                </div>
-                
-                <div class="dialogue-context">
-                    Click on any word card to reveal pronunciation and meaning. Audio button for pronunciation.
-                </div>
-                
-                <div class="word-grid" id="wordGrid">
-                    <!-- Word cards will be generated by JavaScript -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Closing Slide -->
-        <div class="slide" id="slide21">
-            <div class="conclusion-slide">
-                <h1 class="conclusion-title">🎉 Course Complete!</h1>
-                <p class="conclusion-subtitle">You've mastered 80 essential Chinese vocabulary words through natural conversations!</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number" id="completedWords">80</div>
-                        <div class="stat-label">Words Mastered</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">19</div>
-                        <div class="stat-label">Dialogues Completed</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Progress</div>
-                    </div>
-                </div>
-                
-                <button class="start-btn" onclick="goToSlide(0)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin-right: 20px;">
-                    🏠 Home
-                </button>
-                <button class="start-btn" onclick="goToSlide(20)" style="background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);">
-                    📖 Review Words
-                </button>
-            </div>
-        </div>
-
+        <!-- ALL SLIDES WILL BE GENERATED HERE BY JS -->
+        
         <!-- Progress Bar -->
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
     </div>
 
-    <!-- Floating Navigation Controls - Bottom Middle -->
+    <!-- Floating Navigation Controls -->
     <div class="nav-controls">
         <button class="floating-btn prev" id="floatingPrevBtn">←</button>
         
@@ -190,7 +42,7 @@
             </div>
             
             <div class="slide-select-dropdown" id="slideSelectDropdown">
-                <!-- Slide options will be generated by JavaScript -->
+                <!-- Generated by JavaScript -->
             </div>
         </div>
         
@@ -203,7 +55,12 @@
         <button class="floating-btn review" id="floatingReviewBtn">📖</button>
         <button class="floating-btn mute" id="floatingMuteBtn">🔇</button>
     </div>
- <script src="../scripts/data.js"></script>
-    <script src="../scripts/main.js"></script>
+
+    <!-- Scripts in correct order -->
+    <script src="../data/template.js"></script>
+    <script src="../scripts/audio-player.js"></script>
+    <script src="../scripts/content-generator.js"></script>
+    <script src="../scripts/slide-manager.js"></script>
+    <script src="../scripts/core.js"></script>
 </body>
 </html>
