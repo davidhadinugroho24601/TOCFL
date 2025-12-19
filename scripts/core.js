@@ -34,14 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     try {
         // 1. First, generate all content
-        const isQuizMode = window.location.href.includes('quiz') || CONFIG.QUIZ_MODE;
-
-        // Then initialize the appropriate generator
-        if (isQuizMode) {
-            contentGenerator = new QuizContentGenerator();
-        } else {
-            contentGenerator = new ContentGenerator();
-        }
+        contentGenerator = new ContentGenerator();
         const totalSlides = contentGenerator.initialize();
         console.log(`Generated ${totalSlides} slides`);
         

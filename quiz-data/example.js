@@ -1,209 +1,114 @@
-// quiz-data-example.js - Dummy data for Chinese Quiz App
-// Enhanced with quiz-specific data
+// ============================================
+//Prompt instruction: 
+// please insert data adjusted to the words above. 
+// don't change the structure of the code, only the data inside the arrays and objects.
+// generate all the slide and dialogues without skipping any number.
+// generate more than 19 slides and 16 dialogues, each dialogue must have pretty much the same length as the example dialogue provided below.  {//this is just an example slide, please replace with your own content
+    //     id: 19,
+    //     title: "最後反思",
+    //     titleTranslation: "Final Reflections",
+    //     context: "Reflecting on cultural understanding and personal growth",
+    //     lines: [
+    //         {
+    //             speaker: "A",
+    //             chinese: "通過學習<span class='vocab-highlight' data-word='這些'>這些</span>詞彙，我對<span class='vocab-highlight' data-word='現代'>現代</span>和<span class='vocab-highlight' data-word='傳統'>傳統</span>的<span class='vocab-highlight' data-word='社會'>社會</span>有了更深的理解。語言是文化的鏡子，反映著人們的生活和價值觀。",
+    //             pinyin: "Tōngguò xuéxí zhèxiē cíhuì, wǒ duì xiàndài hé chuántǒng de shèhuì yǒu le gèng shēn de lǐjiě. Yǔyán shì wénhuà de jìngzi, fǎnyìng zhe rénmen de shēnghuó hé jiàzhíguān.",
+    //             english: "Through learning these vocabulary words, I have deeper understanding of modern and traditional society. Language is a mirror of culture, reflecting people's lives and values.",
+    //             audio: "audio/part4/dialogue19/sentence1.mp3"
+    //         },
+    //         {
+    //             speaker: "B",
+    //             chinese: "我同意。從<span class='vocab-highlight' data-word='春節'>春節</span>的<span class='vocab-highlight' data-word='傳統'>傳統</span>到<span class='vocab-highlight' data-word='現代'>現代</span>的<span class='vocab-highlight' data-word='交通'>交通</span>方式，我們看到了<span class='vocab-highlight' data-word='社會'>社會</span>的變化和發展。學習語言讓我們能夠跨越文化界限，理解不同的生活方式。",
+    //             pinyin: "Wǒ tóngyì. Cóng chūnjié de chuántǒng dào xiàndài de jiāotōng fāngshì, wǒmen kàn dào le shèhuì de biànhuà hé fāzhǎn. Xuéxí yǔyán ràng wǒmen nénggòu kuàyuè wénhuà jièxiàn, lǐjiě bùtóng de shēnghuó fāngshì.",
+    //             english: "I agree. From Chinese New Year traditions to modern transportation methods, we see societal changes and development. Learning language lets us跨越 cultural boundaries, understand different lifestyles.",
+    //             audio: "audio/part4/dialogue19/sentence2.mp3"
+    //         },
+    //         {
+    //             speaker: "A",
+    //             chinese: "是的，無論是<span class='vocab-highlight' data-word='東方'>東方</span>還是西方，每個文化都有其獨特的價值。通過語言學習，我們可以欣賞<span class='vocab-highlight' data-word='這些'>這些</span>差異，並從中學習和成長。",
+    //             pinyin: "Shì de, wúlùn shì dōngfāng háishì xīfāng, měi gè wénhuà dōu yǒu qí dútè de jiàzhí. Tōngguò yǔyán xuéxí, wǒmen kěyǐ xīnshǎng zhèxiē chāyì, bìng cóng zhōng xuéxí hé chéngzhǎng.",
+    //             english: "Yes, whether East or West, every culture has its unique value. Through language learning, we can appreciate these differences, and learn and grow from them.",
+    //             audio: "audio/part4/dialogue19/sentence3.mp3"
+    //         },
+    //         {
+    //             speaker: "B",
+    //             chinese: "讓我們繼續探索語言的奧秘，不僅學習詞彙，更要理解詞彙背後的文化意義。每一次學習都是新的發現，每一次對話都是文化的交流。<span class='vocab-highlight' data-word='加油'>加油</span>！",
+    //             pinyin: "Ràng wǒmen jìxù tànsuǒ yǔyán de àomì, bùjǐn xuéxí cíhuì, gèng yào lǐjiě cíhuì bèihòu de wénhuà yìyì. Měi yī cì xuéxí dōu shì xīn de fāxiàn, měi yī cì duìhuà dōu shì wénhuà de jiāoliú. Jiāyóu!",
+    //             english: "Let's continue exploring language's mysteries, not just learning vocabulary, but更要 understanding cultural meanings behind vocabulary. Every learning is a new discovery, every conversation is cultural exchange. Keep it up!",
+    //             audio: "audio/part4/dialogue19/sentence4.mp3"
+    //         }
+    //     ],
+    //     fullAudio: "audio/part4/dialogue19/dialogue.mp3"
+    // },
+// make sure all the pinyin is accurate and matches the chinese characters.
+// make sure all the english translations are accurate and natural-sounding.
+// if you write comments please write them in english.
+// ============================================
 
-// Configuration for Quiz Mode
-const CONFIG = {
-    AUDIO: false, // Set to true if you have audio files
-    QUIZ_MODE: true, // Enable quiz mode
-    SHOW_IMMEDIATE_FEEDBACK: true,
-    AUTO_ADVANCE: false,
-    REVIEW_SLIDE_INDEX: 20,
-    TOTAL_QUIZZES: 19
-};
 
-// Vocabulary Database - 80 target words (same as before, but with quiz-specific info)
+// ============================================
+// LANGUAGE COURSE DATA TEMPLATE
+// ============================================
+
+// Vocabulary Database - Add vocabulary items here
 const vocabularyDB = [
-    // Group 1: Greetings & Basic Phrases
-    { 
-        id: 1, 
-        chinese: "你好", 
-        pinyin: "nǐ hǎo", 
-        english: "hello", 
-        audio: "audio/ni_hao.mp3",
-        difficulty: "beginner",
-        category: "greetings"
-    },
-    { 
-        id: 2, 
-        chinese: "谢谢", 
-        pinyin: "xiè xie", 
-        english: "thank you", 
-        audio: "audio/xie_xie.mp3",
-        difficulty: "beginner",
-        category: "greetings"
-    },
-    // ... (rest of vocabulary with same structure, add difficulty and category fields)
-    
-    // Add these properties to all vocabulary entries
+    // Example format:
+    { chinese: "社會", pinyin: "shèhuì", english: "society", audio: "audio/part4/words/shehui.mp3" },
+    //if audio is not available, you must fill in with address following pattern exactly like the example above
 ];
 
-// Dialogue Database - Enhanced with quiz metadata
-const dialoguesDB = [
-    {
-        id: 1,
-        title: "初次见面",
-        titleTranslation: "First Meeting",
-        context: "Two students meet for the first time at school.",
-        fullAudio: "audio/dialogue1.mp3",
-        difficulty: "beginner",
-        targetWords: [1, 2, 6, 7, 37, 38, 39], // IDs of vocabulary words in this dialogue
-        quizTypes: ["fillBlank", "multipleChoice"], // Suggested quiz types
-        lines: [
-            { 
-                speaker: "A", 
-                chinese: "你好！我叫小明。", 
-                pinyin: "Nǐ hǎo! Wǒ jiào Xiǎo Míng.", 
-                english: "Hello! My name is Xiao Ming.", 
-                audio: "audio/d1_line1.mp3",
-                vocabulary: [1, 39] // Word IDs in this line
-            },
-            // ... rest of lines with vocabulary field
-        ]
-    },
-    // ... other dialogues with same enhanced structure
-];
-
-// Slide titles for quiz mode
-const slideTitles = {
-    0: { title: "Quiz Start", subtitle: "Chinese Vocabulary Challenge", icon: "🏁" },
-    1: { title: "初次见面", subtitle: "Fill in the Blank Quiz", icon: "🔤" },
-    2: { title: "问时间", subtitle: "Multiple Choice Quiz", icon: "❓" },
-    3: { title: "在餐厅", subtitle: "Matching Exercise", icon: "↔️" },
-    4: { title: "问路", subtitle: "Listening Quiz", icon: "🎧" },
-    5: { title: "家庭介绍", subtitle: "Fill in the Blank", icon: "🔤" },
-    6: { title: "买东西", subtitle: "Multiple Choice", icon: "❓" },
-    7: { title: "天气", subtitle: "Matching Exercise", icon: "↔️" },
-    8: { title: "打电话", subtitle: "Listening Quiz", icon: "🎧" },
-    9: { title: "在学校", subtitle: "Fill in the Blank", icon: "🔤" },
-    10: { title: "颜色", subtitle: "Multiple Choice", icon: "❓" },
-    11: { title: "周末计划", subtitle: "Matching Exercise", icon: "↔️" },
-    12: { title: "看医生", subtitle: "Listening Quiz", icon: "🎧" },
-    13: { title: "在商店", subtitle: "Fill in the Blank", icon: "🔤" },
-    14: { title: "生日", subtitle: "Multiple Choice", icon: "❓" },
-    15: { title: "运动", subtitle: "Matching Exercise", icon: "↔️" },
-    16: { title: "旅行", subtitle: "Listening Quiz", icon: "🎧" },
-    17: { title: "看电影", subtitle: "Fill in the Blank", icon: "🔤" },
-    18: { title: "学习中文", subtitle: "Multiple Choice", icon: "❓" },
-    19: { title: "未来计划", subtitle: "Matching Exercise", icon: "↔️" },
-    20: { title: "Final Review", subtitle: "Comprehensive Test", icon: "📝" },
-    21: { title: "Results", subtitle: "Quiz Complete", icon: "🏆" }
+// Audio Database (with updated audio paths from your HTML)
+const audioDB = {
+    defaultClick: "https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3",
 };
 
-// Quiz-specific utility functions
-function getRandomQuizQuestion(dialogue, type) {
-    // Returns a quiz question object based on dialogue and type
-    switch(type) {
-        case 'fillBlank':
-            return {
-                type: 'fillBlank',
-                question: "Complete the missing line in the dialogue:",
-                options: [], // Will be populated
-                correctAnswer: 0,
-                dialogueLine: Math.floor(Math.random() * dialogue.lines.length)
-            };
-        case 'multipleChoice':
-            const vocab = extractVocabularyFromDialogue(dialogue);
-            return {
-                type: 'multipleChoice',
-                question: "What does this word mean?",
-                word: vocab[Math.floor(Math.random() * vocab.length)],
-                options: [], // Will be populated
-                correctAnswer: 0
-            };
-        // ... other types
-    }
-}
+// Dialogue Database - Add dialogues here
+const questionsDB = [
+    // Example format:
+    
+       {//this is just an example slide, please replace with your own content
+        id: 1,
+        passage: "台灣是一個位於亞洲東部的島嶼，氣候屬於亞熱帶。夏季炎熱多雨，冬季溫暖。台灣以美食聞名，特別是夜市小吃，如珍珠奶茶、蚵仔煎和臭豆腐。此外，台灣的自然風景也很美麗，有高山、森林和海岸線。",
+        question: "根據本文，下列哪一項不是台灣的特色？",
+        image: "",
+         options: [
+            {
+                option: "A",
+                text: "亞熱帶氣候",
+                isCorrect: false,
+                audio: ""
+            },
+            {
+                option: "B",
+                text: "夜市小吃",
+                isCorrect: false,
+                audio: ""
+            },
+            {
+                option: "C",
+                text: "沙漠景觀",
+                isCorrect: true,
+                audio: ""
+            },
+            {
+                option: "D",
+                text: "自然風景",
+                isCorrect: false,
+                audio: ""
+            }
+        ],
+        audio: ""
+    },
+];
 
-function extractVocabularyFromDialogue(dialogue) {
-    // Extract unique vocabulary words from dialogue
-    const wordIds = new Set();
-    dialogue.lines.forEach(line => {
-        if (line.vocabulary) {
-            line.vocabulary.forEach(id => wordIds.add(id));
-        }
-    });
-    
-    return vocabularyDB.filter(word => wordIds.has(word.id));
-}
+// Configuration
+const CONFIG = {
+    REVIEW_SLIDE_INDEX: 20, // adjust based on last dialogue index + 1, DO NOT count start slide
+    SWIPE_THRESHOLD: 50,
+    AUDIO: false, //keep this as false no matter what
+    AUDIO_DELAY: 300
+};
 
-// Initialize quiz data structure
-function initQuizData() {
-    if (!localStorage.getItem('quizData')) {
-        const quizData = {
-            scores: {},
-            attempts: {},
-            completed: false,
-            startTime: new Date().toISOString(),
-            currentQuestion: 1
-        };
-        
-        // Initialize scores for all quizzes
-        for (let i = 1; i <= CONFIG.TOTAL_QUIZZES; i++) {
-            quizData.scores[`quiz${i}`] = 0;
-            quizData.attempts[`quiz${i}`] = 0;
-        }
-        
-        // Initialize final review
-        quizData.scores['finalReview'] = 0;
-        quizData.attempts['finalReview'] = 0;
-        
-        localStorage.setItem('quizData', JSON.stringify(quizData));
-    }
-}
 
-// Get current quiz data
-function getQuizData() {
-    const data = localStorage.getItem('quizData');
-    return data ? JSON.parse(data) : initQuizData();
-}
 
-// Update quiz score
-function updateQuizData(quizId, score) {
-    const data = getQuizData();
-    data.scores[quizId] = score;
-    data.attempts[quizId] = (data.attempts[quizId] || 0) + 1;
-    data.lastUpdated = new Date().toISOString();
-    
-    // Check if all quizzes are completed
-    let allCompleted = true;
-    for (let i = 1; i <= CONFIG.TOTAL_QUIZZES; i++) {
-        if (data.attempts[`quiz${i}`] === 0) {
-            allCompleted = false;
-            break;
-        }
-    }
-    
-    if (allCompleted && data.attempts['finalReview'] > 0) {
-        data.completed = true;
-        data.endTime = new Date().toISOString();
-    }
-    
-    localStorage.setItem('quizData', JSON.stringify(data));
-    return data;
-}
 
-// Calculate overall score
-function calculateOverallScore() {
-    const data = getQuizData();
-    let totalScore = 0;
-    let maxScore = CONFIG.TOTAL_QUIZZES; // 1 point per quiz
-    
-    for (let i = 1; i <= CONFIG.TOTAL_QUIZZES; i++) {
-        totalScore += data.scores[`quiz${i}`] || 0;
-    }
-    
-    // Add final review (out of 10)
-    totalScore += data.scores['finalReview'] || 0;
-    maxScore += 10;
-    
-    return {
-        score: totalScore,
-        max: maxScore,
-        percentage: Math.round((totalScore / maxScore) * 100),
-        completed: data.completed,
-        attempts: Object.values(data.attempts).reduce((a, b) => a + b, 0)
-    };
-}
-
-// Initialize on load
-initQuizData();
