@@ -943,7 +943,5 @@ const CONFIG = {
     REVIEW_SLIDE_INDEX: 20,
     SWIPE_THRESHOLD: 50,
     AUDIO_DELAY: 300,
-    TOTAL_SLIDES: 19,
-    TOTAL_WORDS: 80,
-    TOTAL_SENTENCES: 76  // 19 dialogues × 4 sentences each
+    AUDIO: true,
 };

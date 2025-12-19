@@ -773,5 +773,6 @@ const dialoguesDB = [
 const CONFIG = {
     REVIEW_SLIDE_INDEX: 17,
     SWIPE_THRESHOLD: 50,
+    AUDIO: false,
     AUDIO_DELAY: 300
 };

@@ -270,6 +270,11 @@
         }
 
         .start-btn {
+            /* This makes them all equal width */
+        flex: 1 1 0; 
+        
+        /* Ensures they wrap if the screen gets too small */
+        min-width: 150px;
             padding: 20px 50px;
             background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
             color: white;
@@ -963,7 +968,7 @@
             }
             
             .floating-controls {
-                bottom: 20px;
+                bottom: calc(var(--nav-controls-height) * 0.5 + 20px);
                 right: 20px;
             }
             
@@ -1205,3 +1210,4 @@
     display: flex;
     gap: 12px; /* Space between buttons */
 }
+
