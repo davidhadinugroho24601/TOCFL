@@ -1,6 +1,6 @@
 // content-generator.js - Generates all slides dynamically with correct order
 
-class QuizGenerator {
+class ContentGenerator {
     constructor() {
         this.container = document.querySelector('.container');
         this.progressBarContainer = document.querySelector('.progress-container');
